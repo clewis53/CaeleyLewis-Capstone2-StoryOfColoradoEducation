@@ -19,9 +19,9 @@ We are limited to study school performance data only from the years 2010-2012. W
 The key stakeholder here is The Colorado State Board of Education. Ultimately, other stakeholders include district boards, school boards, teachers, parents, and students.
 
 #### Data
-1. Visualize the State of Public Education in Colorado | Kaggle: Student performance, college-readiness, and demographic information by school for the years 2010-2012 
-2. School District Revenues and Expenditures | CDE (state.co.us): Revenue and expenditures by program and district for the years 2010-2012
-3. SAIPE Datasets (census.gov): The number of students whose families below the poverty level by district for the years 2010-2012
+1. [Visualize the State of Public Education in Colorado | Kaggle](https://www.kaggle.com/competitions/visualize-the-state-of-education-in-colorado/data?select=2010_1YR_3YR_change.csv): Student performance, college-readiness, and demographic information by school for the years 2010-2012 
+2. [School District Revenues and Expenditures | CDE (state.co.us)](http://www.cde.state.co.us/cdefinance/revexp): Revenue and expenditures by program and district for the years 2010-2012
+3. [SAIPE Datasets (census.gov)](https://www.census.gov/programs-surveys/saipe/data/datasets.html): The number of students whose families below the poverty level by district for the years 2010-2012
 
 #### Outline
 Describe how the overall performance of the state has changed over the past years and break it down by districts, school level, type of school using visualization
