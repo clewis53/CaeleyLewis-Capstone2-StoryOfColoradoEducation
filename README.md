@@ -4,7 +4,7 @@
 What is the state of education in Colorado currently and can it be improved for vulnerable students?
 
 #### Context
-The state board of education wants to make data-driven decisions to improve student’s performance and college-readiness. They are seeking fresh perspectives, so they have made data available for outside parties to create stories from.
+Inspired by the 2013 Kaggle competition, [Visualize the State of Public Education in Colorado](https://www.kaggle.com/competitions/visualize-the-state-of-education-in-colorado/overview/description), hosted by [ColoradoSchoolGrades](https://www.facebook.com/people/Colorado-School-Grades/100080716453043/), we will be creating a mock project that would assist the state board of education to make data-driven decisions to improve student’s performance and college-readiness. They are seeking fresh perspectives, so they have made data available for outside parties to create stories from.
 
 #### Success Criteria
 In our story, we will produce a visually engaging presentation that explains how schools in the state have been performing, makes recommendations for outreach programs for students in minorities and lower-income brackets, demonstrates if expenditures have an affect on performance, and identifies patterns of performance in the statement.
@@ -29,4 +29,8 @@ Compare the number of students in poverty, the number of students receiving disc
 Examine the performance of students in minorities to make recommendations of outreach programs.
 Demonstrate evidence for the effect of expenditures as well as their types on performance with hypothesis testing
 Use clustering to compare performance, demographic information, or geographic location
+
+----
+##### Special thanks
+![ColoradoSchoolGrades](https://scontent.fslc3-2.fna.fbcdn.net/v/t39.30808-6/305205208_158321073535107_6016190664016506602_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=cuVGXWEetJoAX_Mb3Zv&_nc_ht=scontent.fslc3-2.fna&oh=00_AfAyqm3EYIn1OOm87C5m0BTX8AWsEgmC_AoPSBTUmdR5VA&oe=63EEBF99)
 
