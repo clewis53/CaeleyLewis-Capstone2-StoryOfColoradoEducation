@@ -39,8 +39,8 @@ def get_dataframes(filenames=[], read_method=pd.read_csv, col_map={}, drop_cols=
 
     Returns
     -------
-    datasets : TYPE
-        DESCRIPTION.
+    datasets : list(DataFrame)
+        a list of the loaded dataframes
 
     """
     datasets = []

@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from pathlib import Path
 
+# Access environment variables
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 # Census API
-from dotenv import load_dotenv # to load environment variables
-import os # to get api environment variables
 import requests # to request census data
 from requests import HTTPError
 import pandas as pd # to save api json as csv
@@ -12,16 +15,15 @@ import pandas as pd # to save api json as csv
 from kaggle.api.kaggle_api_extended import KaggleApi
 import zipfile # to unzip all files from kaggle
 
-CENSUS_YEARS = 2010, 2011, 2012 # The years to request census data
 
+# Census params
+CENSUS_YEARS = 2010, 2011, 2012 # The years to request census data
 # The parameters needed to request school district name, estimated number of children in poverty,
 # estimated number of children, and estimated total population for Colorado 
 CENSUS_PARAMS = {'get': 'SD_NAME,SAEPOV5_17RV_PT,SAEPOV5_17V_PT,SAEPOVALL_PT',
                  'time': 999,
                  'for': 'school district (unified)',
-                 'in': 'state:08',
-                 'key': '3f74239a3f6f44f3317a2e74f9757aeaadcbc630'}
-
+                 'in': 'state:08'}
 
 # Kaggle params
 COMPETITION_NAME = 'visualize-the-state-of-education-in-colorado'
@@ -45,15 +47,15 @@ def get_census(output_filepath):
     # Census API params
     # find .env automagically by walking up directories until it's found, then
     # load up the .env entries as environment variables
-    load_dotenv()
+
     url = os.getenv('CENSUS_URL') # url to request saipe info
-    params = os.getenv('CENSUS_PARAMS') # params to request saipe info
-    times = os.getenv('CENSUS_YEARS') # times to request saipe data
+    key = os.getenv('CENSUS_KEY')
     
+    CENSUS_PARAMS['key'] = key
     # Create a dataframe for each year requested
-    for time in times:
-        params['time'] = time # establish time parameter
-        with requests.get(url, params) as response:
+    for time in CENSUS_YEARS:
+        CENSUS_PARAMS['time'] = time # establish time parameter
+        with requests.get(url, CENSUS_PARAMS) as response:
             try:
                 # check for correct response code
                 response.raise_for_status()
@@ -86,13 +88,15 @@ def get_kaggle(output_filepath):
     None.
 
     """
+    KAGGLE_key = os.getenv('KAGGLE_key')
+    KAGGLE_username = os.getenv('KAGGLE_username')
     # Create a connection to the kaggle api
     api = KaggleApi()
     api.authenticate()
     
     # Download all competition files in a zip file
-    api.competition_download_files(COMPETITION_NAME, str(output_filepath))
-    filename = str(output_filepath)+COMPETITION_NAME+'.zip' # This is the format of the zip file
+    api.competition_download_files(COMPETITION_NAME, output_filepath)
+    filename = output_filepath.joinpath(COMPETITION_NAME+'.zip') # This is the format of the zip file
     
     # Extract all files
     with zipfile.ZipFile(filename, 'r') as zipref:
