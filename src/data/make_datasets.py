@@ -65,13 +65,15 @@ def get_dataframes(filenames, index_col=None,
     ----------
     filenames : list(String), optional
         The names of the files to get names from. The default is [].
-    col_map : dict, optional
-        How to rename the columns. The default is {}.
-    drop_cols : list, optional
-        Which columns are not necessary. The default is [].
     index_col: int
-        Specifies where the index column is
-
+        Specifies where the index column is if at all. The default is none
+    drop_rows: list, optional
+        Which rows are not necessary.
+    drop_cols : list, optional
+        Which columns are not necessary. The default is None.
+    col_map : dict, optional
+        How to rename the columns. The default is None.
+        
     Returns
     -------
     datasets : list(DataFrame)
@@ -91,18 +93,20 @@ def get_dataframes(filenames, index_col=None,
     return datasets
 
 
-def make_tall(datasets, years=[]):
+def make_tall(datasets, id_col=[], id_name='df_id'):
     """
     Transforms a list of .csv datasets into a single tall .csv dataset
-    and saves it.
 
     Parameters
     ----------
     datasets : list(DataFrame)
-        A list of DataFrames to combine.
-    years: list(int), optional
-        Specifies if years should be added and what those are to the dataframes before joining.
-        The default is [] or don't add years.
+        A non-empty list of DataFrames to combine.
+    id_col: list(int), optional
+        A list of values that should identify each dataframe before concatenating them.
+        The default is [] or don't add id_col.
+    id_name: String, optional
+        The name for the id column to be used when id_cols is not empty.
+        The default is 'df_id'.
 
     Returns
     -------
@@ -111,17 +115,20 @@ def make_tall(datasets, years=[]):
     """
     # Initialize DataFrame
     tall_df = datasets[0]   
-    # Make changes if years have been added
-    if years:
-        # The length of years must be equal to the number of datasets provided
-        assert len(years) == len(datasets)       
-        tall_df['year'] = years[0]
+    # Make changes if id_col have been added
+    if id_col:
+        # The length of id_col must be equal to the number of datasets provided
+        assert len(id_col) == len(datasets)
+        # Their must be an id_name given when an id_col is specified
+        assert id_name != None
+        # Add the id column
+        tall_df[id_name] = id_col[0]
     
-    # Iterate over all datasets and years
+    # Iterate over all datasets and id_col
     for i in range(1, len(datasets)):
-        # Add the year column if necessary
-        if years:
-            datasets[i]['year'] = years[i]
+        # Add the id column if necessary
+        if id_col:
+            datasets[i][id_name] = id_col[i]
 
         tall_df = pd.concat((tall_df, datasets[i]))
         
@@ -191,7 +198,7 @@ def make_tall_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2
     transformed_datasets = [transform_expenditure_df(df) for df in datasets]
     
     # Combine transformed DataFrames into a tall dataframe
-    tall_df = make_tall(transformed_datasets, years=years)
+    tall_df = make_tall(transformed_datasets, id_col=years, id_name='year')
 
     # Save tall DataFrame
     tall_df.to_csv(append_path(output_filepath, 'expenditures_tall.csv'))
