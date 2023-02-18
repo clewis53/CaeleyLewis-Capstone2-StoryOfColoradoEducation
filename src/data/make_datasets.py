@@ -54,8 +54,8 @@ def append_path(path, addition):
 
 
 
-def get_dataframes(filenames, col_map=None, 
-                   drop_cols=None, index_col=None):
+def get_dataframes(filenames, index_col=None,
+                   drop_rows=None, drop_cols=None, col_map=None):
     """
     Takes in a list of filenames to create DataFrames from,
     changes the column names using the column map,
@@ -83,9 +83,7 @@ def get_dataframes(filenames, col_map=None,
         # Instructs pandas not to recreate the index column,
         # to use the first row as column names,
         # and to drop the specifiec columns
-        df = pd.read_csv(file, index_col=index_col, header=0)
-       
-        df.drop(drop_cols, axis=1)
+        df = pd.read_csv(file, index_col=index_col, header=0).drop(drop_cols, axis=1).drop(drop_rows)
         df.columns = df.columns.map(col_map) 
         
         datasets.append(df)
@@ -185,11 +183,57 @@ def make_tall_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2
     # make DataFrames from all expenditures files
     filenames = [append_path(input_filepath, f'expenditures{time}.csv') for time in years]            
     datasets = get_dataframes(filenames,
-                              col_map=EXP_COL_MAP, 
+                              col_map=EXP_COL_MAP,
+                              drop_rows=[0,1],
                               drop_cols=EXP_DROP_COLS)
     
-    # combine DataFrames into a tall dataframe
-    tall_df = make_tall(datasets, years=years)
+    # Transform each dataset
+    transformed_datasets = [transform_expenditure_df(df) for df in datasets]
+    
+    # Combine transformed DataFrames into a tall dataframe
+    tall_df = make_tall(transformed_datasets, years=years)
+
+    # Save tall DataFrame
+    tall_df.to_csv(append_path(output_filepath, 'expenditures_tall.csv'))
+    
+    
+def transform_expenditure_df(df):
+    df = df.dropna(how='all')
+    
+    # All numbers have commas in them that need to be removed
+    df = df.replace(',','', regex=True)
+    
+    # The district_name column has numbers that were relevant to the BOCES funding but not our project.
+    # We want to be able to identify each of those and remove them.
+    def remove_floats(entry):
+        try:
+            float(entry)
+            return np.nan
+        except:
+            return entry
+        
+    df['district_name'] = df['district_name'].apply(remove_floats)
+    
+    # Now that they are removed, lets forward fill the district_name,
+    # so that we can extract the total amount for each category
+    # and the per pupil amount for each category
+    df['district_name'] = df['district_name'].fillna(method='ffill')
+    
+    # Remove all BOCES funding entries because they are irrelevant
+    df = df[~(df['district_name'].str.lower().str.contains('boces'))]
+    
+    # Now we can extract the total amounts
+    totals = df[df['county'].str.lower() == 'amount'].drop('county', axis=1)
+    # the per pupil amounts 
+    per_pupils = df[df['county'].str.lower() == 'per pupil'].drop('county', axis=1)
+    # and the county names
+    counties = df.loc[~(df['county'].str.lower().isin(('amount', 'per pupil', 'all funds'))), ['district_name', 'county']]
+    
+    # Now we can merge them
+    merged_df = pd.merge(left=totals, right=per_pupils, on='district_name', suffixes=('_total', '_per_pupil'))
+    final_df = pd.merge(left=counties, right=merged_df, on='district_name')
+    
+    return final_df
 
 
 def make_tall_kaggle(input_filepath, output_filepath):
