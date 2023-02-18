@@ -94,6 +94,13 @@ def get_dataframes(filenames, index_col=None,
     
     return datasets
 
+def save_dataframes(datasets=[], filenames=[]):
+    assert len(datasets) == len(filenames)
+    
+    for i in range(len(datasets)):
+        datasets[i].to_csv(filenames[i])
+    
+
 
 def make_tall(datasets, id_col=[], id_name='df_id'):
     """
@@ -157,11 +164,15 @@ def make_tall_census(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     None.
     """
     # make DataFrames from all saipe files
-    filenames = [append_path(input_filepath, f'saipe{time}.csv') for time in years]
-    datasets = get_dataframes(filenames, 
+    input_filenames = [append_path(input_filepath, f'saipe{time}.csv') for time in years]
+    datasets = get_dataframes(input_filenames, 
                               col_map=CENSUS_COL_MAP, 
                               drop_cols=CENSUS_DROP_COLS, 
                               index_col=0)
+    
+    # save the DataFrames from all saipe files
+    output_filenames = [append_path(output_filepath, f'census/saipe{time}.csv') for time in years]
+    save_dataframes(datasets, output_filenames)
     
     # combine DataFrames into a single tall DataFrame
     tall_df = make_tall(datasets)
