@@ -29,6 +29,28 @@ CENSUS_PARAMS = {'get': 'SD_NAME,SAEPOV5_17RV_PT,SAEPOV5_17V_PT,SAEPOVALL_PT',
 COMPETITION_NAME = 'visualize-the-state-of-education-in-colorado'
 
 
+def append_path(path, addition):
+    """
+    Appends the path to a string based on type.
+
+    Parameters
+    ----------
+    path : str, Path
+        The original path
+    addition : String
+        The string to append to the path
+
+    Returns
+    -------
+    str, Path
+        The new path
+
+    """
+    if type(path) == str:
+        return path + '/' + addition
+    return path.joinpath(addition)
+
+
 def get_census(output_filepath):
     """
     Obtains census data from the its api. 
@@ -64,8 +86,8 @@ def get_census(output_filepath):
                 data_json = response.json()
                 df = pd.DataFrame(data=data_json[1:], columns=data_json[0])
                 
-                # saves file
-                filename = str(output_filepath) + f'saipe{time}.csv'
+                # Save file
+                filename = append_path(output_filepath, f'saipe{time}.csv')
                 df.to_csv(filename)
             
             # catches failed response codes
@@ -95,10 +117,10 @@ def get_kaggle(output_filepath):
     api.authenticate()
     
     # Download all competition files in a zip file
-    api.competition_download_files(COMPETITION_NAME, output_filepath)
-    filename = output_filepath.joinpath(COMPETITION_NAME+'.zip') # This is the format of the zip file
-    
+    api.competition_download_files(COMPETITION_NAME, output_filepath)   
+      
     # Extract all files
+    filename = append_path(output_filepath, COMPETITION_NAME + '.zip')
     with zipfile.ZipFile(filename, 'r') as zipref:
         zipref.extractall(output_filepath)
     
