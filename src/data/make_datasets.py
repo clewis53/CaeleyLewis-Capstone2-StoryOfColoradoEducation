@@ -20,6 +20,7 @@ CENSUS_COL_MAP = {'SD_NAME': 'district_name',
 CENSUS_DROP_COLS = ['state', 'school district (unified)']
 
 # Expenditures dataframe information
+# Readable column names
 EXP_COL_MAP = {'Unnamed: 1': 'county',
                'DISTRICT/': 'district_name',
                'Unnamed: 3': 'instruction',
@@ -27,6 +28,7 @@ EXP_COL_MAP = {'Unnamed: 1': 'county',
                'Unnamed: 5': 'community',
                'Unnamed: 6': 'other',
                'Unnamed: 7': 'sum'}
+# Columns that won't be used
 EXP_DROP_COLS = ['Unnamed: 0']
 
 
@@ -55,7 +57,7 @@ def append_path(path, addition):
 
 
 def get_dataframes(filenames, index_col=None,
-                   drop_rows=None, drop_cols=None, col_map=None):
+                   drop_rows=[], drop_cols=[], col_map={}):
     """
     Takes in a list of filenames to create DataFrames from,
     changes the column names using the column map,
@@ -68,9 +70,9 @@ def get_dataframes(filenames, index_col=None,
     index_col: int
         Specifies where the index column is if at all. The default is none
     drop_rows: list, optional
-        Which rows are not necessary.
+        Which rows are not necessary. The default is []
     drop_cols : list, optional
-        Which columns are not necessary. The default is None.
+        Which columns are not necessary. The default is [].
     col_map : dict, optional
         How to rename the columns. The default is None.
         
@@ -306,8 +308,8 @@ def main(input_filepath, output_filepath):
     None.
 
     """
-    # make_tall_census(append_path(input_filepath, 'census'), 
-    #                 output_filepath)
+    make_tall_census(append_path(input_filepath, 'census'), 
+                     output_filepath)
     make_tall_expenditures(append_path(input_filepath, 'expenditures'), 
                            output_filepath)
     # make_tall_kaggle(input_filepath.joinpath('kaggle'), output_filepath)
