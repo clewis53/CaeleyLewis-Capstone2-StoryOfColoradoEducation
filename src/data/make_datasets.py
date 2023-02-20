@@ -201,14 +201,18 @@ def make_tall_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2
 
     """
     # make DataFrames from all expenditures files
-    filenames = [append_path(input_filepath, f'expenditures{time}.csv') for time in years]            
-    datasets = get_dataframes(filenames,
+    input_filenames = [append_path(input_filepath, f'expenditures{time}.csv') for time in years]            
+    datasets = get_dataframes(input_filenames,
                               col_map=EXP_COL_MAP,
                               drop_rows=[0,1],
                               drop_cols=EXP_DROP_COLS)
     
     # Transform each dataset
     transformed_datasets = [transform_expenditure_df(df) for df in datasets]
+    
+    # Save all transformed datasets
+    output_filenames = [append_path(output_filepath, f'expenditures/expenditures{time}.csv') for time in years]
+    save_dataframes(transformed_datasets, output_filenames)
     
     # Combine transformed DataFrames into a tall dataframe
     tall_df = make_tall(transformed_datasets, id_col=years, id_name='year')
@@ -319,8 +323,8 @@ def main(input_filepath, output_filepath):
     None.
 
     """
-    make_tall_census(append_path(input_filepath, 'census'), 
-                     output_filepath)
+    # make_tall_census(append_path(input_filepath, 'census'), 
+    #                  output_filepath)
     make_tall_expenditures(append_path(input_filepath, 'expenditures'), 
                            output_filepath)
     # make_tall_kaggle(input_filepath.joinpath('kaggle'), output_filepath)
