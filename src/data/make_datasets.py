@@ -31,6 +31,17 @@ EXP_COL_MAP = {'Unnamed: 1': 'county',
 # Columns that won't be used
 EXP_DROP_COLS = ['Unnamed: 0']
 
+# Kaggle dataframes information
+# Standardized column names 
+KAGGLE_COL_MAP = {'School Name': 'school',
+                  'District Number': 'district_id',
+                  'District Name': 'district_name',
+                  'School Number': 'school_id'}
+# 1YR_3YR_change Dataframes
+CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
+                  'rate_at.5_chng_growth': 'growth_dir',
+                  'pct_pts_chng_.5': 'overall_dir'}
+
 
 def append_path(path, addition):
     """
@@ -86,9 +97,16 @@ def get_dataframes(filenames, index_col=None,
     for file in filenames:
         # Instructs pandas not to recreate the index column,
         # to use the first row as column names,
-        # and to drop the specifiec columns
-        df = pd.read_csv(file, index_col=index_col, header=0).drop(drop_cols, axis=1).drop(drop_rows)
+        # drop the specifi columns
+        # drop the specific rows
+        # and remove rows with no data in them
+        df = pd.read_csv(file, index_col=index_col, header=0)
+        df = df.drop(drop_cols, axis=1)
+        df = df.drop(drop_rows)
+        df = df.dropna(how='all')
+        # Apply column map
         df.columns = df.columns.map(col_map) 
+        # Drop all 
         
         datasets.append(df)
     
@@ -225,7 +243,9 @@ def transform_expenditure_df(df):
     df = df.dropna(how='all')
     
     # All numbers have commas in them that need to be removed
-    df = df.replace(',','', regex=True)
+    df = df.replace(',', '', regex=True)
+    df = df.replace('(', '', regex=True)
+    df = df.replace(')', '', regex=True)
     
     # The district_name column has numbers that were relevant to the BOCES funding but not our project.
     # We want to be able to identify each of those and remove them.
@@ -276,10 +296,45 @@ def make_tall_kaggle(input_filepath, output_filepath):
     None.
 
     """
+    make_1yr_3yr_change(input_filepath, output_filepath)
 
 
-def make_1yr_3yr_change(datasets=[]):
-    pass
+def make_1yr_3yr_change(input_filepath, output_filepath):
+    years = 2010, 2011, 2012
+    # Load DataFrames
+    # The names of the raw files 
+    raw_filenames = [append_path(input_filepath, f'{year}_1YR_3YR_change.csv') for year in years]
+    # Append standard col changes to specific ones
+    CHANGE_COL_MAP.update(KAGGLE_COL_MAP)    
+    datasets = get_dataframes(raw_filenames, 
+                              index_col=0, 
+                              col_map=CHANGE_COL_MAP)     
+
+    # A map to apply to each column that makes more sense than 1,2,3
+    trend_arrow_map = {1: 'down',
+                       2: 'flat',
+                       3: 'up'}
+    # The column to apply the map to
+    direction_cols = ['achievement_dir','growth_dir','overall_dir']
+    
+    for df in datasets:
+        df[direction_cols] = df[direction_cols].map(trend_arrow_map)
+        df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
+        df.drop(['EMH', 'EMH_combined'], axis=1)
+        
+    output_filenames = [[append_path(output_filepath, f'{year}_1YR_3YR_change.csv') for year in years]]
+    save_dataframes(datasets, output_filenames)
+    
+
+def combine_emh(emh, emh_combined):
+    emh_final = []
+    for i in len(emh):
+        if emh_combined[i] == np.nan:
+            emh_final.append(emh_combined[i])
+        else:
+            emh_final.append(emh[i])
+    
+    return emh_final
 
 
 def make_coact(datasets=[]):
@@ -325,9 +380,9 @@ def main(input_filepath, output_filepath):
     """
     # make_tall_census(append_path(input_filepath, 'census'), 
     #                  output_filepath)
-    make_tall_expenditures(append_path(input_filepath, 'expenditures'), 
-                           output_filepath)
-    # make_tall_kaggle(input_filepath.joinpath('kaggle'), output_filepath)
+    # make_tall_expenditures(append_path(input_filepath, 'expenditures'), 
+    #                       output_filepath)
+    make_tall_kaggle(input_filepath.joinpath('kaggle'), output_filepath)
 
 
 if __name__ == '__main__':
