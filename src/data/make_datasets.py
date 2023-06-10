@@ -65,6 +65,8 @@ def append_path(path, addition):
     return path.joinpath(addition)
 
 
+def create_filenames(filepath, file_extension='{year}', years=(2010,2011,2012)):
+    return [append_path(filepath, file_extension.format(year=year)) for year in years]
 
 
 def get_dataframes(filenames, index_col=None,
@@ -117,6 +119,12 @@ def save_dataframes(datasets=[], filenames=[]):
     
     for i in range(len(datasets)):
         datasets[i].to_csv(filenames[i])
+    
+
+
+def super_function(input_filepath, output_filepath, raw_extension, output_extension, transform_function=lambda x:x):
+    raw_filenames = create_filenames(input_filepath, raw_extension)
+    output_filenames = create_filenames(output_filepath, output_extension)
     
 
 
@@ -297,17 +305,18 @@ def make_tall_kaggle(input_filepath, output_filepath):
 
     """
     make_1yr_3yr_change(input_filepath, output_filepath)
+    make_coact(input_filepath, output_filepath)
 
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
-    years = 2010, 2011, 2012
+    years = 2010, 2011
     # Load DataFrames
     # The names of the raw files 
     raw_filenames = [append_path(input_filepath, f'{year}_1YR_3YR_change.csv') for year in years]
     # Append standard col changes to specific ones
     CHANGE_COL_MAP.update(KAGGLE_COL_MAP)    
     datasets = get_dataframes(raw_filenames, 
-                              index_col=0, 
+                              index_col=None, 
                               col_map=CHANGE_COL_MAP)     
 
     # A map to apply to each column that makes more sense than 1,2,3
@@ -337,9 +346,9 @@ def combine_emh(emh, emh_combined):
     return emh_final
 
 
-def make_coact(datasets=[]):
-    pass
-
+def make_coact(input_filepath, output_filepath):
+    raw_filenames = create_filenames(input_filepath, '{year}_COACT.csv')
+    
 
 def make_enrl_working(datasets=[]):
     pass
