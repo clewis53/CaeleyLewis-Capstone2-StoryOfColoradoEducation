@@ -40,7 +40,7 @@ KAGGLE_COL_MAP = {'School Name': 'school',
 # 1YR_3YR_change Dataframes
 CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
                   'rate_at.5_chng_growth': 'growth_dir',
-                  'pct_pts_chng_.5': 'overall_dir'}
+                  'pct_pts_chnge_.5': 'overall_dir'}
 
 
 def append_path(path, addition):
@@ -107,7 +107,7 @@ def get_dataframes(filenames, index_col=None,
         df = df.drop(drop_rows)
         df = df.dropna(how='all')
         # Apply column map
-        df.columns = df.columns.map(col_map) 
+        df = df.rename(columns=col_map)
         # Drop all 
         
         datasets.append(df)
@@ -327,7 +327,8 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
     direction_cols = ['achievement_dir','growth_dir','overall_dir']
     
     for df in datasets:
-        df[direction_cols] = df[direction_cols].map(trend_arrow_map)
+        for col in direction_cols:
+            df[col] = df[col].map(trend_arrow_map)
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
         df.drop(['EMH', 'EMH_combined'], axis=1)
         
@@ -337,7 +338,7 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
 
 def combine_emh(emh, emh_combined):
     emh_final = []
-    for i in len(emh):
+    for i in range(len(emh)):
         if emh_combined[i] == np.nan:
             emh_final.append(emh_combined[i])
         else:
