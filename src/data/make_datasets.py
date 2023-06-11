@@ -37,19 +37,27 @@ KAGGLE_COL_MAP = {'EMH-Combined': 'EMH_combined',
                   'EMH_Combined': 'EMH_combined',
                   'SPF_EMH_CODE': 'EMH',
                   'SPF_INCLUDED_EMH_FOR_A': 'EMH_combined',
+                  'School_Name': 'school',
+                  'SchoolName': 'school',
                   'School Name': 'school',
                   'SCHOOL NAME': 'school',
                   '2010 School Name': 'school',
                   'SPF_SCHOOL_NAME': 'school',
+                  'DistrictNumber': 'district_id',
                   'District No': 'district_id',
                   'District Number': 'district_id',
                   'DISTrictNUMBER': 'district_id',
                   'SPF_DIST_NUMBER': 'district_id',
                   'Org. Code': 'district_id',
+                  'DistrictName': 'district_name',
                   'District Name': 'district_name',
                   'DISTRICT NAME': 'district_name',
                   'SPF_DISTRICT_NAME': 'district_name',
                   'Organization Name': 'district_name',
+                  'School_District': 'district_name',
+                  'School_Districte': 'district_name',
+                  'Schoolnumber': 'school_id',
+                  'SchoolNumber': 'school_id',
                   'School Code': 'school_id',
                   'School Number': 'school_id',
                   'SCHOOL NUMBER': 'school_id',
@@ -81,6 +89,10 @@ FINAL_MAP = {'AEC_10': 'alternative_school',
              'SPF_PS_IND_GRAD_RATE': 'graduation_rate'}
 # FRL Dataframes
 FRL_COL_MAP = {'% FREE AND REDUCED': 'pct_fr'}
+# Remediation DataFrames
+REM_COL_MAP = {'Remediation_AtLeastOne_Pct2010': 'pct_remediation'}
+
+
 
 def append_path(path, addition):
     """
@@ -345,8 +357,9 @@ def make_kaggle(input_filepath, output_filepath):
     # make_coact(input_filepath, output_filepath)
     # make_enrl_working(input_filepath, output_filepath)
     # make_final_grade(input_filepath, output_filepath)
-    make_k_12_frl(input_filepath, output_filepath)
-    
+    # make_k_12_frl(input_filepath, output_filepath)
+    make_remediation(input_filepath, output_filepath)
+
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
     years = 2010, 2011, 2012
@@ -370,7 +383,7 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
         for col in direction_cols:
             df[col] = df[col].map(trend_arrow_map)
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
-        df.drop(['EMH', 'EMH_combined'], axis=1)
+        df = df.drop(['EMH', 'EMH_combined'], axis=1)
         
     output_filenames = [append_path(output_filepath, f'1YR_3YR_change{year}.csv') for year in years]
     save_dataframes(datasets, output_filenames)
@@ -405,10 +418,10 @@ def make_final_grade(input_filepath, output_filepath):
     
     for df in datasets:
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
-        df.drop(['EMH', 'EMH_combined'], axis=1)
+        df = df.drop(['EMH', 'EMH_combined'], axis=1)
         
-        output_filenames = create_filenames(output_filepath, 'final_grade{year}.csv')    
-        save_dataframes(datasets, output_filenames)
+    output_filenames = create_filenames(output_filepath, 'final_grade{year}.csv')    
+    save_dataframes(datasets, output_filenames)
 
 
 def make_k_12_frl(input_filepath, output_filepath):
@@ -427,7 +440,15 @@ def make_k_12_frl(input_filepath, output_filepath):
 
 
 def make_remediation(input_filepath, output_filepath):
-    pass
+    raw_filenames = create_filenames(input_filepath, '{year}_remediation_HS.csv')
+    
+    REM_COL_MAP.update(KAGGLE_COL_MAP)
+    
+    datasets = get_dataframes(raw_filenames, col_map=REM_COL_MAP)
+    
+    output_filenames = create_filenames(output_filepath, 'remediation{year}.csv')
+    
+    save_dataframes(datasets, output_filenames)
 
 
 def make_school_address(input_filepath, output_filepath):
