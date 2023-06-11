@@ -79,7 +79,8 @@ FINAL_MAP = {'AEC_10': 'alternative_school',
              'Math_Growth_Grade': 'math_growth',
              'Write_Growth_Grade': 'write_growth',
              'SPF_PS_IND_GRAD_RATE': 'graduation_rate'}
-
+# FRL Dataframes
+FRL_COL_MAP = {'% FREE AND REDUCED': 'pct_fr'}
 
 def append_path(path, addition):
     """
@@ -343,7 +344,9 @@ def make_kaggle(input_filepath, output_filepath):
     # make_1yr_3yr_change(input_filepath, output_filepath)
     # make_coact(input_filepath, output_filepath)
     # make_enrl_working(input_filepath, output_filepath)
-    make_final_grade(input_filepath, output_filepath)
+    # make_final_grade(input_filepath, output_filepath)
+    make_k_12_frl(input_filepath, output_filepath)
+    
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
     years = 2010, 2011, 2012
@@ -408,8 +411,19 @@ def make_final_grade(input_filepath, output_filepath):
         save_dataframes(datasets, output_filenames)
 
 
-def make_k_12_flr(input_filepath, output_filepath):
-    pass
+def make_k_12_frl(input_filepath, output_filepath):
+    raw_filenames = create_filenames(input_filepath, '{year}_k_12_FRL.csv')
+    
+    FRL_COL_MAP.update(KAGGLE_COL_MAP)
+    
+    datasets = get_dataframes(raw_filenames, col_map=FRL_COL_MAP)
+    
+    for df in datasets:
+        df['pct_fr'] = df['pct_fr'].str.replace('%','').astype('float') / 100
+    
+    output_filenames = create_filenames(output_filepath, 'FRL{year}.csv')
+    
+    save_dataframes(datasets, output_filenames)
 
 
 def make_remediation(input_filepath, output_filepath):
