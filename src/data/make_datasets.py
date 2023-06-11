@@ -33,7 +33,11 @@ EXP_DROP_COLS = ['Unnamed: 0']
 
 # Kaggle dataframes information
 # Standardized column names 
-KAGGLE_COL_MAP = {'School Name': 'school',
+KAGGLE_COL_MAP = {'EMH-Combined': 'EMH_combined',
+                  'EMH_Combined': 'EMH_combined',
+                  'SPF_EMH_CODE': 'EMH',
+                  'SPF_INCLUDED_EMH_FOR_A': 'EMH_combined',
+                  'School Name': 'school',
                   'SCHOOL NAME': 'school',
                   '2010 School Name': 'school',
                   'SPF_SCHOOL_NAME': 'school',
@@ -56,19 +60,18 @@ CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
                   'rate_at.5_chng_gro': 'growth_dir',
                   'rate_at.5_chng_growth': 'growth_dir',
                   'pct_pts_chng_.5': 'overall_dir',
-                  'pct_pts_chnge_.5': 'overall_dir',
-                  'EMH-Combined': 'EMH_combined',
-                  'SPF_EMH_CODE': 'EMH',
-                  'SPF_INCLUDED_EMH_FOR_A': 'EMH_combined'}
+                  'pct_pts_chnge_.5': 'overall_dir'}
 # Final_Grade Dataframes
 FINAL_DROP = ['EMH_2lvl', 'LT100pnts']
 FINAL_MAP = {'AEC_10': 'alternative_school',
              'INITIAL_PlanType': 'initial_plan',
              'FINAL_PlanType': 'final_plan', 
-             'rank_tot': 'rank', 
+             'rank_tot': 'rank',
              'Overall_ACH_Grade': 'overall_achievement',
+             'read_ach_grade': 'read_achievement',
              'Read_Ach_Grade': 'read_achievement',
              'Math_Ach_Grade': 'math_achievement',
+             'math_ach_grade': 'math_achievement',
              'Write_Ach_Grade': 'write_achievement',
              'Sci_Ach_Grade': 'science_achievment',
              'Overall_Weighted_Growth_Grade': 'overall_weighted_growth',
@@ -339,8 +342,8 @@ def make_kaggle(input_filepath, output_filepath):
     """
     # make_1yr_3yr_change(input_filepath, output_filepath)
     # make_coact(input_filepath, output_filepath)
-    make_enrl_working(input_filepath, output_filepath)
-
+    # make_enrl_working(input_filepath, output_filepath)
+    make_final_grade(input_filepath, output_filepath)
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
     years = 2010, 2011, 2012
@@ -391,7 +394,18 @@ def make_enrl_working(input_filepath, output_filepath):
 
 
 def make_final_grade(input_filepath, output_filepath):
-    pass
+    raw_filenames = create_filenames(input_filepath, '{year}_final_grade.csv')    # Append standard col changes to specific ones
+    FINAL_MAP.update(KAGGLE_COL_MAP)    
+    datasets = get_dataframes(raw_filenames, 
+                              index_col=None, 
+                              col_map=FINAL_MAP)     
+    
+    for df in datasets:
+        df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
+        df.drop(['EMH', 'EMH_combined'], axis=1)
+        
+        output_filenames = create_filenames(output_filepath, 'final_grade{year}.csv')    
+        save_dataframes(datasets, output_filenames)
 
 
 def make_k_12_flr(input_filepath, output_filepath):
