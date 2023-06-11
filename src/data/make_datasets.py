@@ -71,8 +71,8 @@ CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
                   'pct_pts_chng_.5': 'overall_dir',
                   'pct_pts_chnge_.5': 'overall_dir'}
 # Final_Grade Dataframes
-FINAL_DROP = ['EMH_2lvl', 'LT100pnts']
-FINAL_MAP = {'AEC_10': 'alternative_school',
+FINAL_COL_DROP = ['EMH_2lvl', 'LT100pnts']
+FINAL_COL_MAP = {'AEC_10': 'alternative_school',
              'INITIAL_PlanType': 'initial_plan',
              'FINAL_PlanType': 'final_plan', 
              'rank_tot': 'rank',
@@ -209,7 +209,8 @@ def make_tall(datasets, id_col=[], id_name='df_id'):
 
     Returns
     -------
-    None.
+    tall_df: DataFrame
+        The dataframe of the tall version of the given datasets
 
     """
     # Initialize DataFrame
@@ -417,10 +418,11 @@ def make_enrl_working(input_filepath, output_filepath):
 
 def make_final_grade(input_filepath, output_filepath):
     raw_filenames = create_filenames(input_filepath, '{year}_final_grade.csv')    # Append standard col changes to specific ones
-    FINAL_MAP.update(KAGGLE_COL_MAP)    
+    FINAL_COL_MAP.update(KAGGLE_COL_MAP)    
     datasets = get_dataframes(raw_filenames, 
                               index_col=None, 
-                              col_map=FINAL_MAP)     
+                              col_map=FINAL_COL_MAP,
+                              drop_cols=FINAL_COL_DROP)     
     
     for df in datasets:
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
