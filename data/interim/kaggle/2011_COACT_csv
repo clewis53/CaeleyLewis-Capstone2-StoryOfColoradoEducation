@@ -1,4 +1,4 @@
-,District No,school,district_name,School No,eng_yn,math_yn,read_yn,sci_yn
+,district_id,school,district_name,school_id,eng_yn,math_yn,read_yn,sci_yn
 0,0,STATE LEVEL,STATE LEVEL,0,1.0,2.0,2.0,2.0
 1,10,MAPLETON EXPEDITIONARY SCHOOL OF THE ARTS,MAPLETON 1,187,2.0,2.0,2.0,2.0
 2,10,MAPLETON EARLY COLLEGE HIGH SCHOOL,MAPLETON 1,212,1.0,2.0,2.0,2.0

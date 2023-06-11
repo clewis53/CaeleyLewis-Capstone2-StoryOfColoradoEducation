@@ -1,4 +1,4 @@
-,District No,2010 School Name,School No,eng_yn,math_yn,read_yn,sci_yn
+,district_id,school,school_id,eng_yn,math_yn,read_yn,sci_yn
 0,10.0,MAPLETON EXPEDITIONARY SCHOOL OF THE ARTS,187.0,0.0,0.0,0.0,0.0
 1,10.0,MAPLETON EARLY COLLEGE HIGH SCHOOL,212.0,1.0,0.0,0.0,0.0
 2,10.0,WELBY NEW TECHNOLOGY,221.0,0.0,0.0,0.0,0.0

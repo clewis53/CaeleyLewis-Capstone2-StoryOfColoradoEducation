@@ -1,4 +1,4 @@
-,District No,school,district_name,School No,eng_yn,math_yn,read_yn,sci_yn
+,district_id,school,district_name,school_id,eng_yn,math_yn,read_yn,sci_yn
 0,10,ACADEMY HIGH SCHOOL,MAPLETON 1,309,2.0,2.0,2.0,2.0
 1,10,COLORADO CONNECTIONS ACADEMY,MAPLETON 1,1796,1.0,2.0,1.0,2.0
 2,10,DISTRICT RESULTS,MAPLETON 1,0,2.0,2.0,2.0,2.0

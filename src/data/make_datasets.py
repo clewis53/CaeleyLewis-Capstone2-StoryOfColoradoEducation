@@ -35,7 +35,9 @@ EXP_DROP_COLS = ['Unnamed: 0']
 # Standardized column names 
 KAGGLE_COL_MAP = {'School Name': 'school',
                   'SCHOOL NAME': 'school',
+                  '2010 School Name': 'school',
                   'SPF_SCHOOL_NAME': 'school',
+                  'District No': 'district_id',
                   'District Number': 'district_id',
                   'DISTrictNUMBER': 'district_id',
                   'SPF_DIST_NUMBER': 'district_id',
@@ -44,6 +46,7 @@ KAGGLE_COL_MAP = {'School Name': 'school',
                   'SPF_DISTRICT_NAME': 'district_name',
                   'School Number': 'school_id',
                   'SCHOOL NUMBER': 'school_id',
+                  'School No': 'school_id',
                   'SPF_SCHOOL_NUMBER': 'school_id'}
 # 1YR_3YR_change Dataframes
 CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
@@ -191,7 +194,7 @@ def make_tall(datasets, id_col=[], id_name='df_id'):
     return tall_df
         
 
-def make_tall_census(input_filepath, output_filepath, years=(2010, 2011, 2012)):
+def make_census(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     """
     Transforms raw census data into usable tall interim data.
     The input filepath must contain saipe datasets that
@@ -219,15 +222,10 @@ def make_tall_census(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     # save the DataFrames from all saipe files
     output_filenames = [append_path(output_filepath, f'census/saipe{time}.csv') for time in years]
     save_dataframes(datasets, output_filenames)
-    
-    # combine DataFrames into a single tall DataFrame
-    tall_df = make_tall(datasets)
-    
-    # Save the tall DataFrame
-    tall_df.to_csv(append_path(output_filepath, 'saipe_tall.csv'))
 
 
-def make_tall_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012)):
+
+def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     """
     Transforms all expenditures datasets that must be Comparison of All 
     Program Expenditures (All Funds) directly downloaded from
@@ -259,12 +257,7 @@ def make_tall_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2
     # Save all transformed datasets
     output_filenames = [append_path(output_filepath, f'expenditures/expenditures{time}.csv') for time in years]
     save_dataframes(transformed_datasets, output_filenames)
-    
-    # Combine transformed DataFrames into a tall dataframe
-    tall_df = make_tall(transformed_datasets, id_col=years, id_name='year')
 
-    # Save tall DataFrame
-    tall_df.to_csv(append_path(output_filepath, 'expenditures_tall.csv'))
     
     
 def transform_expenditure_df(df):
@@ -308,7 +301,8 @@ def transform_expenditure_df(df):
     return final_df
 
 
-def make_tall_kaggle(input_filepath, output_filepath):
+
+def make_kaggle(input_filepath, output_filepath):
     """
     Transforms each kaggle raw dataset into individual usable tall interim data
     
@@ -326,6 +320,7 @@ def make_tall_kaggle(input_filepath, output_filepath):
     """
     make_1yr_3yr_change(input_filepath, output_filepath)
     make_coact(input_filepath, output_filepath)
+    make_enrl_working(input_filepath, output_filepath)
 
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
@@ -365,29 +360,29 @@ def make_coact(input_filepath, output_filepath):
     
     save_dataframes(datasets, output_filenames)
     
-def make_enrl_working(datasets=[]):
+    
+def make_enrl_working(input_filepath, output_filepath):
     pass
 
 
-def make_final_grade(datasets=[]):
+def make_final_grade(input_filepath, output_filepath):
     pass
 
 
-def make_k_12_flr(datasets=[]):
+def make_k_12_flr(input_filepath, output_filepath):
     pass
 
 
-def make_remediation(datasets=[]):
+def make_remediation(input_filepath, output_filepath):
     pass
 
 
-def make_school_address(datasets=[]):
+def make_school_address(input_filepath, output_filepath):
     pass
 
     
     
     
-
 def main(input_filepath, output_filepath):
     """
     Transforms raw data into usable data saved as interim
@@ -402,11 +397,12 @@ def main(input_filepath, output_filepath):
     None.
 
     """
-    # make_tall_census(append_path(input_filepath, 'census'), 
-    #                  output_filepath)
-    # make_tall_expenditures(append_path(input_filepath, 'expenditures'), 
-    #                       output_filepath)
-    make_tall_kaggle(input_filepath.joinpath('kaggle'), output_filepath)
+    # make_census(append_path(input_filepath, 'census'), 
+    #                  append_path(output_filepath, 'census'))
+    # make_expenditures(append_path(input_filepath, 'expenditures'), 
+    #                        append_path(output_filepath, 'expenditures'))
+    make_kaggle(append_path(input_filepath,'kaggle'), 
+                     append_path(output_filepath,'kaggle'))
 
 
 if __name__ == '__main__':
