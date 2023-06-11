@@ -1,0 +1,1789 @@
+district_id,school_id,school,city,state,zipcode
+880,10,Abraham Lincoln High School,Denver,CO,80219
+900,11,Academy Charter School,Castle Rock,CO,80104
+900,12,Acres Green Elementary School,Littleton,CO,80124
+20,14,Glacier Peak Elementary School,Brighton,CO,80605
+20,15,Academy Of Charter Schools,Westminster,CO,80031
+130,16,Fox Hollow Elementary School,Aurora,CO,80116
+1040,17,Academy Endeavour Elementary School,Colorado Springs,CO,80920
+130,18,Liberty Middle School,Aurora,CO,80016
+1040,19,Academy International Elementary School,Colorado Springs,CO,80920
+30,20,Adams City Middle School,Commerce City,CO,80022
+30,22,Lester R Arnold High School,Commerce City,CO,80022
+30,24,Adams City High School,Commerce City,CO,80022
+2700,25,Sky View Middle School,Pueblo West,CO,81007
+2700,26,Desert Sage Elementary School,Pueblo West,CO,81007
+980,29,Adult & Family Literacy,Colorado Springs,CO,80906
+1420,30,Adams Elementary School,Westminster,CO,80021
+1420,33,Mc Lain High School,Lakewood,CO,80228
+1420,34,Mc Lain Community High School,Lakewood,CO,80228
+970,35,Frontier Charter Academy,Calhan,CO,80808
+910,37,Red Hill Elementary School,Gypsum,CO,81637
+910,38,Brush Creek Elementary School,Eagle,CO,81631
+910,39,Gypsum Creek Middle School,Gypsum,CO,81637
+880,40,Ridge View Academy Charter School,Watkins,CO,80137
+2640,42,Aspen Community Charter School,Woody Creek,CO,81656
+960,44,Agate Elementary School,Agate,CO,80101
+960,48,Agate Junior-Senior High School,Agate,CO,80101
+890,50,Rico Elementary School,Rico,CO,81332
+2810,51,The Academic Recovery Center Of San Luis Valley,Center,CO,81125
+3120,52,Heiman Elementary School,Evans,CO,80620
+3120,53,Winograd K-8 Elementary School,Greeley,CO,80634
+3120,54,Romero Elementary School,Greeley,CO,80631
+3100,55,Grandview Elementary School,Windsor,CO,80550
+2540,56,Fowler Elementary School,Fowler,CO,80139
+20,57,Rocky Top Middle School,Thornton,CO,80602
+1620,58,Aguilar Elementary School,Aguilar,CO,81020
+20,59,Meridian Elementary School,Broomfield,CO,80020
+470,60,Legacy Elementary School,Frederick,CO,80504
+470,61,Alpine Elementary School,Longmont,CO,80501
+1390,63,Peakview School,Walsenburg,CO,81089
+220,64,Archuleta County High School,Pagosa Springs,CO,81147
+1195,65,Coal Ridge High School,New Castle,CO,81647
+1620,66,Aguilar Junior-Senior High School,Aguilar,CO,81020
+880,67,Academy Of Urban Learning,Denver,CO,80218
+20,70,Adams12 Five Star Preschool,Thornton,CO,80241
+1040,74,Challenger Middle School,Colorado Springs,CO,80920
+8001,75,Animas High School,Durango,CO,81320
+1040,76,Air Academy High School,Usaf Academy,CO,80840
+3030,86,Akron Elementary School,Akron,CO,80720
+3030,90,Akron High School,Akron,CO,80720
+1420,108,Alameda High School,Lakewood,CO,80232
+1420,109,Arvada K-8,Arvada,CO,80002
+1040,110,Academy Online High School,Colorado Springs,CO,80920
+100,114,Ortega Middle School,Alamosa,CO,81101
+100,115,Alamosa Elementary School,Alamosa,CO,81101
+100,118,Alamosa High School,Alamosa,CO,81101
+100,119,Alamosa Open School,Alamosa,CO,81101
+30,124,Stars Early Learning Center,Commerce City,CO,80022
+480,125,Arapahoe Ridge High School,Boulder,CO,80303
+123,138,Alice Terry Elementary School,Englewood,CO,80150
+130,141,Sky Vista Middle School,Aurora,CO,80015
+1550,146,Ridgeview Classical Charter Schools,Fort Collins,CO,80525
+1420,148,Allendale Elementary School,Arvada,CO,80004
+30,186,Alsup Elementary School,Commerce City,CO,80022
+10,187,Mapleton Expeditionary School Of The Arts,Thornton,CO,80299
+2660,200,Alta Vista Charter School,Lamar,CO,81052
+900,201,Daniel C Oakes High School--Castle Rock,Castle Rock,CO,80104
+1828,202,Smith High School,Sterling,CO,80751
+1000,203,Lorraine Secondary School,Fountain,CO,80817
+910,205,Red Canyon High School,Edwards,CO,81631
+120,206,Colorado's Finest Alternative High School,Englewood,CO,80110
+1040,209,Aspen Valley High School,Colorado Springs,CO,80920
+20,210,Vantage Point,Northglenn,CO,80234
+10,212,Mapleton Early College High School,Denver,CO,80229
+180,213,Axl Academy,Aurora,CO,80012
+180,214,Altura Elementary School,Aurora,CO,80011
+900,215,American Academy At Castle Pines Charter,Lone Tree,CO,80124
+180,219,Aps Online School,Aurora,CO,80010
+880,220,Amesse Elementary School,Denver,CO,80239
+1520,225,Animas Valley Elementary School,Durango,CO,81301
+470,226,Altona Middle School,Longmont,CO,80503
+130,242,Antelope Ridge Elementary School,Aurora,CO,80015
+130,243,Coyote Hills Elementary School,Aurora,CO,80016
+580,248,Guadalupe Elementary School,Antonito,CO,81120
+1040,249,Antelope Trails Elementary School,Colorado Springs,CO,80921
+580,250,Antonito Junior High School,Antonito,CO,81120
+580,252,Antonito High School,Antonito,CO,81120
+2000,262,Appleton Elementary School,Grand Junction,CO,81505
+10,263,Global Leadership Academy,Denver,CO,80221
+900,264,Cimarron Middle,Parker,CO,80134
+900,265,Clear Sky Elementary,Castle Rock,CO,80109
+900,266,Gold Rush Elementary,Parker,CO,80134
+900,267,Mesa Middle School,Castle Rock,CO,80104
+1010,269,Achievek12,Colorado Springs,CO,80915
+140,298,Arapahoe High School,Centennial,CO,80122
+20,301,Arapahoe Ridge Elementary School,Westminster,CO,80030
+3040,304,Arickaree Elementary School,Anton,CO,80801
+3040,308,Arickaree Undivided High School,Anton,CO,80801
+10,309,Skyview Academy High School,Thornton,CO,80229
+180,310,Arkansas Elementary School,Aurora,CO,80017
+130,348,Arrowhead Elementary School,Aurora,CO,80013
+900,354,Arrowwood Elementary School,Highlands Ranch,CO,80130
+2000,361,Fruita 8/9 School,Fruita,CO,81521
+2000,362,Rim Rock Elementary School,Fruita,CO,81521
+2000,363,Pear Park Elementary School,Grand Junction,CO,81504
+1420,370,Arvada High School,Arvada,CO,80004
+1420,378,Arvada West High School,Arvada,CO,80004
+880,388,Asbury Elementary School,Denver,CO,80210
+880,408,Valdez Elementary School,Denver,CO,80211
+880,418,Ashley Elementary School,Denver,CO,80220
+2640,428,Aspen Elementary School,Aspen,CO,81611
+1180,429,Carbondale Community Charter School,Carbondale,CO,81623
+2640,430,Aspen Middle School,Aspen,CO,81611
+2640,432,Aspen High School,Aspen,CO,81611
+480,441,Aspen Creek K-8 School,Broomfield,CO,80020
+130,442,Aspen Crossing Elementary School,Centennial,CO,80015
+2640,447,Aspen Pre-School,Aspen,CO,81611
+1010,452,Audubon Elementary School,Colorado Springs,CO,80909
+180,458,Aurora Academy Charter School,Aurora,CO,80010
+180,464,Aurora Hills Middle School,Aurora,CO,80012
+180,465,Aurora Frontier K-8,Aurora,CO,80013
+980,469,Atlas Preparatory School,Colorado Springs,CO,80916
+910,471,Avon Elementary School,Avon,CO,81620
+2700,472,Avondale Elementary School,Avondale,CO,81022
+1550,477,Zach Elementary School,Fort Collins,CO,80528
+870,489,Backpack Early Learning Academy,Delta,CO,81416
+1550,490,Bacon Elementary School,Fort Collins,CO,80528
+2405,492,Baker Central School,Fort Morgan,CO,80701
+1550,498,Bethke Elementary School,Timnath,CO,80547
+10,501,Monterey Community School,Denver,CO,80229
+10,502,Meadow Community School,Thornton,CO,80229
+10,503,York International,Thornton,CO,80229
+10,504, Welby Montessori School,Denver,CO,80229
+10,505,Achieve Academy,Thornton,CO,80229
+10,506,Explore Elementary,Thornton,CO,80229
+10,507,Adventure Elementary,Denver,CO,80221
+10,509,Clayton Partnership School,Thornton,CO,80229
+1560,510,Conrad Ball Middle School,Loveland,CO,80538
+1828,515,Ayres Elementary School,Sterling,CO,80751
+1010,517,Academy For Advanced And Creative Learning,Colorado Springs,CO,80907
+880,520,Barnum Elementary School,Denver,CO,80219
+880,540,Barrett Elementary School,Denver,CO,80205
+1550,550,Barton Prekindergarten,Fort Collins,CO,80525
+1110,555,Banning Lewis Ranch Academy,Colorado Springs,CO,80927
+1180,560,Basalt Elementary School,Basalt,CO,81621
+1180,561,Basalt Middle School,Basalt,CO,81621
+1180,570,Basalt High School,Basalt,CO,81621
+1010,594,Bates Elementary School,Colorado Springs,CO,80907
+910,604,Battle Mountain High School,Edwards,CO,81620
+2035,609,Battle Rock Charter School,Cortez,CO,81321
+1550,612,Bauder Elementary School,Fort Collins,CO,80526
+1530,632,Bayfield Elementary School,Bayfield,CO,81122
+1530,636,Bayfield Middle School,Bayfield,CO,81122
+1530,640,Bayfield High School,Bayfield,CO,81122
+880,650,Beach Court Elementary School,Denver,CO,80221
+900,651,Bear Canyon Elementary School,Highlands Ranch,CO,80126
+480,652,Bear Creek Elementary School,Boulder,CO,80305
+8001,653,Stone Creek School,Avon,CO,81620
+8001,654,The Pinnacle Charter School Elementary,Federal Heights,CO,80206
+8001,655,High Point Academy,Aurora,CO,80019
+8001,657,T.R. Paul Academy Of Arts & Knowledge,Ft Collins,CO,80525
+1420,660,Bear Creek K-8 School,Lakewood,CO,80227
+1420,664,Bear Creek High School,Lakewood,CO,80227
+1550,678,Beattie Elementary School,Fort Collins,CO,80526
+1420,694,Bell Middle School,Golden,CO,80401
+40,700,Belle Creek Charter School,Henderson,CO,80640
+130,714,Belleview Elementary School,Greenwood Village,CO,80111
+1420,724,Belmar Elementary School,Lakewood,CO,80226
+2690,738,Belmont Elementary School,Pueblo,CO,81001
+140,752,Franklin Elementary School,Centennial,CO,80121
+3085,754,Benjamin Eaton Elementary School,Eaton,CO,80615
+2690,756,Benjamin Franklin Elementary School,Pueblo,CO,81001
+50,763,Bennett Preschool,Bennett,CO,80102
+1550,766,Bennett Elementary School,Fort Collins,CO,80521
+50,770,Bennett Elementary School,Bennett,CO,80102
+50,774,Bennett Middle School,Bennett,CO,80102
+50,775,Bennett High School,Bennett,CO,80102
+1420,776,Bergen Meadow Primary School,Evergreen,CO,80439
+1420,779,Bergen Valley Intermediate School,Evergreen,CO,80439
+910,793,Berry Creek Middle School,Edwards,CO,81632
+1560,808,Berthoud Elementary School,Berthoud,CO,80513
+1560,812,Berthoud High School,Berthoud,CO,80513
+2690,822,Bessemer Elementary School,Pueblo,CO,81004
+1490,832,Bethune Elementary School,Bethune,CO,80805
+1490,842,Bethune Junior-Senior High School,Bethune,CO,80805
+2700,852,Beulah Elementary School,Beulah,CO,81023
+2700,856,Beulah Middle School,Beulah,CO,81023
+2690,860,Beulah Heights Elementary School,Pueblo,CO,81005
+1560,865,B F Kitchen Elementary School,Loveland,CO,80537
+1560,870,Big Thompson Elementary School,Loveland,CO,80538
+1010,871,The Bijou School,Colorado Springs,CO,80904
+480,872,Birch Elementary School,Broomfield,CO,80020
+470,875,Black Rock Elementary,Erie,CO,80516
+470,878,Blue Mountain Elementary,Longmont,CO,80503
+1560,890,Mary Blair Elementary School,Loveland,CO,80538
+1550,892,Blevins Middle School,Fort Collins,CO,80526
+1550,898,Boltz Middle School,Fort Collins,CO,80525
+2000,900,Bookcliff Middle School,Grand Junction,CO,81504
+180,914,Boston K-8 School,Aurora,CO,80010
+480,919,Boulder Community School/Integrated Studies,Boulder,CO,80303
+480,924,Boulder High School,Boulder,CO,80302
+480,930,Boulder Universal,Boulder,CO,80303
+480,934,Boulder Prep Charter High School,Boulder,CO,80301
+100,944,Boyd Elementary School,Alamosa,CO,81101
+1750,948,Branson School Online,Branson,CO,81027
+1420,950,Bradford Primary School,Littleton,CO,80127
+1420,951,Blue Heron Elementary School,Littleton,CO,80123
+1420,952,Bradford Intermediate School,Littleton,CO,80127
+2690,954,Bradford Elementary School,Pueblo,CO,81001
+880,964,Bradley Elementary School,Denver,CO,80222
+1420,965,Brady Exploration School,Lakewood,CO,80226
+1750,974,Branson Elementary School,Branson,CO,81027
+1750,978,Branson Undivided High School,Branson,CO,81027
+1750,979,Branson School Online Ged Prep,Branson,CO,81027
+3120,988,Brentwood Middle School,Greeley,CO,80634
+980,1000,Bricker Elementary School,Colorado Springs,CO,80916
+1180,1006,Bridges,Carbondale,CO,81623
+3146,1008,Briggsdale Elementary School,Briggsdale,CO,80611
+3146,1012,Briggsdale Undivided High School,Briggsdale,CO,80611
+20,1020,Bright Horizons Pre-Kindergarten School,Brighton,CO,80601
+40,1021,Brighton Heritage Academy,Brighton,CO,80601
+40,1022,Brighton High School,Brighton,CO,80601
+1010,1032,Bristol Elementary School,Colorado Springs,CO,80905
+2000,1046,Broadway Elementary School,Grand Junction,CO,81503
+40,1052,Bromley East Charter School,Brighton,CO,80601
+880,1056,Bromwell Elementary School,Denver,CO,80206
+480,1066,Broomfield Heights Middle School,Broomfield,CO,80020
+480,1070,Broomfield High School,Broomfield,CO,80020
+880,1076,Brown Elementary School,Denver,CO,80211
+2395,1094,Brush Middle School,Brush,CO,80723
+2395,1096,Brush High School,Brush,CO,80723
+880,1106,Bryant Webster K-8 School,Denver,CO,80211
+1010,1126,Buena Vista Elementary School,Colorado Springs,CO,80905
+490,1130,Buena Vista High School,Buena Vista,CO,81211
+900,1131,Buffalo Ridge Elementary School,Castle Rock,CO,80108
+490,1132,Harry L Mc Ginnis Middle School,Buena Vista,CO,81211
+480,1136,Manhattan Middle School Of The Arts And Academics,Boulder,CO,80303
+1500,1144,Burlington Elementary School,Burlington,CO,80807
+470,1148,Burlington Elementary School,Longmont,CO,80501
+1500,1150,Burlington Middle School,Burlington,CO,80807
+1500,1152,Burlington High School,Burlington,CO,80807
+490,1154,Buena Vista Online Academy,Buena Vista,CO,81211
+130,1155,Buffalo Trail Elementary School,Aurora,CO,80016
+190,1168,Byers Elementary School,Byers,CO,80103
+190,1176,Byers Junior-Senior High School,Byers,CO,80103
+1550,1186,Cache La Poudre Elementary School,La Porte,CO,80535
+1550,1190,Cache La Poudre Middle School,La Porte,CO,80535
+970,1210,Calhan Elementary School,Calhan,CO,80808
+970,1215,Calhan Middle School,Calhan,CO,80808
+970,1218,Calhan High School,Calhan,CO,80808
+1828,1220,Caliche Elementary School,Iliff,CO,80736
+1828,1224,Caliche Junior-Senior High School,Iliff,CO,80736
+1420,1238,Campbell Elementary School,Arvada,CO,80004
+470,1245,Centennial Elementary,Firestone,CO,80504
+270,1248,Campo Elementary School,Campo,CO,81029
+270,1252,Campo Undivided High School,Campo,CO,81029
+1140,1262,Canon City Middle School,Canon City,CO,81212
+1140,1266,Canon City High School,Canon City,CO,81212
+900,1270,Early Childhood Center,Castle Rock,CO,80104
+130,1273,Canyon Creek Elementary School,Aurora,CO,80015
+550,1276,Centauri Middle School,La Jara,CO,81140
+8001,1279,Caprock Academy,Grand Junction,CO,81505
+470,1284,Carbon Valley Academy,Frederick,CO,80530
+1180,1296,Carbondale Middle School,Carbondale,CO,81623
+3090,1299,Cardinal Community Academy Charter School,Keenesburg,CO,80643
+2690,1304,Carlile Elementary School,Pueblo,CO,81004
+980,1306,Carmel Middle School,Colorado Springs,CO,80910
+1420,1318,Carmody Middle School,Lakewood,CO,80227
+880,1319,Fred N Thomas Career Education Center,Denver,CO,80211
+1828,1321,Campbell Elementary School,Sterling,CO,80751
+1560,1323,Carrie Martin Elementary School,Loveland,CO,80537
+880,1324,Carson Elementary School,Denver,CO,80220
+1000,1332,Carson Middle School,Fort Carson,CO,80902
+1000,1334,Abrams Elementary School,Fort Carson,CO,80902
+1010,1340,Carver Elementary School,Colorado Springs,CO,80917
+880,1345,Cesar Chavez Academy Denver,Denver,CO,80212
+480,1352,Casey Middle School,Boulder,CO,80304
+900,1362,Castle Rock Elementary School,Castle Rock,CO,80104
+900,1367,Castle View High School,Castle Rock,CO,80109
+870,1372,Cedaredge High School,Cedaredge,CO,81413
+870,1375,Cedaredge Middle School,Cedaredge,CO,81413
+8001,1376,Scholars To Leaders Academy,Colorado Springs,CO,80907
+2700,1377,Cedar Ridge Elementary School,Pueblo West,CO,81007
+550,1378,Centauri High School,La Jara,CO,81140
+480,1380,Centaurus High School,Lafayette,CO,80026
+140,1382,Centennial Academy Of Fine Arts Education,Littleton,CO,80123
+980,1383,Centennial Elementary School,Colorado Springs,CO,80910
+3120,1384,Centennial Elementary School,Evans,CO,80620
+1560,1385,Centennial Elementary School,Loveland,CO,80538
+1580,1386,Trinidad Middle School,Trinidad,CO,81082
+20,1388,Centennial Elementary School,Broomfield,CO,80020
+480,1390,Centennial Middle School,Boulder,CO,80304
+2180,1392,Centennial Middle School,Montrose,CO,81401
+640,1396,Centennial Junior High School,San Luis,CO,81152
+640,1398,Centennial High School,San Luis,CO,81152
+880,1400,Centennial K-8 School,Denver,CO,80212
+2690,1402,Centennial High School,Pueblo,CO,81008
+2810,1412,Haskin Elementary School,Center,CO,81125
+2810,1416,Skoglund Middle School,Center,CO,81125
+2810,1420,Center High School,Center,CO,81125
+30,1426,Central Elementary School,Commerce City,CO,80022
+470,1434,Central Elementary School,Longmont,CO,80501
+2395,1438,Beaver Valley Elementary School,Brush,CO,80723
+3090,1446,Weld Central Senior High School,Keenesburg,CO,80643
+2000,1450,Central High School,Grand Junction,CO,81504
+2690,1454,Central High School,Pueblo,CO,81004
+180,1458,Aurora Central High School,Aurora,CO,80010
+180,1470,Century Elementary School,Aurora,CO,80014
+20,1480,Century Middle School,Thornton,CO,80241
+2690,1488,Cesar Chavez Academy,Pueblo,CO,81003
+980,1490,Chamberlin Academy,Colorado Springs,CO,80906
+3120,1500,Chappelow K-8 Magnet School,Evans,CO,80620
+900,1503,Chaparral High School,Parker,CO,80134
+2690,1504,Goodnight Elementary School,Pueblo,CO,81005
+490,1508,Chaffee County High School,Buena Vista,CO,81211
+130,1510,Challenge School,Denver,CO,80231
+900,1512,Challenge To Excellence Charter School,Parker,CO,80134
+120,1514,Charles Hay World School,Englewood,CO,80113
+20,1519,Stargate Charter School,Thornton,CO,80241
+2000,1520,Chatfield Elementary School,Grand Junction,CO,81504
+1420,1522,Chatfield High School,Littleton,CO,80127
+880,1528,Cheltenham Elementary School,Denver,CO,80204
+2560,1538,Cheraw Elementary School,Cheraw,CO,81030
+2560,1546,Cheraw High School,Cheraw,CO,81030
+2560,1548,Cheraw Middle School,Cheraw,CO,81030
+130,1551,Cherokee Trail High School,Aurora,CO,80016
+120,1556,Cherrelyn Elementary School,Englewood,CO,80113
+130,1566,Campus Middle School,Greenwood Village,CO,80111
+130,1568,West Middle School,Greenwood Village,CO,80121
+130,1570,Cherry Creek High School,Greenwood Village,CO,80111
+130,1571,Cherry Creek Charter Academy,Greenwood Village,CO,80111
+130,1572,High Plains Elementary School,Greenwood Village,CO,80111
+130,1574,Cherry Hills Village Elementary School,Cherry Hills Village,CO,80110
+900,1578,Cherry Valley Elementary School,Franktown,CO,80116
+900,1579,North Star Academy,Parker,CO,80134
+1020,1582,Cheyenne Mountain Charter Academy,Colorado Springs,CO,80906
+1020,1586,Cheyenne Mountain Elementary School,Colorado Springs,CO,80906
+1020,1588,Cheyenne Mountain Junior High School,Colorado Springs,CO,80905
+1020,1590,Cheyenne Mountain High School,Colorado Springs,CO,80906
+1020,1592,Broadmoor Elementary School,Colorado Springs,CO,80906
+1020,1596,Canon Elementary School,Colorado Springs,CO,80906
+1020,1604,Skyway Park Elementary School,Colorado Springs,CO,80905
+520,1608,Cheyenne Wells Elementary School,Cheyenne Wells,CO,80810
+520,1610,Cheyenne Wells Middle School,Cheyenne Wells,CO,80810
+520,1612,Cheyenne Wells High School,Cheyenne Wells,CO,80810
+1010,1613,Chipeta Elementary School,Colorado Springs,CO,80919
+130,1614,Cimarron Elementary School,Aurora,CO,80013
+1040,1615,Chinook Trail Elementary School,Colorado Springs,CO,80924
+1010,1616,Civa Charter Academy,Colorado Springs,CO,80918
+1110,1618,Evans International Elementary School,Colorado Springs,CO,80915
+2000,1619,Chipeta Elementary School,Grand Junction,CO,81501
+70,1622,Clara E. Metz Elementary School,Denver,CO,80221
+1010,1625,Mcauliffe Elementary,Colorado Springs,CO,80915
+1040,1627,The Classical Academy Charter,Colorado Springs,CO,80921
+1040,1629,The Classical Academy Middle School,Colorado Springs,CO,80921
+1040,1630,The Classical Academy High School,Colorado Springs,CO,80921
+1330,1632,Gilpin County Elementary School,Black Hawk,CO,80403
+1330,1634,Gilpin County Undivided High School,Black Hawk,CO,80403
+120,1652,Clayton Elementary School,Englewood,CO,80110
+540,1660,Clear Creek Middle School,Evergreen,CO,80439
+2000,1686,Clifton Elementary School,Clifton,CO,81520
+180,1720,Clyde Miller K-8,Aurora,CO,80011
+480,1725,Coal Creek Elementary School,Louisville,CO,80027
+1420,1730,Coal Creek Canyon K-8 Elementary School,Golden,CO,80403
+880,1748,Colorado High School,Denver,CO,80204
+20,1752,Colorado Virtual Academy (Cova),Northglenn,CO,80233
+880,1774,Colfax Elementary School,Denver,CO,80204
+880,1785,Cole Arts And Science Academy,Denver,CO,80205
+880,1788,College View Elementary School,Denver,CO,80219
+1420,1790,Colorow Elementary School,Littleton,CO,80123
+8001,1791,Colorado Springs Charter Academy,Colorado Springs,CO,80909
+8001,1795,Colorado Springs Early Colleges,Colorado Springs,CO,80907
+10,1796,Colorado Connections Academy,Englewood,CO,80112
+1010,1798,Columbia Elementary School,Colorado Springs,CO,80903
+180,1800,Columbia Middle School,Aurora,CO,80013
+290,1812,Las Animas Elementary School,Las Animas,CO,81054
+880,1816,Columbian Elementary School,Denver,CO,80211
+2690,1828,Columbian Elementary School,Pueblo,CO,81004
+480,1842,Columbine Elementary School,Boulder,CO,80304
+470,1844,Columbine Elementary School,Longmont,CO,80501
+880,1846,Columbine Elementary School,Denver,CO,80205
+2405,1850,Columbine Elementary School,Fort Morgan,CO,80701
+1420,1861,Columbine Hills Elementary School,Littleton,CO,80128
+1420,1864,Columbine High School,Littleton,CO,80123
+880,1866,Ace Community Challenge Charter School,Denver,CO,80204
+1420,1869,Compass Montessori - Wheat Ridge Charter School,Wheat Ridge,CO,80033
+1010,1870,Coronado High School,Colorado Springs,CO,80904
+2690,1872,Community Transition House,Pueblo,CO,81004
+900,1873,Core Knowledge Charter School,Parker,CO,80138
+3120,1875,Frontier Charter Academy,Greeley,CO,80634
+1420,1876,Coronado Elementary School,Littleton,CO,80128
+8001,1877,Colorado Provost Academy,Greenwood Village,CO,80111
+20,1878,Coronado Hills Elementary School,Thornton,CO,80229
+1420,1880,Compass Montessori - Golden Charter School,Golden,CO,80403
+30,1882,Community Leadership Academy,Commerce City,CO,80022
+480,1883,Community Montessori School,Boulder,CO,80305
+1010,1885,Community Prep Charter School,Colorado Springs,CO,80903
+1420,1886,Conifer Senior High School,Conifer,CO,80433
+2035,1888,Cortez Middle School,Cortez,CO,81321
+50,1889,Corridor Community Academy,Bennett,CO,80102
+900,1899,Copper Mesa Elementary School,Highlands Ranch,CO,80126
+8001,1901,Colorado Calvert Academy,Denver,CO,80203
+880,1908,Cory Elementary School,Denver,CO,80210
+20,1914,Cotton Creek Elementary School,Westminster,CO,80030
+2180,1915,Cottonwood Elementary School,Montrose,CO,81401
+130,1916,Cottonwood Creek Elementary School,Englewood,CO,80111
+1560,1920,Cottonwood Plains Elementary School,Ft Collins,CO,80525
+900,1925,Cougar Run Elementary School,Highlands Ranch,CO,80126
+880,1928,Cowell Elementary School,Denver,CO,80204
+900,1934,Coyote Creek Elementary School,Highlands Ranch,CO,80129
+2020,1936,Sandrock Elementary,Craig,CO,81625
+20,1937,Coyote Ridge Elementary School,Broomfield,CO,80020
+2020,1938,Craig Middle School School,Craig,CO,81625
+180,1948,Crawford Elementary School,Aurora,CO,80010
+870,1952,Crawford Elementary School,Crawford,CO,81415
+2010,1962,Lamb Elementary School,Creede,CO,81130
+2010,1966,Creede Middle/High School,Creede,CO,81130
+770,1967,Crowley County Online Academy,Ordway,CO,81063
+130,1970,Creekside Elementary School,Centennial,CO,80016
+1420,1976,Creighton Middle School,Lakewood,CO,80226
+480,1996,Crest View Elementary School,Boulder,CO,80304
+1360,2006,Crested Butte Community School,Crested Butte,CO,81224
+900,2012,Cresthill Middle School,Highlands Ranch,CO,80130
+2800,2018,Crestone Charter School,Crestone,CO,81131
+3010,2024,Cripple Creek-Victor Junior-Senior High School,Cripple Creek,CO,80813
+880,2027,Polaris At Ebert Elementary School,Denver,CO,80205
+70,2035,Crown Pointe Charter Academy,Westminster,CO,80031
+770,2050,Crowley County Elementary School,Ordway,CO,81063
+770,2054,Crowley County Ward Middle School,Ordway,CO,81063
+770,2058,Crowley County High School,Ordway,CO,81063
+1180,2063,Crystal River Elementary School,Carbondale,CO,81623
+860,2088,Custer County Elementary School,Westcliffe,CO,81252
+1560,2089,Coyote Ridge Elementary School,Fort Collins,CO,80525
+860,2091,Custer Middle School,Westcliffe,CO,81252
+860,2092,Custer County High School,Westcliffe,CO,81252
+1420,2093,Dakota Ridge Senior High School,Littleton,CO,80127
+130,2094,Dakota Valley Elementary School,Aurora,CO,80013
+180,2095,Dalton Elementary School,Aurora,CO,80013
+2690,2096,Corwin International Magnet School,Pueblo,CO,81004
+180,2114,Dartmouth Elementary School,Aurora,CO,80013
+1420,2120,D'evelyn Junior/Senior High School,Denver,CO,80235
+1980,2122,De Beque Elementary School,De Beque,CO,81630
+880,2125,Denver Green School,Denver,CO,80224
+1980,2126,De Beque Undivided High School,De Beque,CO,81630
+880,2127,Denver Language School,Denver,CO,80220
+2000,2128,Independence Academy,Grand Junction,CO,81501
+1420,2130,Deer Creek Middle School,Littleton,CO,80123
+170,2136,Deer Trail Elementary School,Deer Trail,CO,80105
+170,2140,Deer Trail Junior-Senior High School,Deer Trail,CO,80105
+880,2145,Denver School Of Science And Technology: Gvr,Denver,CO,80249
+2730,2148,Del Norte Middle School,Del Norte,CO,81132
+2730,2150,Del Norte High School,Del Norte,CO,81132
+870,2152,Delta Academy Of Applied Learning,Delta,CO,81416
+870,2155,Delta County Opportunity School,Delta,CO,81416
+870,2160,Delta Middle School,Delta,CO,81416
+870,2164,Delta High School,Delta,CO,81416
+870,2166,Delta Vision School,Delta,CO,81416
+880,2174,Denison Montessori School,Denver,CO,80219
+880,2183,Denver Center For International Studies,Denver,CO,80204
+880,2184,Denver School Of The Arts,Denver,CO,80220
+880,2185,Denver School Of Science And Technology,Denver,CO,80235
+1420,2194,Devinny Elementary School,Lakewood,CO,80228
+1040,2195,Discovery Canyon Campus School,Colorado Springs,CO,80921
+1010,2202,Doherty High School,Colorado Springs,CO,80917
+2055,2204,Dolores Elementary School,Dolores,CO,81323
+2055,2206,Dolores Middle School,Dolores,CO,81323
+2055,2208,Dolores High School,Dolores,CO,81323
+890,2216,Dove Creek High School,Dove Creek,CO,81324
+2690,2217,Dolores Huerta Preparatory High School,Pueblo,CO,81003
+3120,2222,Dos Rios Elementary School,Evans,CO,80620
+2000,2224,Dos Rios Elementary School,Grand Junction,CO,81503
+900,2226,Castle Rock Middle School,Castle Rock,CO,80109
+900,2230,Douglas County High School,Castle Rock,CO,80104
+900,2232,Rock Ridge Elementary School,Castle Rock,CO,80104
+900,2233,Cherokee Trail Elementary School,Parker,CO,80134
+900,2234,Eagle Ridge Elementary School,Lone Tree,CO,80124
+480,2240,Douglass Elementary School,Boulder,CO,80303
+1040,2248,Douglass Valley Elementary School,Usaf Academy,CO,80840
+880,2258,Doull Elementary School,Denver,CO,80219
+1420,2288,Drake Junior High School,Arvada,CO,80002
+130,2292,Dry Creek Elementary School,Englewood,CO,80112
+2000,2297,Dual Immersion Academy School,Grand Junction,CO,81501
+1550,2298,Dunn Elementary School,Fort Collins,CO,80521
+1420,2300,Dunstan Middle School,Lakewood,CO,80228
+30,2308,Dupont Elementary School,Commerce City,CO,80022
+1520,2318,Durango High School,Durango,CO,81301
+1420,2322,Dutch Creek Elementary School,Littleton,CO,80128
+1430,2328,Eads Elementary School,Eads,CO,81036
+1430,2332,Eads Middle School,Eads,CO,81036
+1430,2336,Eads High School,Eads,CO,81036
+900,2338,Eagle Academy,Highlands Ranch,CO,80130
+910,2340,Eagle County Charter Academy,Edwards,CO,81632
+470,2343,Eagle Crest Elementary School,Longmont,CO,80503
+910,2346,Eagle Valley Elementary School,Eagle,CO,81631
+910,2350,Eagle Valley High School,Gypsum,CO,81637
+910,2355,Eagle Valley Middle School,Eagle,CO,81631
+130,2357,Eaglecrest High School,Centennial,CO,80015
+1040,2358,Eagleview Middle School,Colorado Springs,CO,80919
+20,2361,Eagleview Elementary School,Thornton,CO,80241
+880,2364,Eagleton Elementary School,Denver,CO,80204
+2020,2373,Early Childhood Center,Craig,CO,81625
+2020,2374,East Elementary School,Craig,CO,81625
+1350,2376,East Grand Middle School,Granby,CO,80446
+140,2382,East Elementary School,Littleton,CO,80120
+180,2384,East Middle School,Aurora,CO,80011
+2000,2392,East Middle School,Grand Junction,CO,81501
+2690,2394,East High School,Pueblo,CO,81001
+880,2398,East High School,Denver,CO,80206
+40,2399,Eagle Ridge Academy,Brighton,CO,80601
+100,2402,Polston Elementary School,Alamosa,CO,81101
+20,2410,Tarver Elementary School,Thornton,CO,80241
+3120,2414,East Memorial Elementary School,Greeley,CO,80631
+130,2428,Eastridge Community Elementary School,Aurora,CO,80014
+2690,2438,Eva R Baca Elementary School,Pueblo,CO,81001
+3085,2448,Eaton Elementary School,Eaton,CO,80615
+3085,2452,Eaton Middle School,Eaton,CO,80615
+3085,2456,Eaton High School,Eaton,CO,80615
+1580,2481,Eckhart Elementary School,Trinidad,CO,81082
+1420,2496,Edgewater Elementary School,Edgewater,CO,80214
+1120,2504,Edison Academy,Yoder,CO,80864
+880,2506,Edison Elementary School,Denver,CO,80212
+1010,2510,Edison Elementary School,Colorado Springs,CO,80907
+1120,2514,Edison Elementary School,Yoder,CO,80864
+2760,2522,Hayden Valley Elementary School,Hayden,CO,81639
+1040,2524,Edith Wolford Elementary School,Colorado Springs,CO,80908
+1120,2526,Edison Junior-Senior High School,Yoder,CO,80864
+1010,2528,Nikola Tesla Education Opportunity Center,Colorado Springs,CO,80910
+910,2530,Edwards Elementary School,Edwards,CO,81632
+1420,2550,Eiber Elementary School,Lakewood,CO,80215
+480,2552,Eisenhower Elementary School,Boulder,CO,80303
+950,2570,Elbert Elementary School,Elbert,CO,80106
+920,2572,Legacy Academy,Elizabeth,CO,80107
+1195,2573,Elk Creek Elementary,New Castle,CO,81647
+950,2574,Elbert Junior-Senior High School,Elbert,CO,80106
+20,2576,Cherry Drive Elementary School,Thornton,CO,80233
+20,2578,Skyview Elementary School,Thornton,CO,80241
+20,2580,Hunters Glen Elementary School,Thornton,CO,80241
+20,2582,Rocky Mountain Elementary School,Westminster,CO,80030
+20,2584,Riverdale Elementary School,Thornton,CO,80233
+480,2589,Eldorado K-8 School,Superior,CO,80027
+920,2604,Elizabeth Middle School,Elizabeth,CO,80107
+920,2608,Elizabeth High School,Elizabeth,CO,80107
+1420,2616,Elk Creek Elementary School,Pine,CO,80470
+180,2618,Elkhart Elementary School,Aurora,CO,80011
+2690,2620,Fountain International Magnet School,Pueblo,CO,81001
+1050,2638,Ellicott Elementary School,Ellicott,CO,80808
+1050,2640,Ellicott Middle School,Ellicott,CO,80808
+1050,2642,Ellicott Senior High School,Ellicott,CO,80808
+880,2652,Ellis Elementary School,Denver,CO,80222
+900,2656,Eldorado Elementary School,Highlands Ranch,CO,80126
+480,2702,Emerald Elementary School,Broomfield,CO,80020
+2000,2724,New Emerson School At Columbus,Grand Junction,CO,81503
+880,2726,Emily Griffith Opportunity School,Denver,CO,80204
+120,2746,Englewood High School,Englewood,CO,80113
+120,2750,Englewood Leadership Academy,Englewood,CO,80113
+120,2752,Englewood Middle School,Englewood,CO,80110
+880,2755,Venture Prep,Denver,CO,80207
+470,2758,Erie Elementary School,Erie,CO,80516
+470,2760,Erie Middle School,Erie,CO,80516
+470,2761,Erie High School,Erie,CO,80516
+1570,2788,Estes Park Options School,Estes Park,CO,80157
+880,2789,Escuela Tlatelolco School,Denver,CO,80211
+1570,2790,Estes Park K-5 School,Estes Park,CO,80517
+1570,2792,Estes Park Middle School,Estes Park,CO,80517
+1570,2794,Estes Park High School,Estes Park,CO,80517
+1420,2799,Excel Academy Charter School,Arvada,CO,80005
+1040,2800,Explorer Elementary School,Colorado Springs,CO,80920
+140,2804,Euclid Middle School,Littleton,CO,80120
+100,2818,Evans Elementary School,Alamosa,CO,81101
+1420,2820,Everitt Middle School,Wheat Ridge,CO,80033
+1420,2832,Evergreen Middle School,Evergreen,CO,80439
+1420,2836,Evergreen High School,Evergreen,CO,80439
+8001,2837,Early College High School At Arvada,Arvada,CO,80003
+9130,2840,Expeditionary Learning School,Denver,CO,80222
+3120,2850,University Schools,Greeley,CO,80634
+880,2856,Fairmont K-8 School,Denver,CO,80223
+1420,2866,Fairmount Elementary School,Golden,CO,80403
+70,2876,Fairview Elementary School,Denver,CO,80221
+1110,2877,Falcon Virtual Academy,Falcon,CO,80831
+880,2880,Fairview Elementary School,Denver,CO,80204
+480,2892,Fairview High School,Boulder,CO,80305
+130,2897,Falcon Creek Middle School,Aurora,CO,80016
+1110,2902,Falcon Elementary School,Falcon,CO,80831
+1110,2906,Falcon Middle School,Peyton,CO,80831
+1110,2908,Falcon High School,Peyton,CO,80831
+470,2912,Fall River Elementary School,Longmont,CO,80501
+20,2918,Federal Heights Elementary School,Denver,CO,80221
+140,2926,Field Elementary School,Littleton,CO,80121
+480,2940,Fireside Elementary School,Louisville,CO,80027
+2180,2942,Early Childhood Center,Montrose,CO,81403
+1580,2944,Fisher's Peak Elementary School,Trinidad,CO,81082
+40,2945,Foundations Academy,Brighton,CO,80601
+1420,2946,Fitzmorris Elementary School,Arvada,CO,80004
+180,2951,Aurora Public Schools Child Development Center,Aurora,CO,80011
+900,2952,Mammoth Heights Elementary,Parker,CO,80134
+900,2953,Stone Mountain Elementary,Highlands Ranch,CO,80129
+900,2954,Roxborough Intermediate,Littleton,CO,80125
+1450,2956,Flagler Elementary School,Flagler,CO,80815
+1450,2958,Flagler Middle School,Flagler,CO,80815
+1450,2960,Flagler Senior High School,Flagler,CO,80815
+1150,2961,Focus Academy,Florence,CO,81226
+1420,2963,Falcon Bluffs Middle School,Littleton,CO,80128
+470,2964,Flagstaff Charter Academy,Longmont,CO,80501
+900,2965,Flagstone Elementary School,Castle Rock,CO,80104
+480,2970,Flatirons Elementary School,Boulder,CO,80302
+1850,2980,Fleming Elementary School,Fleming,CO,80728
+1850,2988,Fleming High School,Fleming,CO,80728
+180,2995,Fletcher Intermediate Science & Technology School,Aurora,CO,80010
+180,2998,Fletcher Primary School,Aurora,CO,80010
+880,3000,Florence Crittenton High School,Denver,CO,80223
+1150,3002,Florence High School,Florence,CO,81226
+1520,3012,Florida Mesa Elementary School,Durango,CO,81301
+480,3022,Foothill Elementary School,Boulder,CO,80304
+1420,3025,Foothills Elementary School,Lakewood,CO,80228
+1000,3027,Eagleside Elementary School,Fountain,CO,80817
+130,3030,Fox Ridge Middle School,Aurora,CO,80016
+880,3032,Force Elementary School,Denver,CO,80219
+880,3038,Ford Elementary School,Denver,CO,80239
+1550,3046,Fort Collins High School,Fort Collins,CO,80525
+1520,3050,Fort Lewis Mesa Elementary School,Hesperus,CO,81326
+123,3054,Fort Logan Elementary School,Englewood,CO,80150
+3140,3066,Fort Lupton Middle School,Fort Lupton,CO,80621
+3140,3070,Fort Lupton High School,Fort Lupton,CO,80621
+2405,3074,Fort Morgan Middle School,Fort Morgan,CO,80701
+2405,3078,Fort Morgan High School,Fort Morgan,CO,80701
+1420,3088,Foster Elementary School,Arvada,CO,80002
+3090,3090,Lochbuie Elementary School,Lochbuie,CO,80603
+1000,3102,Aragon Elementary School,Fountain,CO,80817
+1040,3104,Foothills Elementary School,Colorado Springs,CO,80919
+1550,3105,Fossil Ridge High School,Fort Collins,CO,80528
+1000,3106,Fountain Middle School,Fountain,CO,80817
+1000,3108,Mesa Elementary School,Fountain,CO,80817
+1000,3110,Fountain-Fort Carson High School,Fountain,CO,80817
+2540,3130,Fowler Junior High School,Fowler,CO,81039
+2540,3134,Fowler High School,Fowler,CO,81039
+900,3138,Fox Creek Elementary School,Highlands Ranch,CO,80130
+70,3144,Francis M. Day Elementary School,Denver,CO,80221
+3120,3162,Franklin Middle School,Greeley,CO,80634
+900,3172,Franktown Elementary School,Franktown,CO,80116
+1010,3175,Freedom Elementary School,Colorado Springs,CO,80923
+1350,3182,Fraser Valley Elementary School,Fraser,CO,80442
+470,3192,Frederick Elementary School,Frederick,CO,80530
+470,3194,Coal Ridge Middle School,Firestone,CO,80504
+470,3196,Frederick Senior High School,Frederick,CO,80530
+1420,3201,Free Horizon Montessori Charter School,Golden,CO,80401
+2690,3206,Freed Middle School,Pueblo,CO,81003
+1140,3211,Garden Park High School,Canon City,CO,81212
+1420,3216,Fremont Elementary School,Arvada,CO,80004
+1010,3218,Fremont Elementary School,Colorado Springs,CO,80918
+1160,3220,Cotopaxi Elementary School,Cotopaxi,CO,81223
+1150,3224,Fremont Elementary School,Florence,CO,81226
+1150,3226,Fremont Middle School,Florence,CO,81226
+1160,3228,Cotopaxi Junior-Senior High School,Cotopaxi,CO,81223
+990,3234,French Elementary School,Colorado Springs,CO,80911
+920,3236,Frontier High School,Elizabeth,CO,80107
+1040,3238,Frontier Elementary School,Colorado Springs,CO,80920
+900,3241,Frontier Valley Elementary School,Parker,CO,80138
+2000,3244,Fruita Middle School,Fruita,CO,81521
+1420,3250,Norma Anderson Preschool,Wheat Ridge,CO,80033
+2000,3262,Fruitvale Elementary School,Grand Junction,CO,81504
+180,3272,Fulton Elementary School,Aurora,CO,80010
+2700,3279,Futures Academy,Pueblo,CO,81001
+1195,3281,Graham Mesa Elementary School,Rifle,CO,81650
+3085,3286,Galeton Elementary School,Galeton,CO,80622
+880,3296,Garden Place Elementary School,Denver,CO,80216
+1390,3306,Gardner Elementary School,Gardner,CO,81040
+1560,3320,Garfield Elementary School,Loveland,CO,80537
+1195,3325,Kaplan Academy Of Colorado,Rifle,CO,81650
+870,3330,Garnet Mesa Elementary School,Delta,CO,81416
+880,3340,Archuleta Elementary School,Denver,CO,80239
+2000,3350,Gateway School,Gateway,CO,81522
+180,3354,Gateway High School,Aurora,CO,80012
+1010,3360,Galileo School Of Math And Science,Colorado Springs,CO,80909
+880,3378,George Washington High School,Denver,CO,80224
+540,3385,Georgetown Community School,Georgetown,CO,80444
+8001,3387,Goal Ged Prep,Westminster,CO,80030
+980,3392,Giberson Elementary School,Colorado Springs,CO,80916
+3080,3398,Gilcrest Elementary School,Gilcrest,CO,80623
+880,3426,Gilpin Elementary School,Denver,CO,80205
+1420,3450,Glennon Heights Elementary School,Lakewood,CO,80226
+1180,3460,Glenwood Springs Elementary School,Glenwood Springs,CO,81602
+1180,3464,Glenwood Springs Middle School,Glenwood Springs,CO,81601
+1180,3468,Glenwood Springs High School,Glenwood Springs,CO,81601
+2000,3469,Glade Park Community School,Glade Park,CO,81523
+1010,3470,Globe Charter School,Colorado Springs,CO,80909
+180,3471,Global Village Academy,Aurora,CO,80017
+140,3472,Goddard Middle School,Littleton,CO,80123
+8001,3475,Goal Academy,Westminster,CO,80300
+880,3478,Godsman Elementary School,Denver,CO,80223
+1020,3482,Gold Camp Elementary School,Colorado Springs,CO,80906
+480,3488,Gold Hill Elementary School,Gold Hill,CO,80302
+480,3499,Halcyon School (Special Education),Boulder,CO,80303
+1420,3502,Golden High School,Golden,CO,80401
+880,3512,Goldrick Elementary School,Denver,CO,80223
+980,3522,Fox Meadow Middle School,Colorado Springs,CO,80906
+1420,3536,Governor's Ranch Elementary School,Littleton,CO,80123
+1080,3539,Bear Creek Elementary School,Monument,CO,80132
+2650,3542,Granada Elementary School,Granada,CO,81041
+2650,3546,Granada Undivided High School,Granada,CO,81041
+1350,3556,Granby Elementary School,Granby,CO,80446
+2000,3570,Grand Junction High School,Grand Junction,CO,81501
+1350,3572,Grand Lake Elementary School,Grand Lake,CO,80447
+1220,3578,Bea Underwood Elementary School,Parachute,CO,81635
+1990,3582,Grand Mesa High School,Collbran,CO,81624
+2000,3584,Grand Mesa Middle School,Grand Junction,CO,81504
+1220,3585,Grand Valley Center For Family Learning,Parachute,CO,81635
+1220,3586,Grand Valley High School,Parachute,CO,81635
+130,3589,Grandview High School,Aurora,CO,80016
+1010,3592,Grant Elementary School,Colorado Springs,CO,80918
+880,3600,Grant Middle School,Denver,CO,80210
+1220,3603,L.W. St. John Elementary School,Parachute,CO,81635
+880,3605,Grant Ranch K-8 School,Denver,CO,80123
+3120,3610,Greeley Central High School,Greeley,CO,80631
+3120,3614,Greeley West High School,Greeley,CO,80634
+2405,3620,Green Acres Elementary School,Fort Morgan,CO,80701
+1420,3622,Green Gables Elementary School,Lakewood,CO,80227
+1420,3624,Green Mountain Elementary School,Lakewood,CO,80228
+1420,3628,Green Mountain High School,Lakewood,CO,80228
+880,3639,Girls Athletic Leadership School,Denver,CO,80209
+880,3641,Green Valley Elementary School,Denver,CO,80249
+880,3647,Greenwood Elementary School,Denver,CO,80239
+130,3648,Greenwood Elementary School,Greenwood Village,CO,80111
+70,3649,Gregory Hill Preschool,Westminster,CO,80030
+880,3655,Greenlee Elementary School,Denver,CO,80204
+3148,3672,Pawnee Elementary School,Grover,CO,80729
+2610,3681,Guffey Charter School,Guffey,CO,80820
+1360,3690,Gunnison Elementary School,Gunnison,CO,81230
+1360,3694,Gunnison High School,Gunnison,CO,81230
+1360,3697,Gunnison Middle School,Gunnison,CO,81230
+1360,3701,Gunnison Valley School,Gunnison,CO,81230
+1360,3702,Lake School,Gunnison,CO,81230
+880,3704,Gust Elementary School,Denver,CO,80219
+910,3710,Gypsum Elementary School,Gypsum,CO,81637
+2690,3724,Haaff Elementary School,Pueblo,CO,81001
+1420,3726,Hackberry Hill Elementary School,Arvada,CO,80003
+1828,3729,Hagen Early Education Center,Sterling,CO,80751
+880,3746,Hamilton Middle School,Denver,CO,80231
+1070,3758,Hanover Junior-Senior High School,Colorado Springs,CO,80928
+1550,3760,Centennial High School,Fort Collins,CO,80524
+880,3778,Harrington Elementary School,Denver,CO,80205
+1550,3787,Harris Bilingual Elementary School,Fort Collins,CO,80524
+1550,3791,Lab Elementary School For Creative Learning,Fort Collins,CO,80521
+70,3792,Harris Park Elementary School,Westminster,CO,80030
+1140,3802,Harrison School,Canon City,CO,81212
+980,3806,Harrison High School,Colorado Springs,CO,80906
+2630,3846,Haxtun Elementary School,Haxtun,CO,80731
+2630,3850,Haxtun High School,Haxtun,CO,80731
+2760,3860,Hayden Middle School,Hayden,CO,81639
+2760,3862,Hayden High School,Hayden,CO,81639
+3120,3880,Heath Middle School,Greeley,CO,80631
+480,3882,Heatherwood Elementary School,Boulder,CO,80301
+1010,3890,Hunt Elementary School,Colorado Springs,CO,80903
+40,3900,Henderson Elementary School,Henderson,CO,80640
+1010,3920,Henry Elementary School,Colorado Springs,CO,80915
+2690,3924,Heritage Elementary School,Pueblo,CO,81004
+130,3926,Heritage Elementary School,Centennial,CO,80111
+900,3928,Heritage Elementary School,Highlands Ranch,CO,80126
+140,3930,Heritage High School,Littleton,CO,80120
+70,3931,Hidden Lake High School,Westminster,CO,80030
+480,3940,High Peaks Elementary School,Boulder,CO,80303
+140,3950,Highland Elementary School,Centennial,CO,80121
+3145,3958,Highland Elementary School,Pierce,CO,80650
+3145,3961,Highland Middle School,Ault,CO,80610
+3145,3962,Highland High School,Ault,CO,80610
+1195,3967,Highland Elementary School,Rifle,CO,81650
+2690,3976,Highland Park Elementary School,Pueblo,CO,81005
+900,3980,Highlands Ranch High School,Highlands Ranch,CO,80130
+1040,3985,High Plains Elementary School,Colorado Springs,CO,80920
+880,3987,Highline Academy Charter School,Denver,CO,80231
+130,3988,Highline Community Elementary School,Aurora,CO,80012
+880,3990,Hill Campus Of Arts And Sciences,Denver,CO,80220
+900,3995,Hope On-Line,Englewood,CO,80112
+20,4000,Hillcrest Elementary School,Northglenn,CO,80221
+180,4024,Hinkley High School,Aurora,CO,80011
+1600,4044,Hoehne Elementary School,Hoehne,CO,81046
+1600,4045,Hoehne Junior High School,Trinidad,CO,81082
+1600,4048,Hoehne High School,Trinidad,CO,81082
+2670,4058,Holly High School,Holly,CO,81047
+130,4062,Holly Hills Elementary School,Denver,CO,80222
+2670,4069,Holly Junior High School,Holly,CO,81047
+1010,4070,Holmes Middle School,Colorado Springs,CO,80904
+880,4074,Holm Elementary School,Denver,CO,80231
+2620,4076,Holyoke Elementary School,Holyoke,CO,80734
+130,4078,Homestead Elementary School,Centennial,CO,80112
+2620,4079,Holyoke Junior High School,Holyoke,CO,80734
+2620,4080,Holyoke Senior High School,Holyoke,CO,80734
+2000,4084,Lincoln Park Preschool,Grand Junction,CO,81501
+500,4085,Horizons Exploratory Academy,Salida,CO,81201
+1010,4090,Mann Middle School,Colorado Springs,CO,80907
+130,4100,Horizon Middle School,Aurora,CO,80013
+1110,4102,Horizon Middle School,Colorado Springs,CO,80915
+20,4108,Horizon High School,Brighton,CO,80601
+870,4124,Hotchkiss Elementary School,Hotchkiss,CO,81419
+870,4128,Hotchkiss High School,Hotchkiss,CO,81419
+1010,4138,Howbert Elementary School,Colorado Springs,CO,80904
+880,4140,Howell K-8 School,Denver,CO,80239
+3090,4148,Hudson Elementary School,Hudson,CO,80642
+1780,4158,Genoa-Hugo Elementary School,Hugo,CO,80821
+1780,4160,Genoa-Hugo Middle School,Hugo,CO,80821
+1390,4161,Huerfano County Opportunity And Enrichment School,Walsenburg,CO,81089
+1780,4162,Genoa-Hugo Senior High School,Hugo,CO,80821
+20,4172,Hulstrom Options K-8 School,Northglenn,CO,80233
+1540,4179,Ignacio Academy,Ignacio,CO,81137
+870,4182,Cedaredge Elementary School,Cedaredge,CO,81413
+20,4187,Silver Hills Middle School,Northglenn,CO,80234
+1420,4190,Hutchinson Elementary School,Lakewood,CO,80228
+470,4202,Hygiene Elementary School,Longmont,CO,80503
+540,4212,Carlson Elementary School,Idaho Springs,CO,80452
+540,4216,Clear Creek High School,Evergreen,CO,80439
+3220,4227,Idalia Elementary School,Idalia,CO,80735
+3220,4231,Idalia Junior-Senior High School,Idalia,CO,80735
+1540,4250,Ignacio Elementary School,Ignacio,CO,81137
+1110,4251,The Imagine Classical Academy At Indigo Ranch,Colorado Springs,CO,80923
+1540,4252,Ignacio Intermediate School,Ignacio,CO,81137
+1540,4254,Ignacio Junior High School,Ignacio,CO,81137
+1540,4258,Ignacio High School,Ignacio,CO,81137
+180,4270,Iowa Elementary School,Aurora,CO,80017
+900,4271,Legend High School,Parker,CO,80134
+130,4276,Independence Elementary School,Aurora,CO,80015
+1350,4277,Indian Peaks Charter School,Granby,CO,80446
+470,4278,Indian Peaks Elementary School,Longmont,CO,80501
+130,4280,Indian Ridge Elementary School,Aurora,CO,80015
+1550,4282,Irish Elementary School,Fort Collins,CO,80521
+900,4292,Iron Horse Elementary School,Parker,CO,80138
+2690,4302,Irving Elementary School,Pueblo,CO,81003
+490,4306,Avery/Parsons Elementary School,Buena Vista,CO,81211
+140,4316,Newton Middle School,Centennial,CO,80122
+1560,4332,Ivy Stockwell Elementary School,Berthoud,CO,80513
+470,4333,Imagine Charter,Firestone,CO,80504
+990,4346,Talbott Elementary School,Colorado Springs,CO,80911
+3120,4356,Jackson Elementary School,Greeley,CO,80631
+1010,4358,Jackson Elementary School,Colorado Springs,CO,80907
+2862,4369,Insight School Of Colorado At Julesburg,Julesburg,CO,80737
+2690,4376,James H Risley Middle School,Pueblo,CO,81001
+980,4378,James Irwin Charter High School,Colorado Springs,CO,80916
+980,4379,James Irwin Charter Middle School,Colorado Springs,CO,80916
+980,4380,James Irwin Charter Elementary School,Colorado Springs,CO,80916
+180,4385,Jamaica Child Development Center,Aurora,CO,80011
+480,4386,Jamestown Elementary School,Jamestown,CO,80455
+990,4394,Janitell Junior High School,Fountain,CO,80817
+1420,4402,Jefferson Academy Charter School,Broomfield,CO,80021
+1420,4404,Jefferson Charter Academy Junior High School,Broomfield,CO,80020
+1420,4408,Jeffco's 21st Century Virtual Academy,Golden,CO,80401
+1420,4410,Jefferson Charter Academy Senior High School,Broomfield,CO,80021
+1420,4422,Jefferson High School,Edgewater,CO,80214
+1010,4424,Jenkins Middle School,Colorado Springs,CO,80918
+3120,4425,Jefferson High School,Greeley,CO,80631
+180,4426,Jewell Elementary School,Aurora,CO,80012
+3120,4438,John Evans Middle School,Greeley,CO,80631
+880,4444,John F Kennedy High School,Denver,CO,80227
+140,4447,John Wesley Powell Middle School,Littleton,CO,80122
+880,4450,Johnson Elementary School,Denver,CO,80219
+1550,4456,Johnson Elementary School,Fort Collins,CO,80526
+2180,4458,Johnson Elementary School,Montrose,CO,81401
+70,4465,Josephine Hodgkins Elementary School,Denver,CO,80221
+1000,4474,Jordahl Elementary School,Fountain,CO,80817
+1420,4478,Sheridan Green Elementary School,Westminster,CO,80020
+2862,4488,Julesburg Elementary School,Julesburg,CO,80737
+2862,4492,Julesburg High School,Julesburg,CO,80737
+880,4494,Justice High School Denver,Denver,CO,80211
+290,4495,Jump Start Learning Center,Las Animas,CO,81054
+480,4496,Justice High Charter School,Lafayette,CO,80026
+880,4498,Kaiser Elementary School,Denver,CO,80236
+1810,4502,Karval Elementary School,Karval,CO,80823
+1810,4504,Karval Online Education,Karval,CO,80823
+1810,4506,Karval Junior-Senior High School,Karval,CO,80823
+1195,4510,Kathryn Senor Elementary School,New Castle,CO,81647
+30,4516,Kearney Middle School,Commerce City,CO,80022
+3090,4526,Hoff Elementary School,Keenesburg,CO,80643
+1010,4530,Keller Elementary School,Colorado Springs,CO,80918
+30,4536,Kemp Elementary School,Commerce City,CO,80022
+2035,4546,Kemper Elementary School,Cortez,CO,81321
+1420,4548,Ken Caryl Middle School,Littleton,CO,80123
+1420,4549,Kendallvue Elementary School,Morrison,CO,80465
+1420,4550,Kendrick Lakes Elementary School,Lakewood,CO,80232
+180,4646,Kenton Elementary School,Aurora,CO,80010
+880,4656,Kepner Middle School,Denver,CO,80219
+3130,4670,Platte Valley High School,Kersey,CO,80644
+500,4680,Salida Middle School,Salida,CO,81201
+1080,4686,Ray E Kilmer Elementary School,Colorado Springs,CO,80908
+1760,4690,Kim Elementary School,Kim,CO,81049
+1760,4694,Kim Undivided High School,Kim,CO,81049
+1550,4698,Kinard Core Knowledge Middle School,Fort Collins,CO,80528
+10,4699,The New America School,Denver,CO,80229
+540,4700,King-Murphy Elementary School,Evergreen,CO,80439
+930,4724,Kiowa Elementary School,Kiowa,CO,80117
+930,4726,Kiowa Middle School,Kiowa,CO,80117
+930,4728,Kiowa High School,Kiowa,CO,80117
+880,4730,Kipp Denver Collegiate High School,Denver,CO,80223
+880,4732,Kipp Sunshine Peak Academy,Denver,CO,80223
+510,4738,Kit Carson Elementary School,Kit Carson,CO,80825
+510,4742,Kit Carson Junior-Senior High School,Kit Carson,CO,80825
+880,4762,Knapp Elementary School,Denver,CO,80219
+880,4782,Hallett Fundamental Academy,Denver,CO,80207
+3110,4785,Knowledge Quest Academy,Milliken,CO,80543
+480,4792,Kohl Elementary School,Broomfield,CO,80020
+1550,4793,Kruse Elementary School,Fort Collins,CO,80525
+880,4795,Kunsmiller Creative Arts Academy,Denver,CO,80219
+1420,4798,Connections Learning Center On The Earle Johnson Campus,Golden,CO,80401
+1420,4802,Kullerstrand Elementary School,Wheat Ridge,CO,80033
+1420,4830,Kyffin Elementary School,Golden,CO,80401
+550,4836,La Jara Elementary School,La Jara,CO,81140
+550,4837,La Jara Second Chance School,La Jara,CO,81140
+910,4838,June Creek Elementary School,Edwards,CO,81632
+2520,4841,La Junta Intermediate School,La Junta,CO,81050
+2520,4843,La Junta Primary School,La Junta,CO,81050
+3080,4852,Pete Mirich Elementary School,La Salle,CO,80645
+3080,4854,North Valley Middle School,La Salle,CO,80645
+1400,4860,La Veta Elementary School,La Veta,CO,81055
+1400,4864,La Veta Junior-Senior High School,La Veta,CO,81055
+480,4874,Lafayette Elementary School,Lafayette,CO,80026
+480,4878,Angevine Middle School,Lafayette,CO,80026
+1380,4899,Lake City Community School,Lake City,CO,81235
+1510,4901,Lake County Middle School,Leadville,CO,80461
+1510,4904,Lake County High School,Leadville,CO,80461
+2610,4908,Lake George Charter School,Lake George,CO,80827
+880,4910,Lake Middle School,Denver,CO,80204
+1420,4942,Lakewood High School,Lakewood,CO,80215
+40,4950,Landmark Academy At Reunion,Commerce City,CO,80022
+2660,4956,Lamar Middle School,Lamar,CO,81052
+2660,4960,Lamar High School,Lamar,CO,81052
+180,4970,Lansing Elementary School,Aurora,CO,80010
+180,4973,Laredo Elementary School,Aurora,CO,80011
+130,4975,Laredo Middle School,Aurora,CO,80015
+900,4980,Larkspur Elementary School,Larkspur,CO,80118
+290,4986,Las Animas Middle School,Las Animas,CO,81054
+290,4990,Las Animas High School,Las Animas,CO,81054
+1420,5004,Lasley Elementary School,Lakewood,CO,80226
+1550,5014,Laurel Elementary School,Fort Collins,CO,80524
+2520,5015,La Junta Jr/Sr High School,La Junta,CO,81050
+1560,5018,Laurene Edmondson Elementary School,Loveland,CO,80538
+1420,5024,Lawrence Elementary School,Arvada,CO,80002
+990,5033,James Madison Charter Academy School,Colorado Springs,CO,80911
+1420,5036,Leawood Elementary School,Littleton,CO,80123
+20,5043,Legacy High School,Broomfield,CO,80020
+900,5045,Legacy Point Elementary School,Parker,CO,80134
+2690,5048,Lemuel Pitts Middle School,Pueblo,CO,81005
+3140,5050,Leo William Butler Elementary School,Fort Lupton,CO,80621
+20,5058,Leroy Drive Elementary School,Northglenn,CO,80233
+1550,5068,Lesher Middle School,Fort Collins,CO,80524
+3110,5078,Letford Elementary School,Johnstown,CO,80534
+2035,5090,Lewis-Arriola Elementary School,Cortez,CO,81321
+1080,5093,Monument Charter Academy,Monument,CO,80132
+1080,5096,Lewis-Palmer Elementary School,Monument,CO,80132
+1080,5098,Lewis-Palmer Middle School,Monument,CO,80132
+1080,5100,Lewis-Palmer High School,Monument,CO,80132
+2530,5114,Jefferson Intermediate School,Rocky Ford,CO,81067
+3230,5119,Liberty Elementary School,Joes,CO,80822
+1550,5120,Liberty Common Charter School,Fort Collins,CO,80525
+3230,5123,Liberty Junior-Senior High School,Joes,CO,80822
+1040,5126,Liberty High School,Colorado Springs,CO,80920
+880,5129,Life Skills Center Of Denver,Denver,CO,80204
+1790,5132,Limon Elementary School,Limon,CO,80828
+1790,5136,Limon Junior-Senior High School,Limon,CO,80828
+1420,5145,Lincoln Charter Academy,Arvada,CO,80003
+1010,5146,Life Skills Center Of Colorado Springs,Colorado Springs,CO,80910
+870,5154,Lincoln Elementary School,Delta,CO,81416
+880,5158,Lincoln Elementary School,Denver,CO,80209
+1010,5162,Lincoln Elementary School,Colorado Springs,CO,80907
+1140,5166,Lincoln Elementary School,Canon City,CO,81212
+1550,5168,Lincoln Middle School,Fort Collins,CO,80521
+1560,5170,Lincoln Elementary School,Loveland,CO,80538
+2405,5180,Lincoln High School,Fort Morgan,CO,80701
+2660,5190,Lincoln Elementary School,Lamar,CO,81052
+1550,5196,Linton Elementary School,Fort Collins,CO,80525
+2000,5210,Lincoln Orchard Mesa Elementary School,Grand Junction,CO,81503
+3200,5221,Little Indians Preschool,Yuma,CO,80759
+1420,5222,Little Elementary School,Arvada,CO,80003
+140,5224,Littleton High School,Littleton,CO,80121
+140,5229,Littleton Academy,Littleton,CO,80120
+140,5233,Littleton Prep Charter School,Littleton,CO,80123
+1550,5234,Livermore Elementary School,Livermore,CO,80536
+140,5236,Lois Lenski Elementary School,Centennial,CO,80121
+3060,5238,Lone Star Middle School,Otis,CO,80743
+2000,5244,Loma Elementary School,Loma,CO,81524
+470,5246,Loma Linda Elementary School,Longmont,CO,80501
+3060,5254,Lone Star Elementary School,Otis,CO,80743
+880,5255,Lake International School,Denver,CO,80204
+3060,5258,Lone Star Undivided High School,Otis,CO,80743
+500,5268,Longfellow Elementary School,Salida,CO,81201
+470,5282,Longmont High School,Longmont,CO,80501
+470,5284,Longmont Estates Elementary School,Longmont,CO,80503
+470,5286,Sunset Middle School,Longmont,CO,80501
+470,5288,Longs Peak Middle School,Longmont,CO,80501
+1550,5292,Lopez Elementary School,Fort Collins,CO,80526
+180,5298,Lotus School For Excellence,Aurora,CO,80012
+480,5302,Louisville Elementary School,Louisville,CO,80027
+480,5306,Louisville Middle School,Louisville,CO,80027
+1560,5312,Bill Reed Middle School,Loveland,CO,80537
+1560,5316,Loveland High School,Loveland,CO,80538
+120,5318,Englewood Early Childhood Education Center At Maddox,Englewood,CO,80110
+1560,5335,Lucile Erwin Middle School,Loveland,CO,80538
+880,5342,Lowry Elementary School,Denver,CO,80230
+1420,5350,Lukas Elementary School,Westminster,CO,80021
+1420,5354,Lumberg Elementary School,Edgewater,CO,80214
+180,5361,Lyn Knoll Elementary School,Aurora,CO,80011
+470,5364,Lyons Elementary School,Lyons,CO,80540
+470,5368,Lyons Middle/Senior High School,Lyons,CO,80540
+70,5388,M. Scott Carpenter Middle School,Denver,CO,80221
+1560,5393,Thompson Integrated Early Childhood,Loveland,CO,80537
+1010,5404,Madison Elementary School,Colorado Springs,CO,80909
+900,5405,Edcsd: Colorado Cyber School,Castle Rock,CO,80104
+3120,5412,Madison Elementary School,Greeley,CO,80634
+1140,5414,Madison Exploratory School,Canon City,CO,81212
+1420,5415,Rocky Mountain Deaf School,Golden,CO,80401
+20,5418,Malley Drive Elementary School,Northglenn,CO,80233
+550,5422,Manassa Elementary School,Manassa,CO,81141
+880,5430,Manny Martinez Middle School,Denver,CO,80204
+2035,5436,Manaugh Elementary School,Cortez,CO,81321
+2070,5446,Mancos Elementary School,Mancos,CO,81328
+880,5448,Manual High School,Denver,CO,80205
+2070,5450,Mancos Middle School,Mancos,CO,81328
+2070,5452,Mancos High School,Mancos,CO,81328
+1420,5454,Mandalay Middle School,Westminster,CO,80021
+1030,5460,Manitou Springs Elementary School,Manitou Springs,CO,80829
+1030,5464,Manitou Springs Middle School,Manitou Springs,CO,80829
+1030,5468,Manitou Springs High School,Manitou Springs,CO,80829
+1420,5472,Manning Options School,Lakewood,CO,80401
+2535,5498,Manzanola Elementary School,Manzanola,CO,81058
+2535,5506,Manzanola Junior-Senior High School,Manzanola,CO,81058
+1420,5524,Maple Grove Elementary School,Golden,CO,80401
+10,5539,Mapleton Early Learning Center,Denver,CO,80229
+140,5572,Hopkins Elementary School,Centennial,CO,80122
+140,5574,Twain Elementary School,Centennial,CO,80122
+1010,5576,Twain Elementary School,Colorado Springs,CO,80909
+1360,5577,Marble Charter School,Marble,CO,81623
+880,5578,Marrama Elementary School,Denver,CO,80249
+2740,5579,Marsh Elementary School,Monte Vista,CO,81144
+1420,5580,Marshdale Elementary School,Evergreen,CO,80439
+1420,5596,Martensen Elementary School,Wheat Ridge,CO,80033
+990,5602,Martin Luther King Jr Elementary School,Colorado Springs,CO,80911
+1010,5604,King Elementary School,Colorado Springs,CO,80918
+880,5605,Martin Luther King Middle College,Denver,CO,80249
+480,5606,Creekside Elementary School At Martin Park,Boulder,CO,80305
+900,5607,Sage Canyon Elementary,Castle Rock,CO,80104
+880,5608,Mathematics And Science Leadership Academy,Denver,CO,80223
+1010,5610,Martinez Elementary School,Colorado Springs,CO,80918
+40,5615,Mary E Pennock Elementary School,Brighton,CO,80601
+3120,5620,Maplewood Elementary School,Greeley,CO,80631
+1420,5623,Longview High School,Lakewood,CO,80228
+880,5644,Maxwell Elementary School,Denver,CO,80239
+2020,5656,Maybell Elementary School,Maybell,CO,81640
+3120,5660,Mcauliffe Elementary School,Greeley,CO,80634
+310,5666,Mc Clave Elementary School,Mc Clave,CO,81057
+310,5670,Mc Clave Undivided High School,Mc Clave,CO,81057
+880,5685,Mc Glone Elementary School,Denver,CO,80239
+1550,5688,Mcgraw Elementary School,Fort Collins,CO,80526
+880,5702,Mc Kinley-Thatcher Elementary School,Denver,CO,80210
+1140,5704,Mckinley Elementary School,Canon City,CO,81212
+20,5706,Mc Elwain Elementary School,Thornton,CO,80229
+880,5716,Mc Meen Elementary School,Denver,CO,80222
+470,5722,Mead High School,Longmont,CO,80504
+470,5726,Mead Elementary School,Mead,CO,80542
+470,5730,Mead Middle School,Mead,CO,80542
+910,5742,Meadow Mountain Elementary School,Avon,CO,81620
+130,5744,Meadow Point Elementary School,Aurora,CO,80015
+900,5745,Meadow View Elementary School,Castle Rock,CO,80109
+2710,5750,Meeker Elementary School,Meeker,CO,81641
+3120,5752,Meeker Elementary School,Greeley,CO,80634
+2710,5754,Barone Middle School,Meeker,CO,81641
+1420,5758,Meiklejohn Elementary,Arvada,CO,80005
+2710,5762,Meeker High School,Meeker,CO,81641
+2660,5777,Melvin Hendrickson Development Center,Lamar,CO,81052
+1110,5779,Meridian Ranch International School,Falcon,CO,80831
+1860,5802,Merino Elementary School,Merino,CO,80741
+1860,5806,Merino Junior Senior High School,Merino,CO,80741
+20,5814,Thornton Middle School,Thornton,CO,80229
+20,5816,Thornton High School,Thornton,CO,80229
+880,5826,Merrill Middle School,Denver,CO,80210
+2000,5828,Mesa Valley Vision Home And Community Program,Grand Junction,CO,81501
+70,5834,Mesa Elementary School,Westminster,CO,80030
+2035,5836,Mesa Elementary School,Cortez,CO,81321
+480,5838,Mesa Elementary School,Boulder,CO,80305
+2730,5840,Mesa Elementary School,Del Norte,CO,81132
+990,5841,Mesa Ridge High School,Colorado Springs,CO,80911
+2000,5842,Mesa View Elementary School,Grand Junction,CO,81503
+900,5843,Lone Tree Elementary,Lone Tree,CO,80124
+880,5844,Contemporary Learning Academy High School,Denver,CO,80211
+1130,5850,Miami/Yoder Elementary School,Rush,CO,80833
+1130,5854,Miami-Yoder Senior High School,Rush,CO,80833
+1350,5864,Middle Park High School,Granby,CO,80446
+1130,5870,Miami-Yoder Junior High School,Rush,CO,80833
+1010,5878,Midland Elementary School,Colorado Springs,CO,80904
+30,5880,Mildred L Sanville Preschool,Commerce City,CO,80022
+1520,5888,Miller Middle School,Durango,CO,81301
+1420,5892,Miller Special Education,Lakewood,CO,80226
+3110,5896,Milliken Elementary School,Milliken,CO,80543
+3110,5902,Milliken Middle School,Milliken,CO,80543
+2690,5916,Minnequa Elementary School,Pueblo,CO,81004
+910,5930,Minturn Middle School,Minturn,CO,81645
+130,5934,Mission Viejo Elementary School,Aurora,CO,80013
+1420,5944,Mitchell Elementary School,Golden,CO,80403
+1010,5948,Mitchell High School,Colorado Springs,CO,80909
+2800,5954,Moffat Elementary School,Moffat,CO,81143
+2800,5956,Moffat Middle School,Moffat,CO,81143
+2800,5958,Moffat Senior High School,Moffat,CO,81143
+2020,5962,Moffat County High School,Craig,CO,81625
+1420,5972,Molholm Elementary School,Lakewood,CO,80214
+30,5982,Monaco Elementary School,Commerce City,CO,80022
+3120,5985,Monfort Elementary School,Greeley,CO,80634
+1010,5988,Monroe Elementary School,Colorado Springs,CO,80910
+1560,5992,Monroe Elementary School,Loveland,CO,80538
+1420,5994,Montessori Peaks Charter Academy,Littleton,CO,80123
+880,5995,Montbello High School,Denver,CO,80239
+900,5997,D C S Montessori Charter School,Castle Rock,CO,80108
+880,5998,Oakland Elementary School,Denver,CO,80239
+480,5999,Monarch High School,Louisville,CO,80027
+480,6000,Monarch K-8 School,Louisville,CO,80027
+880,6002,Montclair Elementary School,Denver,CO,80220
+980,6018,Monterey Elementary School,Colorado Springs,CO,80910
+2035,6026,Montezuma-Cortez High School,Cortez,CO,81321
+2740,6030,Byron Syring Delta Center,Monte Vista,CO,81144
+2740,6036,Bill Metz Elementary School,Monte Vista,CO,81144
+2740,6044,Monte Vista Middle School,Monte Vista,CO,81144
+2740,6046,Monte Vista Senior High School,Monte Vista,CO,81144
+2180,6054,Columbine Middle School,Montrose,CO,81401
+2000,6055,Career Center Preschool,Grand Junction,CO,81504
+2180,6058,Montrose High School,Montrose,CO,81401
+20,6060,Mountain Range High School,Westminster,CO,80234
+180,6068,Montview Math & Health Sciences Elementary School,Aurora,CO,80010
+2000,6070,Fruita Monument High School,Fruita,CO,81521
+880,6088,Moore K-8 School,Denver,CO,80218
+1420,6090,Moore Middle School,Arvada,CO,80005
+880,6098,Morey Middle School,Denver,CO,80218
+2690,6132,Morton Elementary School,Pueblo,CO,81003
+1420,6133,Mortensen Elementary School,Littleton,CO,80128
+9030,6134,Yampah Mountain School,Glenwood Springs,CO,81601
+1420,6135,Mount Carbon Elementary School,Littleton,CO,80127
+9030,6136,Mountain Boces Day Treatment Center,Glenwood Springs,CO,81601
+1000,6138,Mountainside Elementary School,Fort Carson,CO,80902
+1420,6139,Mountain Phoenix Community School,Golden,CO,80403
+1040,6140,Mountain Ridge Middle School,Colorado Springs,CO,80920
+2790,6142,Mountain Valley Elementary School,Saguache,CO,81149
+2790,6144,Mountain Valley Middle School,Saguache,CO,81149
+2790,6146,Mountain Valley Senior High School,Saguache,CO,81149
+20,6150,Mountain View Elementary School,Broomfield,CO,80020
+900,6152,Mountain View Elementary School,Parker,CO,80134
+470,6156,Mountain View Elementary School,Longmont,CO,80501
+1040,6158,Mountain View Elementary School,Colorado Springs,CO,80920
+180,6160,Mrachek Middle School,Aurora,CO,80013
+980,6162,Mountain Vista Community School,Colorado Springs,CO,80910
+1560,6163,Mountain View High School,Loveland,CO,80537
+900,6164,Mountain Ridge Middle School,Highlands Ranch,CO,80126
+900,6165,Mountain Vista High School,Highlands Ranch,CO,80126
+2000,6166,Mount Garfield Middle School,Clifton,CO,81520
+880,6188,Munroe Elementary School,Denver,CO,80219
+180,6189,Murphy Creek K-8 School,Aurora,CO,80018
+1560,6194,Namaqua Elementary School,Loveland,CO,80537
+480,6195,New Vista High School,Boulder,CO,80302
+2190,6196,Naturita Elementary School,Naturita,CO,81422
+480,6208,Nederland Elementary School,Nederland,CO,80466
+480,6212,Nederland Middle-Senior High School,Nederland,CO,80466
+180,6219,New America School,Denver,CO,80230
+1560,6220,New Vision Charter School,Loveland,CO,80538
+1520,6222,Needham Elementary School,Durango,CO,81301
+480,6224,Nevin Platt Middle School,Boulder,CO,80303
+1420,6237,New America School,Lakewood,CO,80214
+910,6238,New America Charter School,Gypsum,CO,81637
+980,6244,New Horizons Day School,Colorado Springs,CO,80906
+880,6254,Newlon Elementary School,Denver,CO,80219
+2000,6264,Nisley Elementary School,Grand Junction,CO,81501
+470,6274,Niwot Elementary School,Niwot,CO,80503
+470,6276,Niwot High School,Niwot,CO,80503
+1420,6286,Normandy Elementary School,Littleton,CO,80128
+140,6292,Village At North,Littleton,CO,80120
+40,6294,North Elementary School,Brighton,CO,80601
+870,6298,North Fork Montessori School,Hotchkiss,CO,81419
+1010,6306,North Middle School,Colorado Springs,CO,80903
+180,6310,North Middle School Health Sciences And Technology Campus,Aurora,CO,80010
+880,6314,North High School,Denver,CO,80211
+10,6315,North Valley School For Young Adults,Thornton,CO,80229
+1420,6330,North Arvada Middle School,Arvada,CO,80003
+1000,6338,Patriot Elementary School,Fort Carson,CO,80902
+20,6342,Shadow Ridge Middle School,Thornton,CO,80602
+470,6344,Heritage Middle School,Longmont,CO,80501
+880,6350,Bruce Randolph School,Denver,CO,80205
+2700,6354,North Mesa Elementary School,Pueblo,CO,81006
+20,6355,North Mor Elementary School,Northglenn,CO,80221
+1410,6358,North Park Junior-Senior High School,Walden,CO,80480
+990,6362,North Elementary School,Colorado Springs,CO,80911
+2770,6363,North Routt Charter School,Clark,CO,80428
+3120,6364,Northridge High School,Greeley,CO,80634
+900,6365,Skyview Academy,Highlands Ranch,CO,80124
+2180,6366,Northside Elementary School,Montrose,CO,81401
+20,6376,North Star Elementary School,Denver,CO,80221
+880,6394,Northeast Academy Charter School,Denver,CO,80239
+40,6395,Northeast Elementary School,Brighton,CO,80601
+900,6396,Northeast Elementary School,Parker,CO,80134
+880,6397,Academia Ana Marie Sandoval,Denver,CO,80211
+20,6398,Northglenn Middle School,Northglenn,CO,80233
+20,6402,Northglenn High School,Northglenn,CO,80221
+470,6404,Northridge Elementary School,Longmont,CO,80501
+900,6406,Northridge Elementary School,Highlands Ranch,CO,80126
+2840,6418,Norwood Elementary School,Norwood,CO,81423
+2840,6422,Norwood High School,Norwood,CO,81423
+2190,6436,Nucla Junior/Senior High School,Nucla,CO,81424
+980,6460,Oak Creek Elementary School,Colorado Springs,CO,80906
+2180,6466,Oak Grove Elementary School,Montrose,CO,81401
+1420,6470,Oberon Junior High School,Arvada,CO,80005
+1420,6474,O'connell Middle School,Lakewood,CO,80232
+1550,6476,O'dea Elementary School,Fort Collins,CO,80525
+880,6479,Odyssey Charter Elementary School,Denver,CO,80207
+1550,6482,Olander Elementary School,Fort Collins,CO,80526
+1110,6483,Odyssey Elementary School,Colorado Springs,CO,80922
+2180,6486,Olathe Elementary School,Olathe,CO,81425
+2180,6490,Olathe Middle School,Olathe,CO,81425
+2180,6494,Olathe High School,Olathe,CO,81425
+470,6498,Olde Columbine High School,Longmont,CO,80501
+470,6499,Adult Education/Lincoln Center,Longmont,CO,80501
+2690,6504,Olga A Hellbeck Elementary School,Pueblo,CO,81005
+880,6508,Omar D Blair Charter School,Denver,CO,80249
+880,6509,Online High School,Denver,CO,80203
+2740,6520,Monte Vista On-Line Academy,Monte Vista,CO,81144
+30,6534,Hanson Prek-8 School,Commerce City,CO,80022
+1420,6539,Jefferson County Open Elementary School,Lakewood,CO,80215
+1420,6541,Jefferson County Open Secondary,Lakewood,CO,80215
+180,6546,Options School,Aurora,CO,80010
+2000,6554,Orchard Avenue Elementary School,Grand Junction,CO,81501
+2000,6562,Orchard Mesa Middle School,Grand Junction,CO,81503
+980,6578,Otero Elementary School,Colorado Springs,CO,80906
+3050,6582,Otis Elementary School,Otis,CO,80743
+3050,6586,Otis Junior-Senior High School,Otis,CO,80743
+2580,6596,Ouray Elementary School,Ouray,CO,81427
+2580,6598,Ouray Middle School,Ouray,CO,81427
+2580,6600,Ouray Senior High School,Ouray,CO,81427
+130,6625,Overland High School,Aurora,CO,80012
+40,6638,Overland Trail Middle School,Brighton,CO,80601
+480,6642,Horizons K-8 School,Boulder,CO,80303
+220,6652,Pagosa Springs Elementary School,Pagosa Springs,CO,81147
+220,6657,Pagosa Springs Middle School,Pagosa Springs,CO,81147
+220,6658,Pagosa Springs High School,Pagosa Springs,CO,81147
+2000,6666,Palisade High School,Palisade,CO,81526
+880,6676,Palmer Elementary School,Denver,CO,80220
+1080,6678,Palmer Ridge High School,Monument,CO,80132
+1010,6680,Palmer High School,Colorado Springs,CO,80903
+1080,6682,Palmer Lake Elementary School,Palmer Lake,CO,80133
+980,6686,Panorama Middle School,Colorado Springs,CO,80916
+870,6700,Paonia Elementary School,Paonia,CO,81428
+1070,6701,Prairie Heights Elementary School,Pueblo,CO,81008
+40,6702,Otho E Stuart Middle School,Commerce City,CO,80022
+870,6708,Paonia High School,Paonia,CO,81428
+2190,6718,Paradox Valley Charter School,Paradox,CO,81429
+180,6728,Paris Elementary School,Aurora,CO,80010
+1520,6738,Park Elementary School,Durango,CO,81301
+3100,6750,Mountain View Elementary School,Windsor,CO,80550
+1140,6752,Mount View Core Knowledge Charter School,Canon City,CO,81212
+880,6754,Park Hill School,Denver,CO,80220
+180,6758,Park Lane Elementary School,Aurora,CO,80011
+2690,6770,Park View Elementary School,Pueblo,CO,81001
+900,6772,Sagewood Middle School,Parker,CO,80134
+900,6773,Sierra Middle School,Parker,CO,80138
+3120,6774,Martinez Elementary School,Greeley,CO,80631
+880,6784,Noel Middle School,Denver,CO,80239
+2660,6794,Parkview Elementary School,Lamar,CO,81052
+1420,6804,Parmalee Elementary School,Indian Hills,CO,80454
+1420,6806,Parr Elementary School,Arvada,CO,80003
+2180,6807,Passage Charter School,Montrose,CO,81401
+1420,6808,Patterson Elementary School,Lakewood,CO,80232
+1110,6810,Patriot Learning Center,Falcon,CO,80831
+3148,6812,Pawnee Junior-Senior High School,Grover,CO,80729
+140,6814,Peabody Elementary School,Centennial,CO,80121
+480,6816,Peak To Peak Charter School,Lafayette,CO,80026
+130,6820,Peakview Elementary School,Centennial,CO,80015
+1420,6828,Peck Elementary School,Arvada,CO,80004
+20,6830,Niver Creek Middle School,Denver,CO,80221
+1870,6834,Peetz Elementary School,Peetz,CO,80747
+1870,6838,Peetz Junior-Senior High School,Peetz,CO,80747
+1420,6844,Peiffer Elementary School,Littleton,CO,80127
+1420,6848,Pennington Elementary School,Wheat Ridge,CO,80033
+1010,6856,Penrose Elementary School,Colorado Springs,CO,80917
+1150,6858,Penrose Elementary School,Penrose,CO,81240
+180,6869,Peoria Elementary School,Aurora,CO,80011
+1060,6898,Peyton Elementary School,Peyton,CO,80831
+1060,6902,Peyton Junior/Senior High School,Peyton,CO,80831
+8001,6913,The Pinnacle Charter School Middle,Federal Heights,CO,80206
+8001,6914,The Pinnacle Charter School High,Federal Heights,CO,80206
+1110,6935,Pikes Peak School Expeditionary Learning,Falcon,CO,80831
+980,6936,Pikes Peak Elementary School,Colorado Springs,CO,80910
+1040,6937,Pine Creek High School,Colorado Springs,CO,80908
+900,6938,Pine Grove Elementary School,Parker,CO,80134
+900,6940,Pine Lane Elementary,Parker,CO,80138
+990,6952,Pinello Elementary School,Colorado Springs,CO,80911
+1020,6953,Pinon Valley Elementary School,Colorado Springs,CO,80906
+2405,6954,Pioneer Elementary School,Fort Morgan,CO,80701
+130,6955,Pine Ridge Elementary School,Aurora,CO,80016
+880,6957,Pioneer Charter School,Denver,CO,80205
+1040,6960,Pioneer Elementary School,Colorado Springs,CO,80918
+900,6961,Pioneer Elementary School,Parker,CO,80138
+480,6962,Pioneer Bilingual Elementary School,Lafayette,CO,80026
+3110,6963,Pioneer Ridge Elementary School,Johnstown,CO,80534
+880,6970,Pitt-Waller K-8 School,Denver,CO,80249
+1440,6992,Plainview Elementary School,Sheridan Lake,CO,81071
+1440,7009,Plainview Junior-Senior High School,Sheridan Lake,CO,81071
+1990,7024,Plateau Valley Elementary School,Collbran,CO,81624
+1990,7028,Plateau Valley Middle School,Collbran,CO,81624
+1990,7032,Plateau Valley High School,Collbran,CO,81624
+2600,7042,Deer Creek Elementary School,Bailey,CO,80421
+880,7045,Place Bridge Academy,Denver,CO,80224
+2600,7046,Platte Canyon High School,Bailey,CO,80421
+900,7047,Platte River Charter Academy,Highlands Ranch,CO,80130
+2600,7048,Fitzsimmons Middle School,Bailey,CO,80421
+2865,7050,Platte Valley Elementary School,Sedgwick,CO,80749
+3130,7052,Platte Valley Elementary School,Kersey,CO,80644
+3130,7054,Platte Valley Middle School,Kersey,CO,80644
+3080,7056,Platteville Elementary School,Platteville,CO,80651
+3080,7058,South Valley Middle School,Platteville,CO,80651
+1420,7078,Pleasant View Elementary School,Golden,CO,80401
+2035,7082,Pleasant View Elementary School,Pleasant View,CO,81331
+2700,7086,Pleasant View Middle School,Pueblo,CO,81006
+900,7096,Roxborough Elementary School,Littleton,CO,80125
+130,7102,Polton Community Elementary School,Aurora,CO,80014
+1550,7104,Polaris Expeditionary Learning School,Fort Collins,CO,80521
+2180,7106,Pomona Elementary School,Montrose,CO,81401
+2000,7110,Pomona Elementary School,Grand Junction,CO,81505
+1560,7113,Ponderosa Elementary,Loveland,CO,80538
+1420,7114,Pomona High School,Arvada,CO,80005
+130,7116,Ponderosa Elementary School,Aurora,CO,80012
+900,7118,Ponderosa High School,Parker,CO,80134
+1550,7124,Poudre High School,Fort Collins,CO,80521
+1550,7127,Poudre Community Academy,Fort Collins,CO,80521
+1420,7128,Powderhorn Elementary School,Littleton,CO,80127
+40,7129,Prairie View High School,Henderson,CO,80640
+40,7131,Prairie View Middle School,Henderson,CO,80640
+60,7133,Prairie Creeks Charter School,Strasburg,CO,80136
+900,7134,Prairie Crossing Elementary School,Parker,CO,80134
+2700,7153,Prairie Winds Elementary School,Pueblo West,CO,81007
+3147,7154,Prairie Elementary School,New Raymer,CO,80742
+20,7155,Prairie Hills Elementary School,Thornton,CO,80602
+3147,7156,Prairie Junior-Senior High School,New Raymer,CO,80742
+470,7157,Prairie Ridge Elementary School,Firestone,CO,80504
+130,7158,Prairie Middle School,Aurora,CO,80012
+1040,7159,Prairie Hills Elementary School,Colorado Springs,CO,80920
+1590,7160,Primero Elementary School,Weston,CO,81091
+1550,7161,Preston Middle School,Fort Collins,CO,80528
+880,7163,P.R.E.P. (Positive Refocus Education Program),Denver,CO,80205
+1590,7164,Primero Junior-Senior High School,Weston,CO,81091
+1080,7165,Prairie Winds Elementary School,Monument,CO,80132
+240,7174,Pritchett Elementary School,Pritchett,CO,81064
+240,7176,Pritchett Middle School,Pritchett,CO,81064
+240,7180,Pritchett High School,Pritchett,CO,81064
+1420,7190,Prospect Valley Elementary School,Wheat Ridge,CO,80033
+1550,7198,Psd Online Academy,Fort Collins,CO,80521
+880,7199,P.S.1 Charter School,Denver,CO,80204
+2700,7208,Pueblo County High School,Pueblo,CO,81006
+2690,7209,Pueblo Charter School For The Arts & Sciences,Pueblo,CO,81004
+2700,7210,Pueblo West Elementary School,Pueblo West,CO,81007
+2700,7212,Pueblo West Middle School,Pueblo West,CO,81007
+2700,7214,Pueblo West High School,Pueblo West,CO,81007
+1550,7218,Putnam Elementary School,Fort Collins,CO,80521
+1010,7228,Queen Palmer Elementary School,Colorado Springs,CO,80909
+180,7232,Aurora Quest K-8,Aurora,CO,80012
+2000,7236,R-5 High School,Grand Junction,CO,81501
+1420,7238,Ralston Elementary School,Golden,CO,80401
+1420,7239,Ralston Valley Senior High School,Arvada,CO,80005
+1040,7240,Rampart High School,Colorado Springs,CO,80920
+900,7245,Ranch View Middle School,Highlands Ranch,CO,80129
+1040,7247,Ranch Creek Elementary,Colorado Springs,CO,80924
+180,7250,Rangeview High School,Aurora,CO,80013
+2720,7268,Parkview Elementary School,Rangely,CO,81648
+2720,7276,Rangely Junior/Senior High School,Rangely,CO,81648
+130,7277,Red Hawk Ridge Elementary School,Centennial,CO,80112
+8001,7278,Ricardo Flores Magon Academy,Westminster,CO,80030
+2000,7281,Redlands Middle School,Grand Junction,CO,81503
+1420,7282,Red Rocks Elementary School,Morrison,CO,80465
+910,7285,Red Table Early Learning Center,Gypsum,CO,81637
+1550,7290,Red Feather Lakes Elementary School,Red Feather Lakes,CO,80545
+910,7296,Red Sandstone Elementary School,Vail,CO,81657
+900,7297,Redstone Elementary School,Highlands Ranch,CO,80130
+920,7300,Elizabeth Running Creek Preschool,Elizabeth,CO,80107
+70,7305,Iver C. Ranum Middle School,Denver,CO,80221
+1110,7317,Remington Elementary School,Colorado Springs,CO,80922
+900,7319,Renaissance Expedition Learn Outward Bound School,Castle Rock,CO,80104
+2865,7322,Revere Junior-Senior High School,Ovid,CO,80744
+1550,7325,Rice Elementary School,Wellington,CO,80549
+2020,7338,Ridgeview Elementary School,Craig,CO,81625
+1110,7339,Ridgeview Elementary School,Colorado Springs,CO,80922
+2590,7342,Ridgway Elementary School,Ridgway,CO,81432
+2590,7344,Ridgway Middle School,Ridgway,CO,81432
+2590,7346,Ridgway High School,Ridgway,CO,81432
+1550,7350,Riffenburgh Elementary School,Fort Collins,CO,80525
+1195,7356,Rifle Middle School,Rifle,CO,81650
+1195,7360,Rifle High School,Rifle,CO,81650
+880,7370,Rishel Middle School,Denver,CO,80223
+1195,7388,Riverside School,New Castle,CO,81647
+1520,7402,Riverview Elementary School,Durango,CO,81301
+1180,7422,Roaring Fork High School,Carbondale,CO,81623
+2035,7430,Preschool/Jumpstart,Cortez,CO,81321
+900,7435,Rock Canyon High School,Littleton,CO,80124
+2530,7442,Rocky Ford Junior/Senior High School,Rocky Ford,CO,81067
+900,7448,Rocky Heights Middle School,Littleton,CO,80124
+1040,7460,Rockrimmon Elementary School,Colorado Springs,CO,80919
+1420,7462,Rocky Mountain Academy Of Evergreen,Evergreen,CO,80439
+1110,7463,Rocky Mountain Classical Academy,Colorado Springs,CO,80915
+470,7464,Rocky Mountain Elementary School,Longmont,CO,80501
+2000,7467,Rocky Mountain Elementary School,Clifton,CO,81520
+1550,7470,Rocky Mountain High School,Fort Collins,CO,80526
+130,7476,Rolling Hills Elementary School,Aurora,CO,80015
+2690,7481,Roncalli Middle School,Pueblo,CO,81005
+1010,7482,Roosevelt Edison Charter School,Colorado Springs,CO,80910
+1420,7483,Rooney Ranch Elementary School,Lakewood,CO,80228
+3110,7490,Roosevelt High School,Johnstown,CO,80534
+30,7500,Rose Hill Elementary School,Commerce City,CO,80022
+8001,7512,Ross Montessori School,Carbondale,CO,81623
+1010,7513,Rudy Elementary School,Colorado Springs,CO,80917
+920,7517,Running Creek Elementary School,Elizabeth,CO,80107
+140,7518,Runyon Elementary School,Littleton,CO,80120
+1010,7523,Russell Middle School,Colorado Springs,CO,80918
+480,7528,Ryan Elementary School,Lafayette,CO,80026
+1420,7529,Ryan Elementary School,Westminster,CO,80020
+2700,7530,Rye Elementary School,Rye,CO,81069
+2700,7532,Craver Middle School,Colorado City,CO,81019
+2700,7534,Rye High School,Rye,CO,81069
+880,7554,Sabin World School,Denver,CO,80236
+1010,7556,Sabin Middle School,Colorado Springs,CO,80917
+180,7558,Sable Elementary School,Aurora,CO,80011
+130,7559,Sagebrush Elementary School,Aurora,CO,80015
+900,7562,Saddle Ranch Elementary School,Highlands Ranch,CO,80129
+470,7565,St. Vrain Community Montossori School,Longmont,CO,80501
+500,7568,Salida High School,Salida,CO,81201
+880,7578,Samuels Elementary School,Denver,CO,80237
+470,7584,Sanborn Elementary School,Longmont,CO,80501
+640,7588,Centennial Elementary School,San Luis,CO,81152
+480,7592,Sanchez Elementary School,Lafayette,CO,80026
+140,7606,Sandburg Elementary School,Centennial,CO,80122
+900,7610,Sand Creek Elementary School,Highlands Ranch,CO,80126
+980,7611,Sand Creek Elementary School,Colorado Springs,CO,80916
+560,7612,Sanford Elementary School,Sanford,CO,81151
+1110,7613,Sand Creek High School,Colorado Springs,CO,80922
+560,7616,Sanford Junior/Senior High School,Sanford,CO,81151
+110,7626,Sangre De Cristo Elementary School,Hooper,CO,81136
+110,7630,Sangre De Cristo Undivided High School,Mosca,CO,81146
+1560,7640,Sarah Milner Elementary School,Loveland,CO,80537
+1560,7650,Stansberry Elementary School,Loveland,CO,80538
+2750,7660,Sargent Elementary School,Monte Vista,CO,81144
+2750,7664,Sargent Senior High School,Monte Vista,CO,81144
+2750,7668,Sargent Junior High School,Monte Vista,CO,81144
+880,7694,Charles M. Schenck (Cms) Community School,Denver,CO,80219
+880,7698,Schmitt Elementary School,Denver,CO,80223
+3120,7700,Scott Elementary School,Greeley,CO,80634
+1420,7701,Collegiate Academy Of Colorado,Littleton,CO,80127
+1010,7705,Scott Elementary School,Colorado Springs,CO,80918
+1420,7708,Secrest Elementary School,Arvada,CO,80003
+40,7714,Second Creek Elementary School,Commerce City,CO,80022
+900,7718,Sedalia Elementary School,Sedalia,CO,80135
+40,7725,Sd 27j Preschool At The Brighton Lrc,Brighton,CO,80601
+1460,7746,Hi Plains Undivided High School,Seibert,CO,80834
+2690,7748,Keating Continuing Education,Pueblo,CO,81004
+1420,7753,Semper Elementary School,Westminster,CO,80021
+3100,7755,Severance Middle School,Windsor,CO,80550
+890,7764,Seventh Street Elementary School,Dove Creek,CO,81324
+1420,7780,Shaffer Elementary School,Littleton,CO,80127
+470,7789,Silver Creek High School,Longmont,CO,80503
+2670,7794,Shanner Elementary School,Holly,CO,81047
+20,7795,Silver Creek Elementary,Thornton,CO,80602
+70,7810,Flynn Elementary School,Westminster,CO,80030
+70,7812,Shaw Heights Middle School,Westminster,CO,80030
+3120,7814,Shawsheen Elementary School,Greeley,CO,80634
+2000,7832,Shelledy Elementary School,Fruita,CO,81521
+1420,7833,Shelton Elementary School,Golden,CO,80401
+1550,7834,Shepardson Elementary School,Fort Collins,CO,80525
+123,7837,Sheridan Middle School,Englewood,CO,80150
+123,7842,Sheridan High School,Denver,CO,80236
+123,7843,Early Childhood Education Center,Englewood,CO,80150
+2405,7856,Sherman Early Childhood Center,Fort Morgan,CO,80701
+70,7860,Sherrelwood Elementary School,Denver,CO,80221
+180,7865,Side Creek Elementary School,Aurora,CO,80013
+1420,7870,Sierra Elementary School,Arvada,CO,80005
+740,7876,Sierra Grande Elementary School,Blanca,CO,81123
+740,7878,Sierra Grande Middle School,Blanca,CO,81123
+2700,7879,Southern Colorado Early College,Pueblo West,CO,81007
+740,7880,Sierra Grande Senior High School,Blanca,CO,81123
+980,7882,Sierra High School,Colorado Springs,CO,80916
+2700,7886,Sierra Vista Elementary School,Pueblo West,CO,81007
+1195,7890,Cactus Valley Elementary School,Silt,CO,81652
+2610,7891,Silverheels Middle School,Fairplay,CO,80440
+2820,7900,Silverton Elementary School,Silverton,CO,81433
+2820,7902,Silverton Middle School,Silverton,CO,81433
+2820,7904,Silverton High School,Silverton,CO,81433
+940,7914,Simla Elementary School,Simla,CO,80835
+940,7918,Simla Junior High School,Simla,CO,80835
+940,7922,Simla High School,Simla,CO,80835
+920,7924,Singing Hills Preschool,Parker,CO,80134
+920,7925,Singing Hills Elementary School,Parker,CO,80134
+180,7932,Sixth Avenue Elementary School,Aurora,CO,80011
+880,7942,Skinner Middle School,Denver,CO,80211
+1140,7950,Skyline Elementary School,Canon City,CO,81212
+70,7952,Skyline Vista Elementary School,Denver,CO,80221
+470,7954,Skyline High School,Longmont,CO,80501
+3100,7958,Skyview Elementary School,Windsor,CO,80550
+1110,7960,Skyview Middle School,Colorado Springs,CO,80922
+1420,7962,Slater Elementary School,Lakewood,CO,80215
+880,7972,Slavens K-8 School,Denver,CO,80210
+880,7992,Smiley Middle School,Denver,CO,80207
+1520,7994,Escalante Middle School,Durango,CO,81301
+880,8006,Smith Elementary School,Denver,CO,80207
+1110,8010,Springs Ranch Elementary School,Colorado Springs,CO,80922
+130,8020,Smoky Hill High School,Aurora,CO,80015
+2690,8030,Somerlid Elementary School,Pueblo,CO,81003
+40,8032,John W Thimmig Elementary School,Henderson,CO,80640
+980,8034,Soaring Eagles Elementary School,Colorado Springs,CO,80916
+1420,8036,Sobesky Academy,Lakewood,CO,80215
+1180,8038,Sopris Elementary School,Glenwood Springs,CO,81602
+2780,8048,Soroco Middle School,Oak Creek,CO,80467
+2780,8050,Soroco High School,Oak Creek,CO,80467
+880,8053,Soar,Denver,CO,80239
+880,8054,Henry World School Grades 6-8,Denver,CO,80227
+40,8060,South Elementary School,Brighton,CO,80601
+140,8064,Moody Elementary School,Littleton,CO,80120
+180,8078,South Middle School,Aurora,CO,80011
+2690,8082,South High School,Pueblo,CO,81005
+880,8085,West Denver Prep:  Federal Campus,Denver,CO,80219
+880,8086,South High School,Denver,CO,80210
+1420,8090,Deane Elementary School,Lakewood,CO,80226
+1420,8102,South Lakewood Elementary School,Lakewood,CO,80226
+900,8106,Soaring Hawk Elementary School,Castle Rock,CO,80109
+2700,8110,South Mesa Elementary School,Pueblo,CO,81006
+2610,8114,Edith Teter Elementary School,Fairplay,CO,80440
+2690,8116,South Park Elementary School,Pueblo,CO,81005
+2610,8118,South Park High School,Fairplay,CO,80440
+2780,8119,South Routt Early Learning Center,Yampa,CO,80483
+2780,8120,South Routt Elementary School,Yampa,CO,80483
+990,8122,Venetucci Elementary School,Colorado Springs,CO,80911
+900,8126,South Street Elementary School,Castle Rock,CO,80104
+40,8130,Southeast Elementary School,Brighton,CO,80601
+880,8132,Southwest Early College Charter School,Denver,CO,80236
+2035,8133,Southwest Open Charter School,Cortez,CO,81321
+480,8135,Southern Hills Middle School,Boulder,CO,80305
+880,8138,Southmoor Elementary School,Denver,CO,80237
+470,8140,Spangler Elementary School,Longmont,CO,80501
+2690,8143,Spann Elementary School,Pueblo,CO,81001
+880,8145,Summit Academy,Denver,CO,80219
+250,8160,Springfield Elementary School,Springfield,CO,81073
+250,8164,Springfield Junior High School,Springfield,CO,81073
+250,8168,Springfield High School,Springfield,CO,81073
+990,8178,Sproul Junior High School,Colorado Springs,CO,80911
+2770,8208,Soda Creek Elementary School,Steamboat Springs,CO,80487
+1420,8209,Standley Lake High School,Westminster,CO,80021
+2770,8210,Steamboat Springs Middle School,Steamboat Springs,CO,80487
+20,8211,The Studio School,Northglenn,CO,80233
+2770,8212,Steamboat Springs High School,Steamboat Springs,CO,80487
+880,8222,Steck Elementary School,Denver,CO,80220
+20,8225,Stellar Elementary School,Thornton,CO,80241
+880,8232,Stedman Elementary School,Denver,CO,80207
+880,8242,Steele Elementary School,Denver,CO,80209
+1010,8246,Steele Elementary School,Colorado Springs,CO,80907
+1420,8248,Stein Elementary School,Lakewood,CO,80226
+1828,8256,Sterling Middle School,Sterling,CO,80751
+1828,8260,Sterling High School,Sterling,CO,80751
+1110,8266,Stetson Elementary School,Colorado Springs,CO,80922
+1420,8272,Stevens Elementary School,Wheat Ridge,CO,80033
+1220,8274,Grand Valley Middle School,Parachute,CO,81635
+20,8275,Stem School,Northglenn,CO,80233
+1420,8276,Stober Elementary School,Lakewood,CO,80215
+1420,8280,Stony Creek Elementary School,Littleton,CO,80128
+1420,8300,Stott Elementary School,Arvada,CO,80004
+1550,8318,Stove Prairie Elementary School,Bellvue,CO,80512
+60,8328,Strasburg Elementary School,Strasburg,CO,80136
+60,8332,Hemphill Middle School,Strasburg,CO,80136
+60,8334,Strasburg High School,Strasburg,CO,80136
+980,8337,Stratmoor Hills Elementary School,Colorado Springs,CO,80906
+1480,8342,Stratton Elementary School,Stratton,CO,80836
+1010,8346,Stratton Elementary School,Colorado Springs,CO,80907
+980,8350,Stratton Meadows Elementary School,Colorado Springs,CO,80906
+1480,8351,Stratton Middle School,Stratton,CO,80836
+1480,8354,Stratton Senior High School,Stratton,CO,80836
+180,8356,William Smith High School,Aurora,CO,80011
+2770,8358,Strawberry Park Elementary School,Steamboat Springs,CO,80487
+1010,8359,Space Technology And Arts Academy (Star Academy),Colorado Springs,CO,80910
+20,8361,Stukey Elementary School,Northglenn,CO,80233
+3000,8370,Dillon Valley Elementary School,Dillon,CO,80435
+3000,8372,Breckenridge Elementary School,Breckenridge,CO,80424
+3000,8374,Frisco Elementary School,Frisco,CO,80443
+3000,8375,Summit Alternative High School,Dillon,CO,80435
+3000,8376,Silverthorne Elementary School,Silverthorne,CO,80498
+3000,8377,Summit Middle School,Frisco,CO,80443
+3000,8378,Summit High School,Frisco,CO,80443
+3020,8379,Summit Elementary School,Divide,CO,80814
+130,8380,Summit Elementary School,Aurora,CO,80015
+1420,8381,Summit Ridge Middle School,Littleton,CO,80127
+900,8382,Summit View Elementary School,Highlands Ranch,CO,80126
+3000,8385,Summit Cove Elementary School,Dillon,CO,80435
+480,8387,Summit Middle Charter School,Boulder,CO,80305
+1520,8388,Sunnyside Elementary School,Durango,CO,81301
+990,8392,Sunrise Elementary School,Colorado Springs,CO,80911
+130,8394,Sunrise Elementary School,Aurora,CO,80013
+2020,8398,Sunset Elementary School,Craig,CO,81625
+2690,8402,Sunset Park Elementary School,Pueblo,CO,81005
+70,8406,Sunset Ridge Elementary School,Westminster,CO,80030
+480,8418,Superior Elementary School,Superior,CO,80027
+870,8419,Surface Creek Vision School,Cedaredge,CO,81413
+2700,8420,Swallows Charter Academy,Pueblo West,CO,81007
+880,8422,Swansea Elementary School,Denver,CO,80216
+1420,8432,Swanson Elementary School,Arvada,CO,80003
+2570,8452,Swink Elementary School,Swink,CO,81077
+2570,8456,Swink Junior-Senior High School,Swink,CO,81077
+1010,8457,Jack Swigert Aerospace Academy,Colorado Springs,CO,80909
+1420,8458,John And Karen Litz Preschool,Golden,CO,80401
+3100,8459,Range View Elementary,Severance,CO,80550
+1550,8460,Tavelli Elementary School,Fort Collins,CO,80524
+2000,8462,Taylor Elementary School,Palisade,CO,81526
+1010,8466,Taylor Elementary School,Colorado Springs,CO,80907
+2055,8500,Teddy Bear Preschool,Dolores,CO,81323
+880,8776,Teller Elementary School,Denver,CO,80206
+1040,8779,Tca College Pathways,Colorado Springs,CO,80921
+2830,8786,Telluride Elementary School,Telluride,CO,81435
+2830,8790,Telluride Middle School,Telluride,CO,81435
+1110,8791,Vista Ridge High School,Colorado Springs,CO,80922
+1420,8793,Two Roads Charter School,Wheat Ridge,CO,80033
+2830,8794,Telluride High School,Telluride,CO,81435
+70,8798,Tennyson Knolls Elementary School,Arvada,CO,80003
+1510,8804,Pitts Elementary School,Leadville,CO,80461
+2700,8810,The Connect Charter School,Pueblo,CO,81003
+1040,8813,The Da Vinci Academy School,Colorado Springs,CO,80921
+40,8820,Turnberry Elementary,Commerce City,CO,80022
+880,8822,Thomas Jefferson High School,Denver,CO,80237
+1560,8824,Thompson Valley High School,Loveland,CO,80537
+8001,8825,Thomas Maclaren State Charter School,Colorado Springs,CO,80918
+2395,8832,Thomson Primary School,Brush,CO,80723
+1420,8834,Thomson Elementary School,Arvada,CO,80003
+20,8842,Thornton Elementary School,Thornton,CO,80229
+2000,8846,Thunder Mountain Elementary School,Grand Junction,CO,81504
+900,8847,Thunderridge High School,Highlands Ranch,CO,80129
+130,8848,Thunder Ridge Middle School,Aurora,CO,80015
+130,8850,Timberline Elementary School,Centennial,CO,80015
+1040,8851,Timberview Middle School,Colorado Springs,CO,80920
+1550,8852,Timnath Elementary School,Timnath,CO,80547
+900,8853,Timber Trail Elementary School,Castle Rock,CO,80108
+1560,8855,Thompson Online,Loveland,CO,80538
+180,8858,Tollgate Elementary School,Aurora,CO,80017
+2000,8876,Tope Elementary School,Grand Junction,CO,81501
+3100,8886,Tozer Elementary School,Windsor,CO,80550
+130,8887,Trails West Elementary School,Centennial,CO,80015
+880,8888,Traylor Elementary School,Denver,CO,80227
+900,8897,Trailblazer Elementary School,Highlands Ranch,CO,80126
+1010,8902,Trailblazer Elementary School,Colorado Springs,CO,80919
+470,8903,Trail Ridge Middle School,Longmont,CO,80501
+1580,8906,Trinidad High School,Trinidad,CO,81082
+880,8909,Trevista Ece-8 At Horace Mann,Denver,CO,80211
+1560,8918,Truscott Elementary School,Loveland,CO,80537
+980,8923,Turman Elementary School,Colorado Springs,CO,80916
+1560,8925,Turner Middle School,Berthoud,CO,80513
+470,8927,Twin Peaks Charter Academy,Longmont,CO,80501
+8001,8929,Pikes Peak Prep,Colorado Springs,CO,80903
+3140,8930,Twombly Elementary School,Fort Lupton,CO,80621
+2730,8960,Underwood Elementary School,Del Norte,CO,81132
+3120,8965,Union Colony Preparatory School,Greeley,CO,80634
+880,8970,University Park Elementary School,Denver,CO,80210
+480,8978,University Hill Elementary School,Boulder,CO,80302
+3000,8993,Upper Blue Elementary School,Breckenridge,CO,80424
+1420,9008,Ute Meadows Elementary School,Littleton,CO,80127
+1030,9010,Ute Pass Elementary School,Chipita Park,CO,80809
+3080,9032,Valley High School,Gilcrest,CO,80623
+10,9036,Valley View K-8,Denver,CO,80221
+880,9050,Valverde Elementary School,Denver,CO,80223
+8001,9051,The Vanguard School (Middle),Colorado Springs,CO,80906
+1420,9052,Van Arsdale Elementary School,Arvada,CO,80005
+1560,9055,Van Buren Elementary School,Loveland,CO,80538
+180,9056,Vanguard Classical School,Denver,CO,80230
+8001,9057,The Vanguard School (High),Colorado Springs,CO,80906
+1420,9058,Vanderhoof Elementary School,Arvada,CO,80004
+180,9059,Vassar Elementary School,Aurora,CO,80013
+180,9060,Vaughn Elementary School,Aurora,CO,80011
+910,9061,Vail Ski And Snowboard Academy (Ussa),Eagle,CO,81631
+3010,9080,Cresson Elementary School,Cripple Creek,CO,80813
+180,9083,Vista Peak P-8 Exploratory,Aurora,CO,80018
+260,9085,V.I.L.A.S. Online School,Vilas,CO,81087
+260,9090,Vilas Elementary School,Vilas,CO,81087
+260,9100,Vilas Undivided High School,Vilas,CO,81087
+130,9108,Village East Community Elementary School,Aurora,CO,80012
+180,9125,Vista Peak 9-12 Preparatory,Aurora,CO,80018
+2700,9130,Vineland Elementary School,Pueblo,CO,81006
+2700,9134,Vineland Middle School,Pueblo,CO,81006
+180,9140,Virginia Court Elementary School,Aurora,CO,80012
+870,9146,North Fork Vision School,Delta,CO,81416
+2180,9149,Vista Charter School,Montrose,CO,81401
+1420,9154,Vivian Elementary School,Lakewood,CO,80215
+1460,9164,Hi Plains Elementary School,Vona,CO,80861
+2690,9188,W H Heaton Middle School,Pueblo,CO,81001
+1410,9198,Walden Elementary School,Walden,CO,80480
+130,9200,Walnut Hills Community Elementary School,Centennial,CO,80112
+1390,9212,John Mall High School,Walsenburg,CO,81089
+230,9222,Walsh Elementary School,Walsh,CO,81090
+230,9226,Walsh High School,Walsh,CO,81090
+1560,9228,Walt Clark Middle School,Loveland,CO,80537
+40,9230,Vikan Middle School,Brighton,CO,80601
+1195,9231,Wamsley Elementary School,Rifle,CO,81650
+1420,9232,Warder Elementary School,Arvada,CO,80005
+1420,9234,Warren Occupation Technical Center,Lakewood,CO,80228
+1420,9245,Warren Tech North,Arvada,CO,80004
+1140,9248,Washington Elementary School,Canon City,CO,81212
+1550,9251,Traut Core Elementary School,Fort Collins,CO,80528
+1560,9260,Harold Ferguson High School,Loveland,CO,80537
+2515,9263,Wiggins Middle School,Wiggins,CO,80654
+2530,9264,Washington Primary School,Rocky Ford,CO,81067
+2660,9268,Washington Elementary School,Lamar,CO,81052
+990,9294,Watson Junior High School,Colorado Springs,CO,80911
+1010,9298,Wasson High School,Colorado Springs,CO,80909
+1420,9299,Wayne Carle Middle School,Westminster,CO,80021
+1420,9328,Weber Elementary School,Arvada,CO,80005
+1550,9330,Webber Middle School,Fort Collins,CO,80526
+990,9334,Webster Elementary School,Colorado Springs,CO,80911
+880,9336,West Denver Prep - Highland Campus,Denver,CO,80211
+1420,9342,Welchester Elementary School,Golden,CO,80401
+3090,9347,Weld Central Junior High School,Keenesburg,CO,80643
+2505,9352,Weldon Valley Elementary School,Weldona,CO,80653
+2505,9356,Weldon Valley Junior High School,Weldona,CO,80653
+2505,9360,Weldon Valley High School,Weldona,CO,80653
+1550,9370,Eyestone Elementary School,Wellington,CO,80549
+1550,9374,Wellington Middle School,Wellington,CO,80549
+1550,9380,Werner Elementary School,Fort Collins,CO,80525
+880,9389,West Denver Prep: Harvey Park Campus,Denver,CO,80219
+880,9390,West Denver Prep - Lake Campus,Denver,CO,80204
+180,9396,Aurora West College Preparatory Academy,Aurora,CO,80010
+1010,9404,West Intergenerational Center,Colorado Springs,CO,80904
+2000,9406,West Middle School,Grand Junction,CO,81505
+880,9408,West High School,Denver,CO,80204
+1420,9412,Westgate Elementary School,Lakewood,CO,80227
+1340,9416,West Grand Elementary School,Kremmling,CO,80459
+1340,9420,West Grand High School,Kremmling,CO,80459
+1340,9422,West Grand Middle School,Kremmling,CO,80459
+1420,9424,West Jefferson Elementary School,Conifer,CO,80433
+880,9425,Westerly Creek Elementary,Denver,CO,80238
+40,9426,West Ridge Elementary,Thornton,CO,80602
+1420,9427,Woodrow Wilson Charter Academy,Westminster,CO,80021
+1420,9428,West Jefferson Middle School,Conifer,CO,80433
+1420,9429,West Woods Elementary School,Arvada,CO,80007
+470,9430,Westview Middle School,Longmont,CO,80503
+20,9431,Westgate Charter,Northglenn,CO,80233
+1420,9432,Dennison Elementary School,Lakewood,CO,80226
+2000,9434,Scenic Elementary School,Grand Junction,CO,81503
+20,9444,Westlake Middle School,Broomfield,CO,80020
+1010,9445,West Elementary School,Colorado Springs,CO,80904
+70,9462,Westminster Elementary School,Westminster,CO,80030
+70,9466,Westminster High School,Westminster,CO,80030
+1510,9486,Westpark Elementary School,Leadville,CO,80461
+1420,9490,Westridge Elementary School,Littleton,CO,80127
+20,9494,Westview Elementary School,Northglenn,CO,80234
+880,9496,Castro Elementary School,Denver,CO,80219
+1420,9506,Wheat Ridge Middle School,Wheat Ridge,CO,80033
+1420,9510,Wheat Ridge High School,Wheat Ridge,CO,80033
+180,9514,Wheeling Elementary School,Aurora,CO,80012
+480,9544,Whittier Elementary School,Boulder,CO,80302
+880,9548,Whittier K-8 School,Denver,CO,80205
+990,9560,Discovery High School,Colorado Springs,CO,80911
+990,9562,Widefield Elementary School,Colorado Springs,CO,80911
+990,9566,Widefield High School,Colorado Springs,CO,80911
+2515,9576,Wiggins Elementary School,Wiggins,CO,80654
+2515,9582,Wiggins High School,Wiggins,CO,80654
+900,9592,Wildcat Mountain Elementary School,Littleton,CO,80124
+140,9600,Wilder Elementary School,Littleton,CO,80123
+980,9602,Wildflower Elementary School,Colorado Springs,CO,80916
+2680,9604,Wiley Elementary School,Wiley,CO,81092
+2680,9608,Wiley Junior-Senior High School,Wiley,CO,81092
+1000,9610,Weikel Elementary School,Colorado Springs,CO,80902
+1010,9618,Rogers Elementary School,Colorado Springs,CO,80910
+120,9620,Wm E Bishop Elementary School,Englewood,CO,80110
+880,9623,William (Bill) Roberts K-8 School,Denver,CO,80238
+130,9624,Willow Creek Elementary School,Centennial,CO,80112
+1420,9638,Wilmore Davis Elementary School,Wheat Ridge,CO,80033
+1420,9648,Wilmot Elementary School,Evergreen,CO,80439
+990,9656,Wilson Preschool,Security,CO,80911
+1010,9660,Wilson Elementary School,Colorado Springs,CO,80915
+3100,9665,Windsor Charter Academy,Windsor,CO,80550
+3100,9670,Windsor Middle School,Windsor,CO,80550
+3100,9672,Windsor High School,Windsor,CO,80550
+2000,9673,Wingate Elementary School,Grand Junction,CO,81503
+1560,9674,Winona Elementary School,Loveland,CO,80537
+1420,9678,Witt Elementary School,Westminster,CO,80021
+20,9682,Woodglen Elementary School,Thornton,CO,80233
+3020,9692,Gateway Elementary School,Woodland Park,CO,80866
+3020,9694,Woodland Park Middle School,Woodland Park,CO,80866
+3020,9696,Woodland Park High School,Woodland Park,CO,80866
+3020,9698,Columbine Elementary School,Woodland Park,CO,80866
+3070,9700,Woodlin Elementary School,Woodrow,CO,80757
+3070,9704,Woodlin Undivided High School,Woodrow,CO,80757
+1110,9706,Woodmen Hills Elementary School,Falcon,CO,80831
+1040,9714,Woodmen-Roberts Elementary School,Colorado Springs,CO,80919
+3210,9725,Wray Elementary School,Wray,CO,80758
+3210,9729,Buchanan Middle School,Wray,CO,80758
+3210,9733,Wray High School,Wray,CO,80758
+880,9739,Wyatt-Edison Charter Elementary School,Denver,CO,80205
+180,9756,Yale Elementary School,Aurora,CO,80013
+2770,9757,Yampa Valley School,Steamboat Springs,CO,80487
+2690,9785,Youth & Family Academy Charter,Pueblo,CO,81008
+3200,9791,Yuma Middle School,Yuma,CO,80759
+3200,9795,Kenneth P Morris Elementary School,Yuma,CO,80759
+9030,9797,Yampah Teen Parent Program,Glenwood Springs,CO,81601
+3200,9799,Yuma High School,Yuma,CO,80759
+1420,9800,Zerger Elementary School,Westminster,CO,80021

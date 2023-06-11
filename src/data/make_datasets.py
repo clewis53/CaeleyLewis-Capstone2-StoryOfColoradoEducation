@@ -49,6 +49,7 @@ KAGGLE_COL_MAP = {'EMH-Combined': 'EMH_combined',
                   'DISTrictNUMBER': 'district_id',
                   'SPF_DIST_NUMBER': 'district_id',
                   'Org. Code': 'district_id',
+                  'Organization Code': 'district_id',
                   'DistrictName': 'district_name',
                   'District Name': 'district_name',
                   'DISTRICT NAME': 'district_name',
@@ -91,7 +92,11 @@ FINAL_MAP = {'AEC_10': 'alternative_school',
 FRL_COL_MAP = {'% FREE AND REDUCED': 'pct_fr'}
 # Remediation DataFrames
 REM_COL_MAP = {'Remediation_AtLeastOne_Pct2010': 'pct_remediation'}
-
+# Address DataFrames
+ADDRESS_COL_DROP = ['Phone', 'Physical Address']
+ADDRESS_COL_MAP = {'Physical City': 'city',
+                  'Physical State': 'state',
+                  'Physical Zipcode': 'zipcode'}
 
 
 def append_path(path, addition):
@@ -184,7 +189,7 @@ def save_dataframes(datasets=[], filenames=[]):
     assert len(datasets) == len(filenames)
     
     for i in range(len(datasets)):
-        datasets[i].to_csv(filenames[i])
+        datasets[i].to_csv(filenames[i], index=False)
     
 
 def make_tall(datasets, id_col=[], id_name='df_id'):
@@ -255,7 +260,7 @@ def make_census(input_filepath, output_filepath, years=(2010, 2011, 2012)):
                               index_col=0)
     
     # save the DataFrames from all saipe files
-    output_filenames = [append_path(output_filepath, f'census/saipe{time}.csv') for time in years]
+    output_filenames = [append_path(output_filepath, f'saipe{time}.csv') for time in years]
     save_dataframes(datasets, output_filenames)
 
 
@@ -353,12 +358,13 @@ def make_kaggle(input_filepath, output_filepath):
     None.
 
     """
-    # make_1yr_3yr_change(input_filepath, output_filepath)
-    # make_coact(input_filepath, output_filepath)
-    # make_enrl_working(input_filepath, output_filepath)
-    # make_final_grade(input_filepath, output_filepath)
-    # make_k_12_frl(input_filepath, output_filepath)
+    make_1yr_3yr_change(input_filepath, output_filepath)
+    make_coact(input_filepath, output_filepath)
+    make_enrl_working(input_filepath, output_filepath)
+    make_final_grade(input_filepath, output_filepath)
+    make_k_12_frl(input_filepath, output_filepath)
     make_remediation(input_filepath, output_filepath)
+    make_school_address(input_filepath, output_filepath)
 
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
@@ -452,7 +458,17 @@ def make_remediation(input_filepath, output_filepath):
 
 
 def make_school_address(input_filepath, output_filepath):
-    pass
+    raw_filenames = create_filenames(input_filepath, '{year}_school_address.csv')
+    
+    ADDRESS_COL_MAP.update(KAGGLE_COL_MAP)
+    
+    datasets = get_dataframes(raw_filenames, 
+                              col_map=ADDRESS_COL_MAP, 
+                              drop_cols=ADDRESS_COL_DROP)
+    
+    output_filenames = create_filenames(output_filepath, 'address{year}.csv')
+    
+    save_dataframes(datasets, output_filenames)
 
     
     
@@ -471,10 +487,10 @@ def main(input_filepath, output_filepath):
     None.
 
     """
-    # make_census(append_path(input_filepath, 'census'), 
-    #                  append_path(output_filepath, 'census'))
-    # make_expenditures(append_path(input_filepath, 'expenditures'), 
-    #                        append_path(output_filepath, 'expenditures'))
+    make_census(append_path(input_filepath, 'census'), 
+                      append_path(output_filepath, 'census'))
+    make_expenditures(append_path(input_filepath, 'expenditures'), 
+                            append_path(output_filepath, 'expenditures'))
     make_kaggle(append_path(input_filepath,'kaggle'), 
                      append_path(output_filepath,'kaggle'))
 
