@@ -389,7 +389,7 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
         for col in direction_cols:
             df[col] = df[col].map(trend_arrow_map)
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
-        df = df.drop(['EMH', 'EMH_combined'], axis=1)
+        df.drop(['EMH', 'EMH_combined'], axis=1, inplace=True)
         
     output_filenames = [append_path(output_filepath, f'1YR_3YR_change{year}.csv') for year in years]
     save_dataframes(datasets, output_filenames)
@@ -424,7 +424,7 @@ def make_final_grade(input_filepath, output_filepath):
     
     for df in datasets:
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
-        df = df.drop(['EMH', 'EMH_combined'], axis=1)
+        df.drop(['EMH', 'EMH_combined'], axis=1, inplace=True)
         
     output_filenames = create_filenames(output_filepath, 'final_grade{year}.csv')    
     save_dataframes(datasets, output_filenames)
