@@ -34,13 +34,26 @@ EXP_DROP_COLS = ['Unnamed: 0']
 # Kaggle dataframes information
 # Standardized column names 
 KAGGLE_COL_MAP = {'School Name': 'school',
+                  'SCHOOL NAME': 'school',
+                  'SPF_SCHOOL_NAME': 'school',
                   'District Number': 'district_id',
+                  'DISTrictNUMBER': 'district_id',
+                  'SPF_DIST_NUMBER': 'district_id',
                   'District Name': 'district_name',
-                  'School Number': 'school_id'}
+                  'DISTRICT NAME': 'district_name',
+                  'SPF_DISTRICT_NAME': 'district_name',
+                  'School Number': 'school_id',
+                  'SCHOOL NUMBER': 'school_id',
+                  'SPF_SCHOOL_NUMBER': 'school_id'}
 # 1YR_3YR_change Dataframes
 CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
+                  'rate_at.5_chng_gro': 'growth_dir',
                   'rate_at.5_chng_growth': 'growth_dir',
-                  'pct_pts_chnge_.5': 'overall_dir'}
+                  'pct_pts_chng_.5': 'overall_dir',
+                  'pct_pts_chnge_.5': 'overall_dir',
+                  'EMH-Combined': 'EMH_combined',
+                  'SPF_EMH_CODE': 'EMH',
+                  'SPF_INCLUDED_EMH_FOR_A': 'EMH_combined'}
 
 
 def append_path(path, addition):
@@ -105,7 +118,8 @@ def get_dataframes(filenames, index_col=None,
         df = pd.read_csv(file, index_col=index_col, header=0)
         df = df.drop(drop_cols, axis=1)
         df = df.drop(drop_rows)
-        df = df.dropna(how='all')
+        df = df.dropna(thresh=len(df.columns)-1)
+        df = df.reset_index(drop=True)
         # Apply column map
         df = df.rename(columns=col_map)
         # Drop all 
@@ -114,19 +128,26 @@ def get_dataframes(filenames, index_col=None,
     
     return datasets
 
+
+def combine_emh(emh, emh_combined):
+    emh_final = [None]*len(emh)
+    for i in range(len(emh_combined)):
+        if i == 2059:
+            return None
+        if emh_combined[i] == np.nan:
+            emh_final[i] = emh_combined[i]
+        else:
+            emh_final[i] = emh[i]
+    
+    return emh_final
+
+
 def save_dataframes(datasets=[], filenames=[]):
     assert len(datasets) == len(filenames)
     
     for i in range(len(datasets)):
         datasets[i].to_csv(filenames[i])
     
-
-
-def super_function(input_filepath, output_filepath, raw_extension, output_extension, transform_function=lambda x:x):
-    raw_filenames = create_filenames(input_filepath, raw_extension)
-    output_filenames = create_filenames(output_filepath, output_extension)
-    
-
 
 def make_tall(datasets, id_col=[], id_name='df_id'):
     """
@@ -169,7 +190,6 @@ def make_tall(datasets, id_col=[], id_name='df_id'):
         
     return tall_df
         
-
 
 def make_tall_census(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     """
@@ -309,7 +329,7 @@ def make_tall_kaggle(input_filepath, output_filepath):
 
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
-    years = 2010, 2011
+    years = 2010, 2011, 2012
     # Load DataFrames
     # The names of the raw files 
     raw_filenames = [append_path(input_filepath, f'{year}_1YR_3YR_change.csv') for year in years]
@@ -332,25 +352,19 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
         df.drop(['EMH', 'EMH_combined'], axis=1)
         
-    output_filenames = [[append_path(output_filepath, f'{year}_1YR_3YR_change.csv') for year in years]]
+    output_filenames = [append_path(output_filepath, f'{year}_1YR_3YR_change.csv') for year in years]
     save_dataframes(datasets, output_filenames)
-    
-
-def combine_emh(emh, emh_combined):
-    emh_final = []
-    for i in range(len(emh)):
-        if emh_combined[i] == np.nan:
-            emh_final.append(emh_combined[i])
-        else:
-            emh_final.append(emh[i])
-    
-    return emh_final
 
 
 def make_coact(input_filepath, output_filepath):
     raw_filenames = create_filenames(input_filepath, '{year}_COACT.csv')
     
-
+    datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP)
+    
+    output_filenames = create_filenames(output_filepath, '{year}_COACT_csv')
+    
+    save_dataframes(datasets, output_filenames)
+    
 def make_enrl_working(datasets=[]):
     pass
 
