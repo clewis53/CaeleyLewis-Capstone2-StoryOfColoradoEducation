@@ -41,9 +41,12 @@ KAGGLE_COL_MAP = {'School Name': 'school',
                   'District Number': 'district_id',
                   'DISTrictNUMBER': 'district_id',
                   'SPF_DIST_NUMBER': 'district_id',
+                  'Org. Code': 'district_id',
                   'District Name': 'district_name',
                   'DISTRICT NAME': 'district_name',
                   'SPF_DISTRICT_NAME': 'district_name',
+                  'Organization Name': 'district_name',
+                  'School Code': 'school_id',
                   'School Number': 'school_id',
                   'SCHOOL NUMBER': 'school_id',
                   'School No': 'school_id',
@@ -57,6 +60,22 @@ CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
                   'EMH-Combined': 'EMH_combined',
                   'SPF_EMH_CODE': 'EMH',
                   'SPF_INCLUDED_EMH_FOR_A': 'EMH_combined'}
+# Final_Grade Dataframes
+FINAL_DROP = ['EMH_2lvl', 'LT100pnts']
+FINAL_MAP = {'AEC_10': 'alternative_school',
+             'INITIAL_PlanType': 'initial_plan',
+             'FINAL_PlanType': 'final_plan', 
+             'rank_tot': 'rank', 
+             'Overall_ACH_Grade': 'overall_achievement',
+             'Read_Ach_Grade': 'read_achievement',
+             'Math_Ach_Grade': 'math_achievement',
+             'Write_Ach_Grade': 'write_achievement',
+             'Sci_Ach_Grade': 'science_achievment',
+             'Overall_Weighted_Growth_Grade': 'overall_weighted_growth',
+             'Read_Growth_Grade': 'read_growth',
+             'Math_Growth_Grade': 'math_growth',
+             'Write_Growth_Grade': 'write_growth',
+             'SPF_PS_IND_GRAD_RATE': 'graduation_rate'}
 
 
 def append_path(path, addition):
@@ -121,7 +140,7 @@ def get_dataframes(filenames, index_col=None,
         df = pd.read_csv(file, index_col=index_col, header=0)
         df = df.drop(drop_cols, axis=1)
         df = df.drop(drop_rows)
-        df = df.dropna(thresh=len(df.columns)-1)
+        df = df.dropna(how='all')
         df = df.reset_index(drop=True)
         # Apply column map
         df = df.rename(columns=col_map)
@@ -318,8 +337,8 @@ def make_kaggle(input_filepath, output_filepath):
     None.
 
     """
-    make_1yr_3yr_change(input_filepath, output_filepath)
-    make_coact(input_filepath, output_filepath)
+    # make_1yr_3yr_change(input_filepath, output_filepath)
+    # make_coact(input_filepath, output_filepath)
     make_enrl_working(input_filepath, output_filepath)
 
 
@@ -347,7 +366,7 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
         df.drop(['EMH', 'EMH_combined'], axis=1)
         
-    output_filenames = [append_path(output_filepath, f'{year}_1YR_3YR_change.csv') for year in years]
+    output_filenames = [append_path(output_filepath, f'1YR_3YR_change{year}.csv') for year in years]
     save_dataframes(datasets, output_filenames)
 
 
@@ -356,13 +375,19 @@ def make_coact(input_filepath, output_filepath):
     
     datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP)
     
-    output_filenames = create_filenames(output_filepath, '{year}_COACT_csv')
+    output_filenames = create_filenames(output_filepath, 'COACT{year}.csv')
     
     save_dataframes(datasets, output_filenames)
     
     
 def make_enrl_working(input_filepath, output_filepath):
-    pass
+    raw_filenames = create_filenames(input_filepath, '{year}_enrl_working.csv')
+    
+    datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP)
+    
+    output_filenames = create_filenames(output_filepath, 'enrl_working{year}.csv')
+    
+    save_dataframes(datasets, output_filenames)
 
 
 def make_final_grade(input_filepath, output_filepath):
