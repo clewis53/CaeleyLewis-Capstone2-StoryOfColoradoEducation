@@ -295,7 +295,7 @@ def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012))
     transformed_datasets = [transform_expenditure_df(df) for df in datasets]
     
     # Save all transformed datasets
-    output_filenames = [append_path(output_filepath, f'expenditures/expenditures{time}.csv') for time in years]
+    output_filenames = [append_path(output_filepath, f'expenditures{time}.csv') for time in years]
     save_dataframes(transformed_datasets, output_filenames)
 
     
@@ -304,9 +304,9 @@ def transform_expenditure_df(df):
     df = df.dropna(how='all')
     
     # All numbers have commas in them that need to be removed
-    df = df.replace(',', '', regex=True)
-    df = df.replace('(', '', regex=True)
-    df = df.replace(')', '', regex=True)
+    df = df.replace(',', '')
+    df = df.replace('(', '')
+    df = df.replace(')', '')
     
     # The district_name column has numbers that were relevant to the BOCES funding but not our project.
     # We want to be able to identify each of those and remove them.
