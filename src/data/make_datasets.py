@@ -302,12 +302,9 @@ def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012))
     
     
 def transform_expenditure_df(df):
-    df = df.dropna(how='all')
     
     # All numbers have commas in them that need to be removed
-    df = df.replace(',', '')
-    df = df.replace('(', '')
-    df = df.replace(')', '')
+    df = df.replace({',': '', '\(': '', '\)': ''}, regex=True)
     
     # The district_name column has numbers that were relevant to the BOCES funding but not our project.
     # We want to be able to identify each of those and remove them.
@@ -421,8 +418,7 @@ def make_final_grade(input_filepath, output_filepath):
     FINAL_COL_MAP.update(KAGGLE_COL_MAP)    
     datasets = get_dataframes(raw_filenames, 
                               index_col=None, 
-                              col_map=FINAL_COL_MAP,
-                              drop_cols=FINAL_COL_DROP)     
+                              col_map=FINAL_COL_MAP)     
     
     for df in datasets:
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
