@@ -175,8 +175,6 @@ def get_dataframes(filenames, index_col=None,
 def combine_emh(emh, emh_combined):
     emh_final = [None]*len(emh)
     for i in range(len(emh_combined)):
-        if i == 2059:
-            return None
         if emh_combined[i] == np.nan:
             emh_final[i] = emh_combined[i]
         else:
