@@ -381,9 +381,9 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
                               col_map=CHANGE_COL_MAP)     
 
     # A map to apply to each column that makes more sense than 1,2,3
-    trend_arrow_map = {1: 'down',
-                       2: 'flat',
-                       3: 'up'}
+    trend_arrow_map = {1: '-1',
+                       2: '0',
+                       3: '1'}
     # The column to apply the map to
     direction_cols = ['achievement_dir','growth_dir','overall_dir']
     
