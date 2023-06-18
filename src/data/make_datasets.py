@@ -173,14 +173,20 @@ def get_dataframes(filenames, index_col=None,
 
 
 def combine_emh(emh, emh_combined):
-    emh_final = [None]*len(emh)
-    for i in range(len(emh_combined)):
-        if emh_combined[i] == np.nan:
-            emh_final[i] = emh_combined[i]
-        else:
-            emh_final[i] = emh[i]
+    # emh_final = [None]*len(emh)
+    # for i in range(len(emh_combined)):
+    #     if emh_combined[i] == None:
+    #         emh_final[i] = emh[i]
+    #     else:
+    #         emh_final[i] = emh_combined[i]
     
-    return emh_final
+    # return emh_final
+    def fill_func(x, y):
+        if len(x) > len(y):
+            return x
+        return y
+    
+    return emh.astype('string').fillna('').combine(emh_combined.astype('string').fillna(''), func=fill_func)
 
 
 def save_dataframes(datasets=[], filenames=[]):
