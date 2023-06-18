@@ -1,4 +1,4 @@
-schoolname,district_id,districtname,emh,schoolnumber,alternative_school,charter,online,initial_plan,final_plan,notes,emh_2lvl,lt100pnts,school_grade,rank,overall_achievement,read_achievement,math_achievement,write_achievement,science_achievment,overall_weighted_growth,read_growth,math_growth,write_growth,graduation_rate
+school,district_id,district_name,emh,school_id,alternative_school,charter,online,initial_plan,final_plan,notes,emh_2lvl,lt100pnts,school_grade,rank,overall_achievement,read_achievement,math_achievement,write_achievement,science_achievment,overall_weighted_growth,read_growth,math_growth,write_growth,graduation_rate
 BEAR CREEK ELEMENTARY SCHOOL,480,BOULDER VALLEY RE 2,E,652,0.0,0.0,0.0,Performance Plan,Performance Plan,,1,0,13.0,1.0,13.0,12.0,13.0,12.0,12.0,13.0,12.0,12.0,12.0,
 CHERRY HILLS VILLAGE ELEMENTARY SCHOOL,130,CHERRY CREEK 5,E,1574,0.0,0.0,0.0,Performance Plan,Performance Plan,,1,0,13.0,1.0,12.0,12.0,12.0,13.0,12.0,13.0,13.0,12.0,13.0,
 CHEYENNE MOUNTAIN ELEMENTARY SCHOOL,1020,CHEYENNE MOUNTAIN 12,E,1586,0.0,0.0,0.0,Performance Plan,Performance Plan,,1,0,13.0,1.0,13.0,12.0,12.0,13.0,12.0,12.0,9.0,10.0,12.0,
