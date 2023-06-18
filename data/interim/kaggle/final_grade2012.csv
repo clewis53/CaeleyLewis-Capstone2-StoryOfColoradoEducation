@@ -1,4 +1,4 @@
-record_no,district code,district_name,school_id,school,emh,aec10,spf_ps_ell_grad_rate,school_grade,rank,overall_ach_grade,read_achievement,math_achievement,write_achievement,science_achievment,overall_weighted_growth,read_growth,math_growth,write_growth,ell_growth_grade,graduation_rate
+record_no,district_id,district_name,school_id,school,emh,aec10,spf_ps_ell_grad_rate,school_grade,rank,overall_ach_grade,read_achievement,math_achievement,write_achievement,science_achievment,overall_weighted_growth,read_growth,math_growth,write_growth,ell_growth_grade,graduation_rate
 1,1040,ACADEMY 20,17,ACADEMY ENDEAVOUR ELEMENTARY SCHOOL,E,N,,7.0,410.0,9.0,9.0,9.0,9.0,9.0,7.0,7.0,7.0,7.0,,
 2,1040,ACADEMY 20,19,ACADEMY INTERNATIONAL ELEMENTARY SCHOOL,E,N,,12.0,44.0,12.0,12.0,10.0,11.0,12.0,11.0,12.0,11.0,7.0,,
 3,1040,ACADEMY 20,110,ACADEMY ONLINE HIGH SCHOOL,H,N,-,,,,,,,,,,,,,-
