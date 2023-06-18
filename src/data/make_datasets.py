@@ -407,6 +407,18 @@ def make_coact(input_filepath, output_filepath):
     
     datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP)
     
+    # A map to apply to each column that makes more sense than 1,2
+    readiness_map = {1: 1,
+                     2: 0,
+                     0: 0}
+    # The column to apply the map to
+    direction_cols = ['eng_yn','math_yn','read_yn','sci_yn']
+    
+    for df in datasets:
+        # df[direction_cols] = df[direction_cols].fillna(-1).astype('int')
+        for col in direction_cols:
+            df[col] = df[col].map(readiness_map)
+    
     output_filenames = create_filenames(output_filepath, 'COACT{year}.csv')
     
     save_dataframes(datasets, output_filenames)
