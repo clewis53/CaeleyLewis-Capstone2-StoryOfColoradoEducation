@@ -1,4 +1,4 @@
-school_id,school,city,state,zipcode,LowestGrade,Unnamed: 8,School Type,district_id,district_name,District Size,District Setting
+school_id,school,city,state,zipcode,lowestgrade,unnamed: 8,school type,district_id,district_name,district size,district setting
 10,ABRAHAM LINCOLN HIGH SCHOOL,DENVER,CO,80219,9th Grade,12th Grade,Senior,880,DENVER COUNTY 1,"Over 25,000",Denver Metro
 11,ACADEMY CHARTER SCHOOL,CASTLE ROCK,CO,80104,Kindergarten,9th Grade,Elementary,900,DOUGLAS COUNTY RE 1,"6,001 - 25,000",Denver Metro
 12,ACRES GREEN ELEMENTARY SCHOOL,LITTLETON,CO,80124,Preschool,6th Grade,Elementary,900,DOUGLAS COUNTY RE 1,"6,001 - 25,000",Denver Metro
