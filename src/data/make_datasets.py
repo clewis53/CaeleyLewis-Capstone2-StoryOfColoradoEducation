@@ -181,13 +181,16 @@ def combine_emh(emh, emh_combined):
     #         emh_final[i] = emh_combined[i]
     
     # return emh_final
-    def fill_func(x, y):
-        if len(x) > len(y):
-            return x
-        return y
+    # def fill_func(x, y):
+    #     if y == '':
+    #         return x
+    #     if len(x) > len(y):
+    #         return x
+    #     return y
     
-    return emh.astype('string').fillna('').combine(emh_combined.astype('string').fillna(''), func=fill_func)
-
+    # return emh.astype('string').fillna('').combine(emh_combined.astype('string').fillna(''), func=fill_func)
+    
+    return emh
 
 def save_dataframes(datasets=[], filenames=[]):
     assert len(datasets) == len(filenames)
@@ -393,6 +396,8 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
         df['emh'] = combine_emh(df['EMH'], df['EMH_combined'])
         df.drop(['EMH', 'EMH_combined'], axis=1, inplace=True)
         
+    
+    
     output_filenames = [append_path(output_filepath, f'1YR_3YR_change{year}.csv') for year in years]
     save_dataframes(datasets, output_filenames)
 
