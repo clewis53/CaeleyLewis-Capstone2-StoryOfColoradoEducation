@@ -422,7 +422,7 @@ def make_coact(input_filepath, output_filepath):
     direction_cols = ['eng_yn','math_yn','read_yn','sci_yn']
     
     for df in datasets:
-        # df[direction_cols] = df[direction_cols].fillna(-1).astype('int')
+        df.drop(df[df['school']=='DISTRICT RESULTS'].index, inplace=True)
         for col in direction_cols:
             df[col] = df[col].map(readiness_map)
     
