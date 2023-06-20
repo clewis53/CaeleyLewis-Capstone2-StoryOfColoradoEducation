@@ -45,6 +45,7 @@ KAGGLE_COL_MAP = {'EMH-Combined': 'EMH_combined',
                   '2010 School Name': 'school',
                   'SPF_SCHOOL_NAME': 'school',
                   'District Code': 'district_id',
+                  'DISTRICT CODE': 'district_id',
                   'DistrictNumber': 'district_id',
                   'District No': 'district_id',
                   'District Number': 'district_id',
@@ -64,6 +65,7 @@ KAGGLE_COL_MAP = {'EMH-Combined': 'EMH_combined',
                   'SchoolNumber': 'school_id',
                   'SCHOOLNUMBER': 'school_id',
                   'School Code': 'school_id',
+                  'SCHOOL CODE': 'school_id',
                   'School Number': 'school_id',
                   'SCHOOL NUMBER': 'school_id',
                   'School No': 'school_id',
@@ -462,6 +464,7 @@ def make_k_12_frl(input_filepath, output_filepath):
     datasets = get_dataframes(raw_filenames, col_map=FRL_COL_MAP)
     
     for df in datasets:
+        df.drop([len(df)-2, len(df)-1], inplace=True)
         df['pct_fr'] = df['pct_fr'].str.replace('%','').astype('float') / 100
     
     output_filenames = create_filenames(output_filepath, 'FRL{year}.csv')
