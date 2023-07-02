@@ -69,8 +69,28 @@ CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
                   'pct_pts_chnge_.5': 'overall_dir'}
 # COACT DataFrames
 COACT_COL_DROP = ['district_name']
+# Enrl_working DataFrames
+ENRL_COL_DROP = ['unnamed: 12', 'unnamed: 13',	'unnamed: 14']
 # Final_Grade Dataframes
-FINAL_COL_DROP = ['emh_2lvl', 'LT100pnts']
+FINAL_COL_DROP = ['emh_2lvl', 
+                  'LT100pnts', 
+                  'aec10',
+                  'alternative_school',
+                  'charter',
+                  'charteroronline',
+                  'ell_growth_grade',
+                  'emh_2lvl',
+                  'final_plan',
+                  'highestgrade',
+                  'initial_plan',
+                  'lowestgrade',
+                  'lt100pnts',
+                  'notes',
+                  'online',
+                  'overall_ach_grade',
+                  'overall_achievement',
+                  'record_no',
+                  'spf_ps_ell_grad_rate']
 FINAL_COL_MAP = {'aec_10': 'alternative_school',
                  'initial_plantype': 'initial_plan',
                  'final_plantype': 'final_plan', 
@@ -87,8 +107,10 @@ FINAL_COL_MAP = {'aec_10': 'alternative_school',
                  'write_growth_grade': 'write_growth',
                  'spf_ps_ind_grad_rate': 'graduation_rate'}
 # FRL Dataframes
+FRL_COL_DROP = ['unnamed: 5', 'unnamed: 6', 'unnamed: 7']
 FRL_COL_MAP = {'% free and reduced': 'pct_fr'}
 # Remediation DataFrames
+REM_COL_DROP = ['unnamed: 5', 'this is 2011 data: created nov 7, 2012', 'public_private']
 REM_COL_MAP = {'remediation_atleastone_pct2010': 'pct_remediation',
                'remediation_at_leastone_pct2010': 'pct_remediation'}
 # Address DataFrames
@@ -417,7 +439,10 @@ def make_coact(input_filepath, output_filepath):
     direction_cols = ['eng_yn','math_yn','read_yn','sci_yn']
     
     for df in datasets:
-        df.drop(df[df['school']=='DISTRICT RESULTS'].index, inplace=True)
+        # Find entries with state results
+        dist_res = df['school']=='DISTRICT RESULTS'
+        state_res = df['district_id'] == 0
+        df.drop(df[dist_res | state_res].index, inplace=True)
         for col in direction_cols:
             df[col] = df[col].map(readiness_map)
     
@@ -429,7 +454,7 @@ def make_coact(input_filepath, output_filepath):
 def make_enrl_working(input_filepath, output_filepath):
     raw_filenames = create_filenames(input_filepath, '{year}_enrl_working.csv')
     
-    datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP)
+    datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP, drop_cols=ENRL_COL_DROP)
     
     output_filenames = create_filenames(output_filepath, 'enrl_working{year}.csv')
     
@@ -441,7 +466,8 @@ def make_final_grade(input_filepath, output_filepath):
     FINAL_COL_MAP.update(KAGGLE_COL_MAP)    
     datasets = get_dataframes(raw_filenames, 
                               index_col=None, 
-                              col_map=FINAL_COL_MAP)     
+                              col_map=FINAL_COL_MAP,
+                              drop_cols=FINAL_COL_DROP)     
     
     for df in datasets:
         df.drop(['emh_combined'], axis=1, inplace=True)
@@ -455,7 +481,9 @@ def make_k_12_frl(input_filepath, output_filepath):
     
     FRL_COL_MAP.update(KAGGLE_COL_MAP)
     
-    datasets = get_dataframes(raw_filenames, col_map=FRL_COL_MAP)
+    datasets = get_dataframes(raw_filenames, 
+                              col_map=FRL_COL_MAP,
+                              drop_cols=FRL_COL_DROP)
     
     for df in datasets:
         df.drop([len(df)-2, len(df)-1], inplace=True)
@@ -471,13 +499,18 @@ def make_remediation(input_filepath, output_filepath):
     
     REM_COL_MAP.update(KAGGLE_COL_MAP)
     
-    datasets = get_dataframes(raw_filenames, col_map=REM_COL_MAP)
+    datasets = get_dataframes(raw_filenames, 
+                              col_map=REM_COL_MAP,
+                              drop_cols=['unnamed: 5', 'this is 2011 data: created nov 7, 2012', 'public_private'])
+    
     
     for df in datasets:
+        # Remove percentage signs only where applicable
         try:
             df['pct_remediation'] = df['pct_remediation'].str.replace('%', '').astype('float') / 100
         except AttributeError:
             pass
+        
     
     output_filenames = create_filenames(output_filepath, 'remediation{year}.csv')
     
