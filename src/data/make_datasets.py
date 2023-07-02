@@ -67,23 +67,25 @@ CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
                   'rate_at.5_chng_growth': 'growth_dir',
                   'pct_pts_chng_.5': 'overall_dir',
                   'pct_pts_chnge_.5': 'overall_dir'}
+# COACT DataFrames
+COACT_COL_DROP = ['district_name']
 # Final_Grade Dataframes
 FINAL_COL_DROP = ['emh_2lvl', 'LT100pnts']
 FINAL_COL_MAP = {'aec_10': 'alternative_school',
-             'initial_plantype': 'initial_plan',
-             'final_plantype': 'final_plan', 
-             'rank_tot': 'rank',
-             'overall_ach_grade': 'overall_achievement',
-             'read_ach_grade': 'read_achievement',
-             'read_ach_grade': 'read_achievement',
-             'math_ach_grade': 'math_achievement',
-             'write_ach_grade': 'write_achievement',
-             'sci_ach_grade': 'science_achievment',
-             'overall_weighted_growth_grade': 'overall_weighted_growth',
-             'read_growth_grade': 'read_growth',
-             'math_growth_grade': 'math_growth',
-             'write_growth_grade': 'write_growth',
-             'spf_ps_ind_grad_rate': 'graduation_rate'}
+                 'initial_plantype': 'initial_plan',
+                 'final_plantype': 'final_plan', 
+                 'rank_tot': 'rank',
+                 'overall_ach_grade': 'overall_achievement',
+                 'read_ach_grade': 'read_achievement',
+                 'read_ach_grade': 'read_achievement',
+                 'math_ach_grade': 'math_achievement',
+                 'write_ach_grade': 'write_achievement',
+                 'sci_ach_grade': 'science_achievment',
+                 'overall_weighted_growth_grade': 'overall_weighted_growth',
+                 'read_growth_grade': 'read_growth',
+                 'math_growth_grade': 'math_growth',
+                 'write_growth_grade': 'write_growth',
+                 'spf_ps_ind_grad_rate': 'graduation_rate'}
 # FRL Dataframes
 FRL_COL_MAP = {'% free and reduced': 'pct_fr'}
 # Remediation DataFrames
@@ -151,32 +153,54 @@ def get_dataframes(filenames, index_col=None,
     datasets = []
     for file in filenames:
         # Instructs pandas not to recreate the index column,
-        # to use the first row as column names,
-        # drop the specifi columns
-        # drop the specific rows
-        # and remove rows with no data in them
         df = pd.read_csv(file, index_col=index_col, header=0)
+        # Lower all column names to make renaming and dropping easier
         df.columns = df.columns.str.lower()
-        df = df.drop(drop_cols, axis=1)
+        # Drop specified Columns, sometimes they won't exist, and we don't want to raise errors
+        # Drop specified rows
         df = df.drop(drop_rows)
+        # Drop any rows that contain no data
         df = df.dropna(how='all')
+        # Reset the index
         df = df.reset_index(drop=True)
         # Apply column map        
-        df = df.rename(columns=col_map)         
+        df = df.rename(columns=col_map)
+        # Drop columns
+        df = df.drop(drop_cols, axis=1, errors='ignore')         
         
         datasets.append(df)
     
     return datasets
 
 
-
-
 def save_dataframes(datasets=[], filenames=[]):
-    assert len(datasets) == len(filenames)
+    """
+    Saves a set of data to the specified location
+
+    Parameters
+    ----------
+    datasets : list(DatFrame), optional
+        The DataFrames to save. The default is [].
+    filenames : list(String), optional
+        A list of filenames. The default is [].
+
+    Returns
+    -------
+    None.
+
+    """
+    # Ensure the length of datasets and filenames is the same
+    # before continuing
+    try: 
+        assert len(datasets) == len(filenames)
     
-    for i in range(len(datasets)):
-        datasets[i].to_csv(filenames[i], index=False)
-    
+        for i in range(len(datasets)):
+            datasets[i].to_csv(filenames[i], index=False)
+    except AssertionError:
+        print('The datasets could not be saved because', 
+              f'the length of datasets was {len(datasets)}',
+              f'and length of filenames was {len(filenames)}', 
+              sep='\n')
 
 def make_tall(datasets, id_col=[], id_name='df_id'):
     """
@@ -383,7 +407,7 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
 def make_coact(input_filepath, output_filepath):
     raw_filenames = create_filenames(input_filepath, '{year}_COACT.csv')
     
-    datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP)
+    datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP, drop_cols=COACT_COL_DROP)
     
     # A map to apply to each column that makes more sense than 1,2
     readiness_map = {1: 1,
