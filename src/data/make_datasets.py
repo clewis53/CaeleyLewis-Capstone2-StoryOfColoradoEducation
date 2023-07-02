@@ -11,65 +11,56 @@ from pathlib import Path
 
 # CENSUS dataframe information
 # specifies readable column names
-CENSUS_COL_MAP = {'SD_NAME': 'district_name',
-                 'SAEPOV5_17RV_PT': 'est_child_poverty',
-                 'SAEPOV5_17V_PT': 'est_total_child',
-                 'SAEPOVALL_PT': 'est_total_pop',
+CENSUS_COL_MAP = {'sd_name': 'district_name',
+                 'saepov5_17rv_pt': 'est_child_poverty',
+                 'saepov5_17v_pt': 'est_total_child',
+                 'saepovall_pt': 'est_total_pop',
                  'time': 'year'}
 # specifies columns to drop
 CENSUS_DROP_COLS = ['state', 'school district (unified)']
 
 # Expenditures dataframe information
 # Readable column names
-EXP_COL_MAP = {'Unnamed: 1': 'county',
-               'DISTRICT/': 'district_name',
-               'Unnamed: 3': 'instruction',
-               'Total': 'support',
-               'Unnamed: 5': 'community',
-               'Unnamed: 6': 'other',
-               'Unnamed: 7': 'sum'}
+EXP_COL_MAP = {'unnamed: 1': 'county',
+               'district/': 'district_name',
+               'unnamed: 3': 'instruction',
+               'total': 'support',
+               'unnamed: 5': 'community',
+               'unnamed: 6': 'other',
+               'unnamed: 7': 'sum'}
 # Columns that won't be used
-EXP_DROP_COLS = ['Unnamed: 0']
+EXP_DROP_COLS = ['unnamed: 0']
 
 # Kaggle dataframes information
 # Standardized column names 
-KAGGLE_COL_MAP = {'EMH-Combined': 'EMH_combined',
-                  'EMH_Combined': 'EMH_combined',
-                  'SPF_EMH_CODE': 'EMH',
-                  'SPF_INCLUDED_EMH_FOR_A': 'EMH_combined',
-                  'School_Name': 'school',
-                  'SchoolName': 'school',
-                  'SCHOOLNAME': 'school',
-                  'School Name': 'school',
-                  'SCHOOL NAME': 'school',
-                  '2010 School Name': 'school',
-                  'SPF_SCHOOL_NAME': 'school',
-                  'District Code': 'district_id',
-                  'DISTRICT CODE': 'district_id',
-                  'DistrictNumber': 'district_id',
-                  'District No': 'district_id',
-                  'District Number': 'district_id',
-                  'DISTrictNUMBER': 'district_id',
-                  'SPF_DIST_NUMBER': 'district_id',
-                  'Org. Code': 'district_id',
-                  'Organization Code': 'district_id',
-                  'DistrictName': 'district_name',
-                  'DISTRICTNAME': 'district_name',
-                  'District Name': 'district_name',
-                  'DISTRICT NAME': 'district_name',
-                  'SPF_DISTRICT_NAME': 'district_name',
-                  'Organization Name': 'district_name',
-                  'School_District': 'district_name',
-                  'School_Districte': 'district_name',
-                  'Schoolnumber': 'school_id',
-                  'SchoolNumber': 'school_id',
-                  'SCHOOLNUMBER': 'school_id',
-                  'School Code': 'school_id',
-                  'SCHOOL CODE': 'school_id',
-                  'School Number': 'school_id',
-                  'SCHOOL NUMBER': 'school_id',
-                  'School No': 'school_id',
-                  'SPF_SCHOOL_NUMBER': 'school_id'}
+KAGGLE_COL_MAP = {'emh-combined': 'emh_combined',
+                  'emh_combined': 'emh_combined',
+                  'spf_emh_code': 'emh',
+                  'spf_included_emh_for_a': 'emh_combined',
+                  'school_name': 'school',
+                  'schoolname': 'school',
+                  'school name': 'school',
+                  '2010 school name': 'school',
+                  'spf_school_name': 'school',
+                  'district code': 'district_id',
+                  'districtnumber': 'district_id',
+                  'district no': 'district_id',
+                  'district number': 'district_id',
+                  'districtnumber': 'district_id',
+                  'spf_dist_number': 'district_id',
+                  'org. code': 'district_id',
+                  'organization code': 'district_id',
+                  'districtname': 'district_name',
+                  'district name': 'district_name',
+                  'spf_district_name': 'district_name',
+                  'organization name': 'district_name',
+                  'school_district': 'district_name',
+                  'school_districte': 'district_name',
+                  'schoolnumber': 'school_id',
+                  'school code': 'school_id',
+                  'school number': 'school_id',
+                  'school no': 'school_id',
+                  'spf_school_number': 'school_id'}
 # 1YR_3YR_change Dataframes
 CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
                   'rate_at.5_chng_gro': 'growth_dir',
@@ -77,33 +68,32 @@ CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
                   'pct_pts_chng_.5': 'overall_dir',
                   'pct_pts_chnge_.5': 'overall_dir'}
 # Final_Grade Dataframes
-FINAL_COL_DROP = ['EMH_2lvl', 'LT100pnts']
-FINAL_COL_MAP = {'AEC_10': 'alternative_school',
-             'INITIAL_PlanType': 'initial_plan',
-             'FINAL_PlanType': 'final_plan', 
+FINAL_COL_DROP = ['emh_2lvl', 'LT100pnts']
+FINAL_COL_MAP = {'aec_10': 'alternative_school',
+             'initial_plantype': 'initial_plan',
+             'final_plantype': 'final_plan', 
              'rank_tot': 'rank',
-             'Overall_ACH_Grade': 'overall_achievement',
+             'overall_ach_grade': 'overall_achievement',
              'read_ach_grade': 'read_achievement',
-             'Read_Ach_Grade': 'read_achievement',
-             'Math_Ach_Grade': 'math_achievement',
+             'read_ach_grade': 'read_achievement',
              'math_ach_grade': 'math_achievement',
-             'Write_Ach_Grade': 'write_achievement',
-             'Sci_Ach_Grade': 'science_achievment',
-             'Overall_Weighted_Growth_Grade': 'overall_weighted_growth',
-             'Read_Growth_Grade': 'read_growth',
-             'Math_Growth_Grade': 'math_growth',
-             'Write_Growth_Grade': 'write_growth',
-             'SPF_PS_IND_GRAD_RATE': 'graduation_rate'}
+             'write_ach_grade': 'write_achievement',
+             'sci_ach_grade': 'science_achievment',
+             'overall_weighted_growth_grade': 'overall_weighted_growth',
+             'read_growth_grade': 'read_growth',
+             'math_growth_grade': 'math_growth',
+             'write_growth_grade': 'write_growth',
+             'spf_ps_ind_grad_rate': 'graduation_rate'}
 # FRL Dataframes
-FRL_COL_MAP = {'% FREE AND REDUCED': 'pct_fr'}
+FRL_COL_MAP = {'% free and reduced': 'pct_fr'}
 # Remediation DataFrames
-REM_COL_MAP = {'Remediation_AtLeastOne_Pct2010': 'pct_remediation',
-               'Remediation_at_leastone_pct2010': 'pct_remediation'}
+REM_COL_MAP = {'remediation_atleastone_pct2010': 'pct_remediation',
+               'remediation_at_leastone_pct2010': 'pct_remediation'}
 # Address DataFrames
-ADDRESS_COL_DROP = ['Phone', 'Physical Address']
-ADDRESS_COL_MAP = {'Physical City': 'city',
-                  'Physical State': 'state',
-                  'Physical Zipcode': 'zipcode'}
+ADDRESS_COL_DROP = ['phone', 'physical address']
+ADDRESS_COL_MAP = {'physical city': 'city',
+                  'physical state': 'state',
+                  'physical zipcode': 'zipcode'}
 
 
 def append_path(path, addition):
@@ -166,14 +156,13 @@ def get_dataframes(filenames, index_col=None,
         # drop the specific rows
         # and remove rows with no data in them
         df = pd.read_csv(file, index_col=index_col, header=0)
+        df.columns = df.columns.str.lower()
         df = df.drop(drop_cols, axis=1)
         df = df.drop(drop_rows)
         df = df.dropna(how='all')
         df = df.reset_index(drop=True)
-        # Apply column map
-        df = df.rename(columns=col_map)
-        df.columns = df.columns.str.lower()
-        # Drop all 
+        # Apply column map        
+        df = df.rename(columns=col_map)         
         
         datasets.append(df)
     
