@@ -169,25 +169,7 @@ def get_dataframes(filenames, index_col=None,
     return datasets
 
 
-def combine_emh(emh, emh_combined):
-    # emh_final = [None]*len(emh)
-    # for i in range(len(emh_combined)):
-    #     if emh_combined[i] == None:
-    #         emh_final[i] = emh[i]
-    #     else:
-    #         emh_final[i] = emh_combined[i]
-    
-    # return emh_final
-    # def fill_func(x, y):
-    #     if y == '':
-    #         return x
-    #     if len(x) > len(y):
-    #         return x
-    #     return y
-    
-    # return emh.astype('string').fillna('').combine(emh_combined.astype('string').fillna(''), func=fill_func)
-    
-    return emh
+
 
 def save_dataframes(datasets=[], filenames=[]):
     assert len(datasets) == len(filenames)
@@ -390,7 +372,6 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
     for df in datasets:
         for col in direction_cols:
             df[col] = df[col].map(trend_arrow_map)
-        df['emh'] = combine_emh(df['emh'], df['emh_combined'])
         df.drop(['emh_combined'], axis=1, inplace=True)
         
     
@@ -439,7 +420,6 @@ def make_final_grade(input_filepath, output_filepath):
                               col_map=FINAL_COL_MAP)     
     
     for df in datasets:
-        df['emh'] = combine_emh(df['emh'], df['emh_combined'])
         df.drop(['emh_combined'], axis=1, inplace=True)
         
     output_filenames = create_filenames(output_filepath, 'final_grade{year}.csv')    
