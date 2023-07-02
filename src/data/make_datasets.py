@@ -97,7 +97,8 @@ FINAL_COL_MAP = {'AEC_10': 'alternative_school',
 # FRL Dataframes
 FRL_COL_MAP = {'% FREE AND REDUCED': 'pct_fr'}
 # Remediation DataFrames
-REM_COL_MAP = {'Remediation_AtLeastOne_Pct2010': 'pct_remediation'}
+REM_COL_MAP = {'Remediation_AtLeastOne_Pct2010': 'pct_remediation',
+               'Remediation_at_leastone_pct2010': 'pct_remediation'}
 # Address DataFrames
 ADDRESS_COL_DROP = ['Phone', 'Physical Address']
 ADDRESS_COL_MAP = {'Physical City': 'city',
@@ -478,6 +479,12 @@ def make_remediation(input_filepath, output_filepath):
     REM_COL_MAP.update(KAGGLE_COL_MAP)
     
     datasets = get_dataframes(raw_filenames, col_map=REM_COL_MAP)
+    
+    for df in datasets:
+        try:
+            df['pct_remediation'] = df['pct_remediation'].str.replace('%', '').astype('float') / 100
+        except AttributeError:
+            pass
     
     output_filenames = create_filenames(output_filepath, 'remediation{year}.csv')
     
