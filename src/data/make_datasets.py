@@ -8,6 +8,9 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 
+#
+NO_FILL = ['school', 'school_id', 'district_name', 'district_id']
+
 
 # CENSUS dataframe information
 # specifies readable column names
@@ -342,9 +345,9 @@ def fill_back_forward(datasets, merge_on, columns):
             # rename the columns to their original title
             selected_df.columns = all_columns
             # Determine what rows the original DataFrame existed
-            cond = selected_df[merged_on].notna()
-            # Select the correct rows
-            datasets.append(selected_df[cond])
+            cond = selected_df[merged_on[0]].notna()
+            # Select the correct rows and drop_duplicates
+            datasets.append(selected_df[cond].drop_duplicates(subset=merged_on))
         
         return datasets
         
@@ -373,7 +376,7 @@ def fill_back_forward(datasets, merge_on, columns):
 
         """
         # Only fill values in columns where the the original fill data existed
-        condition = merged_df[merged_on + fill_suffix].notna()
+        condition = merged_df[merged_on[0] + fill_suffix].notna()
         
         # Apply this method to each column
         for col in columns:
@@ -421,8 +424,8 @@ def fill_back_forward(datasets, merge_on, columns):
             # Add suffix to column
             datasets[i].rename(columns={col: col+f'_{i}' for col in datasets[i].columns}, inplace=True)
           
-            left_on = merge_on + f'_{i-1}'
-            right_on = merge_on + f'_{i}'
+            left_on = [on + f'_{i-1}' for on in merge_on]
+            right_on = [on + f'_{i}' for on in merge_on]
             
             # Perform outer merges with remaining datasets continuing to add suffixes
             merged_df = pd.merge(merged_df, datasets[i], 
@@ -430,6 +433,9 @@ def fill_back_forward(datasets, merge_on, columns):
         
         return merged_df
         
+    
+    if type(merge_on) == 'string':
+        merge_on = [merge_on]
     
     # Merge datasets
     merged_df = merge_datasets(datasets, merge_on)
@@ -638,6 +644,22 @@ def remove_boces(data):
     
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
+    """
+    Transforms 1yr_3yr_change datasets downloaded from the kaggle competition
+
+    Parameters
+    ----------
+    input_filepath : String, Path
+        The input filepath base to extract data from
+    output_filepath : String, Path
+        The output filepath base to save data to
+
+    Returns
+    -------
+    None.
+
+    """
+    
     years = 2010, 2011, 2012
     # Load DataFrames
     # The names of the raw files 
@@ -660,7 +682,8 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
             df[col] = df[col].map(trend_arrow_map)
         df.drop(['emh_combined'], axis=1, inplace=True)
         remove_boces(df)
-        
+    
+    datasets = fill_back_forward(datasets, ['school_id', 'emh'], direction_cols)
       
     output_filenames = [append_path(output_filepath, f'1YR_3YR_change{year}.csv') for year in years]
     save_dataframes(datasets, output_filenames)
@@ -678,6 +701,10 @@ def make_coact(input_filepath, output_filepath):
     # The column to apply the map to
     direction_cols = ['eng_yn','math_yn','read_yn','sci_yn']
     
+            
+    
+    datasets = fill_back_forward(datasets, ['school_id'], direction_cols)
+    
     for df in datasets:
         # Find entries with district results
         dist_res = df['school']=='DISTRICT RESULTS'
@@ -689,7 +716,6 @@ def make_coact(input_filepath, output_filepath):
         # Apply the college readiness map
         for col in direction_cols:
             df[col] = df[col].map(readiness_map)
-    
     
     output_filenames = create_filenames(output_filepath, 'COACT{year}.csv')
     
