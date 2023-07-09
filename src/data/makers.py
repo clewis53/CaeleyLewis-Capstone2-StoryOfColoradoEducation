@@ -62,7 +62,7 @@ class Maker:
         # Drop specified rows
         self.df = self.df.drop(self.drop_rows)
         # and any completely empty rows
-        self.df.dropna(how='all')
+        self.df = self.df.dropna(how='all')
         # Then reset the index
         self.df = self.df.reset_index(drop=True)
         
@@ -152,3 +152,76 @@ class ExpenditureMaker(Maker):
         merged_df = pd.merge(left=totals, right=per_pupils, on='district_name', suffixes=('_total', '_per_pupil'))
         self.df = pd.merge(left=counties, right=merged_df, on='district_name')
         
+
+class KaggleMaker(Maker):
+    col_map = {'emh-combined': 'emh_combined',
+               'emh_combined': 'emh_combined',
+               'spf_emh_code': 'emh',
+               'spf_included_emh_for_a': 'emh_combined',
+               'district code': 'district_id',
+               'districtnumber': 'district_id',
+               'district no': 'district_id',
+               'district number': 'district_id',
+               'districtnumber': 'district_id',
+               'spf_dist_number': 'district_id',
+               'org. code': 'district_id',
+               'organization code': 'district_id',
+               'districtname': 'district_name',
+               'district name': 'district_name',
+               'spf_district_name': 'district_name',
+               'organization name': 'district_name',
+               'school_district': 'district_name',
+               'school_districte': 'district_name',
+               'school_name': 'school',
+               'schoolname': 'school',
+               'school name': 'school',
+               '2010 school name': 'school',
+               'spf_school_name': 'school',
+               'schoolnumber': 'school_id',
+               'school code': 'school_id',
+               'school number': 'school_id',
+               'school no': 'school_id',
+               'spf_school_number': 'school_id'}
+    
+    def transform(self):
+        super().transform()
+        self._remove_boces()
+        self._remove_emh_combined()
+
+    def _remove_boces(self):
+        """
+        Removes any rows from a dataset where the district_name contains BOCES.
+        """
+        if 'district_name' in self.df.columns:        
+            boces_loc = (self.df['district_name'].str.upper().str.contains('BOCES'))
+            self.df.drop(self.df[boces_loc].index, inplace=True)
+            
+    def _remove_emh_combined(self):
+        if 'emh_combined' in self.df.columns:
+            self.df = self.df.drop('emh_combined', axis=1)
+        
+
+class ChangeMaker(KaggleMaker):
+    
+    change_col_map = {'rate_at.5_chng_ach': 'achievement_dir',
+                      'rate_at.5_chng_gro': 'growth_dir',
+                      'rate_at.5_chng_growth': 'growth_dir',
+                      'pct_pts_chng_.5': 'overall_dir',
+                      'pct_pts_chnge_.5': 'overall_dir'}
+    
+    trend_arrow_map = {1: -1,
+                       2: 0,
+                       3: 1}
+    
+    
+    def __init__(self, dataframe):
+        super().__init__(dataframe)
+        self.col_map.update(self.change_col_map)
+    
+    def transform(self):
+        super().transform()
+        self._map_directions()
+        
+    def _map_directions(self):
+        for col in ('achievement_dir','growth_dir','overall_dir'):
+            self.df[col] = self.df[col].map(self.trend_arrow_map)

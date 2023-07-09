@@ -7,7 +7,7 @@ Created on Thu Feb 16 13:02:25 2023
 import numpy as np
 import pandas as pd
 from pathlib import Path
-from makers import DataFrameSet, CensusMaker, ExpenditureMaker
+from makers import DataFrameSet, CensusMaker, ExpenditureMaker, ChangeMaker
 
 #
 NO_FILL = ['school', 'school_id', 'district_name', 'district_id']
@@ -538,63 +538,6 @@ def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012),
     #     tall_df = make_tall(datasets, id_col=years, id_name='year')
     #     tall_df.to_csv(append_path(output_filepath, 'expenditures_tall.csv'))
     
-    
-def transform_expenditure_df(df):
-    """
-    A method that transforms expenditures datasets from a report style format
-    to a usable format
-
-    Parameters
-    ----------
-    df : DataFrame
-        The original DataFrame that is in a report format.
-
-    Returns
-    -------
-    DataFrame
-        The transformed DataFrame in a usable format.
-
-    """
-    
-    # All numbers have commas in them that need to be removed
-    df = df.replace([',', '\(', '\)'], '', regex=True)
-    for col in df.columns:
-        if df[col].dtype == 'string':
-            df[col] = df[col].str.replace(',','', regex=True)
-            df[col] = df[col].str.replace('\(','', regex=True)
-            df[col] = df[col].str.replace('\)','', regex=True)
-    
-    # The district_name column has numbers that were relevant to the BOCES funding but not our project.
-    # We want to be able to identify each of those and remove them.
-    def remove_floats(entry):
-        try:
-            float(entry)
-            return np.nan
-        except:
-            return entry
-        
-    df['district_name'] = df['district_name'].apply(remove_floats)
-    
-    # Now that they are removed, lets forward fill the district_name,
-    # so that we can extract the total amount for each category
-    # and the per pupil amount for each category
-    df['district_name'] = df['district_name'].fillna(method='ffill')
-    
-    # Remove all BOCES funding entries because they are irrelevant
-    df = df[~(df['district_name'].str.lower().str.contains('boces'))]
-    
-    # Now we can extract the total amounts
-    totals = df[df['county'].str.lower() == 'amount'].drop('county', axis=1)
-    # the per pupil amounts 
-    per_pupils = df[df['county'].str.lower() == 'per pupil'].drop('county', axis=1)
-    # and the county names
-    counties = df.loc[~(df['county'].str.lower().isin(('amount', 'per pupil', 'all funds'))), ['district_name', 'county']]
-    
-    # Now we can merge them
-    merged_df = pd.merge(left=totals, right=per_pupils, on='district_name', suffixes=('_total', '_per_pupil'))
-    final_df = pd.merge(left=counties, right=merged_df, on='district_name')
-    
-    return final_df
 
 
 
@@ -616,12 +559,12 @@ def make_kaggle(input_filepath, output_filepath):
     """
     
     make_1yr_3yr_change(input_filepath, output_filepath)
-    make_coact(input_filepath, output_filepath)
-    make_enrl_working(input_filepath, output_filepath)
-    make_final_grade(input_filepath, output_filepath)
-    make_k_12_frl(input_filepath, output_filepath)
-    make_remediation(input_filepath, output_filepath)
-    make_school_address(input_filepath, output_filepath)
+    # make_coact(input_filepath, output_filepath)
+    # make_enrl_working(input_filepath, output_filepath)
+    # make_final_grade(input_filepath, output_filepath)
+    # make_k_12_frl(input_filepath, output_filepath)
+    # make_remediation(input_filepath, output_filepath)
+    # make_school_address(input_filepath, output_filepath)
 
 
 def remove_boces(data):
@@ -670,31 +613,33 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
     years = 2010, 2011, 2012
     # Load DataFrames
     # The names of the raw files 
-    raw_filenames = [append_path(input_filepath, f'{year}_1YR_3YR_change.csv') for year in years]
+    input_filenames = [append_path(input_filepath, f'{year}_1YR_3YR_change.csv') for year in years]
     # Append standard col changes to specific ones
-    CHANGE_COL_MAP.update(KAGGLE_COL_MAP)    
-    datasets = get_dataframes(raw_filenames, 
-                              index_col=None, 
-                              col_map=CHANGE_COL_MAP)     
+    # CHANGE_COL_MAP.update(KAGGLE_COL_MAP)    
+    # datasets = get_dataframes(raw_filenames, 
+    #                           index_col=None, 
+    #                           col_map=CHANGE_COL_MAP)     
 
-    # A map to apply to each column that makes more sense than 1,2,3
-    trend_arrow_map = {1: '-1',
-                       2: '0',
-                       3: '1'}
-    # The column to apply the map to
-    direction_cols = ['achievement_dir','growth_dir','overall_dir']
+    # # A map to apply to each column that makes more sense than 1,2,3
+    # trend_arrow_map = {1: -1,
+    #                    2: 0,
+    #                    3: 1}
+    # # The column to apply the map to
+    # direction_cols = ['achievement_dir','growth_dir','overall_dir']
     
-    for df in datasets:
-        for col in direction_cols:
-            df[col] = df[col].map(trend_arrow_map)
-        df.drop(['emh_combined'], axis=1, inplace=True)
-        remove_boces(df)
+    # for df in datasets:
+    #     for col in direction_cols:
+    #         df[col] = df[col].map(trend_arrow_map)
+    #     df.drop(['emh_combined'], axis=1, inplace=True)
+    #     remove_boces(df)
     
-    datasets = fill_back_forward(datasets, ['school_id', 'emh'], direction_cols)
+    # datasets = fill_back_forward(datasets, ['school_id', 'emh'], direction_cols)
       
     output_filenames = [append_path(output_filepath, f'1YR_3YR_change{year}.csv') for year in years]
-    save_dataframes(datasets, output_filenames)
-
+    # save_dataframes(datasets, output_filenames)
+    
+    datasets = DataFrameSet(input_filenames, output_filenames, ChangeMaker)
+    datasets.make_dataframes()
 
 def make_coact(input_filepath, output_filepath):
     raw_filenames = create_filenames(input_filepath, '{year}_COACT.csv')
@@ -834,10 +779,10 @@ def main(input_filepath, output_filepath):
     """
     # make_census(append_path(input_filepath, 'census'), 
     #                   append_path(output_filepath, 'census'))
-    make_expenditures(append_path(input_filepath, 'expenditures'), 
-                            append_path(output_filepath, 'expenditures'))
-    # make_kaggle(append_path(input_filepath,'kaggle'), 
-    #                  append_path(output_filepath,'kaggle'))
+    # make_expenditures(append_path(input_filepath, 'expenditures'), 
+    #                         append_path(output_filepath, 'expenditures'))
+    make_kaggle(append_path(input_filepath,'kaggle'), 
+                     append_path(output_filepath,'kaggle'))
 
 
 if __name__ == '__main__':
