@@ -4,36 +4,13 @@ Created on Thu Feb 16 13:02:25 2023
 
 @author: caeley
 """
-import numpy as np
 import pandas as pd
 from pathlib import Path
-from makers import DataFrameSet, CensusMaker, ExpenditureMaker, ChangeMaker
+from makers import DataFrameSet
+import makers
 
 #
 NO_FILL = ['school', 'school_id', 'district_name', 'district_id']
-
-
-# CENSUS dataframe information
-# specifies readable column names
-CENSUS_COL_MAP = {'sd_name': 'district_name',
-                 'saepov5_17rv_pt': 'est_child_poverty',
-                 'saepov5_17v_pt': 'est_total_child',
-                 'saepovall_pt': 'est_total_pop',
-                 'time': 'year'}
-# specifies columns to drop
-CENSUS_DROP_COLS = ['state', 'school district (unified)']
-
-# Expenditures dataframe information
-# Readable column names
-EXP_COL_MAP = {'unnamed: 1': 'county',
-               'district/': 'district_name',
-               'unnamed: 3': 'instruction',
-               'total': 'support',
-               'unnamed: 5': 'community',
-               'unnamed: 6': 'other',
-               'unnamed: 7': 'sum'}
-# Columns that won't be used
-EXP_DROP_COLS = ['unnamed: 0']
 
 # Kaggle dataframes information
 # Standardized column names 
@@ -65,12 +42,7 @@ KAGGLE_COL_MAP = {'emh-combined': 'emh_combined',
                   'school number': 'school_id',
                   'school no': 'school_id',
                   'spf_school_number': 'school_id'}
-# 1YR_3YR_change Dataframes
-CHANGE_COL_MAP = {'rate_at.5_chng_ach': 'achievement_dir',
-                  'rate_at.5_chng_gro': 'growth_dir',
-                  'rate_at.5_chng_growth': 'growth_dir',
-                  'pct_pts_chng_.5': 'overall_dir',
-                  'pct_pts_chnge_.5': 'overall_dir'}
+
 # COACT DataFrames
 COACT_COL_DROP = ['district_name']
 # Enrl_working DataFrames
@@ -134,6 +106,11 @@ def append_path(path, addition):
         The original path
     addition : String
         The string to append to the path
+        
+    Raises
+    ------
+    TypeError
+        The file_extension must contain {year}.
 
     Returns
     -------
@@ -141,10 +118,16 @@ def append_path(path, addition):
         The original path with the addition
 
     """
+    if type(addition) != str:
+        raise TypeError('The addition must be of type string')
+    
     if type(path) == str:
         return path + '/' + addition
-    return path.joinpath(addition)
-
+    elif Path in type(path).mro():
+        return path.joinpath(addition)
+    else:
+        raise TypeError('Path must be of type string or Path')
+        
 
 def create_filenames(filepath, file_extension='{year}', years=(2010,2011,2012)):
     """
@@ -160,95 +143,21 @@ def create_filenames(filepath, file_extension='{year}', years=(2010,2011,2012)):
     years : , optional
         The years to add. The default is (2010,2011,2012).
 
+    Raises
+    ------
+    ValueError
+        The file_extension must contain {year}.
+
     Returns
     -------
     list
         A list of filepaths.
 
     """
+    if '{year}' not in file_extension:
+        raise ValueError('{year} must be in the file_extension')
+    
     return [append_path(filepath, file_extension.format(year=year)) for year in years]
-
-
-def get_dataframes(filenames, index_col=None,
-                   drop_rows=[], drop_cols=[], col_map={}):
-    """
-    Takes in a list of filenames to create DataFrames from,
-    changes the column names using the column map,
-    and drops irrelevant columns. Files must be in .csv format
-
-    Parameters
-    ----------
-    filenames : list(String), optional
-        The names of the files to get names from. The default is [].
-    index_col: int
-        Specifies where the index column is if at all. The default is none
-    drop_rows: list, optional
-        Which rows are not necessary. The default is []
-    drop_cols : list, optional
-        Which columns are not necessary. The default is [].
-    col_map : dict, optional
-        How to rename the columns. The default is None.
-        
-    Returns
-    -------
-    datasets : list(DataFrame)
-        a list of the loaded dataframes
-
-    """
-    datasets = []
-    for file in filenames:
-        # Instructs pandas not to recreate the index column,
-        df = pd.read_csv(file, index_col=index_col, header=0)
-        # Lower all column names to make renaming and dropping easier
-        df.columns = df.columns.str.lower()
-        # Drop specified Columns, sometimes they won't exist, and we don't want to raise errors
-        # Drop specified rows
-        df = df.drop(drop_rows)
-        # Drop any rows that contain no data
-        df = df.dropna(how='all')
-        # Reset the index
-        df = df.reset_index(drop=True)
-        # Apply column map        
-        df = df.rename(columns=col_map)
-        # Drop columns
-        df = df.drop(drop_cols, axis=1, errors='ignore')
-        # Infer dtypes
-        df = df.convert_dtypes()
-        
-        datasets.append(df)
-    
-    return datasets
-
-
-def save_dataframes(datasets=[], filenames=[]):
-    """
-    Saves a set of data to the specified location
-
-    Parameters
-    ----------
-    datasets : list(DatFrame), optional
-        The DataFrames to save. The default is [].
-    filenames : list(String), optional
-        A list of filenames. The default is [].
-
-    Returns
-    -------
-    None.
-
-    """
-    # Ensure the length of datasets and filenames is the same
-    # before continuing
-    try: 
-        assert len(datasets) == len(filenames)
-    
-        for i in range(len(datasets)):
-            datasets[i].to_csv(filenames[i], index=False)
-    except AssertionError:
-        print('The datasets could not be saved because', 
-              f'the length of datasets was {len(datasets)}',
-              f'and length of filenames was {len(filenames)}', 
-              sep='\n')
-
 
 
 def make_tall(datasets, id_col=[], id_name='df_id'):
@@ -294,171 +203,6 @@ def make_tall(datasets, id_col=[], id_name='df_id'):
     return tall_df
 
 
-def fill_back_forward(datasets, merge_on, columns):
-    """
-    Fills na values in datasets by backfilling from the most recent observations
-    then forward filling from the first observations.
-
-    Parameters
-    ----------
-    datasets : list(DataFrame)
-        A list of datasets to fill. Must be at least 2, and they must have the same column names
-    merge_on : String
-        A string to indicate the shared column to merge_on
-    columns : list(String)
-        A list of strings indicating the columns to fill na values in
-
-    Returns
-    -------
-    list(DataFrame)
-        A list of the modified DataFrames.
-
-    """
-    def extract_datasets(merged_df, num_datasets, merged_on, all_columns):
-        """
-        A helper function that extracts original datasets from their merged form
-
-        Parameters
-        ----------
-        merged_df : DataFrame 
-            A DataFrame that is the result of outer joins, and merged in a format where the
-            suffixes where _i for each i in range(num_datasets)
-        num_datasets : int 
-            The number of DataFrames originally merged
-        merged_on : string
-            The column the DataFrames were merged_on.
-        all_columns : list[string]
-            The original column names before the merge
-            
-        Returns
-        -------
-        datasets : list(DataFrame)
-            The list of the extracted DataFrames
-
-        """
-        datasets = []
-        
-        for i in range(num_datasets):
-            # determine column names of the dataset to extract
-            column_names = all_columns + f'_{i}'
-            # extract them
-            selected_df = merged_df[column_names]
-            # rename the columns to their original title
-            selected_df.columns = all_columns
-            # Determine what rows the original DataFrame existed
-            cond = selected_df[merged_on[0]].notna()
-            # Select the correct rows and drop_duplicates
-            datasets.append(selected_df[cond].drop_duplicates(subset=merged_on))
-        
-        return datasets
-        
-    def fill_in_direction(merged_df, merged_on, fill_suffix, val_suffix, columns):
-        """
-        Fills the na values in the columns with the fill_suffix using the values from
-        the columns with the val_suffix
-
-        Parameters
-        ----------
-        merged_df : DataFrame
-            A DataFrame that is the result of outer joins, and merged in a format where the
-            suffixes where _i for each i in range(num_datasets)
-        merged_on : String
-            The column the DataFrames were merged_on.
-        fill_suffix : String
-            The suffix to fill on
-        val_suffix : String
-            The suffix for values to fill with
-        columns : list(String)
-            The columns to fill values in
-
-        Returns
-        -------
-        None.
-
-        """
-        # Only fill values in columns where the the original fill data existed
-        condition = merged_df[merged_on[0] + fill_suffix].notna()
-        
-        # Apply this method to each column
-        for col in columns:
-            # The column name to fill in
-            fill_column = col + fill_suffix
-            # The column name to fill with
-            val_column = col + val_suffix
-            # Update the values
-            merged_df.loc[condition, [fill_column, val_column]] = merged_df.loc[condition, [fill_column, val_column]].fillna(method='bfill', axis=1)
-
-        
-    def merge_datasets(datasets, merge_on):
-        """
-        Merges a list of datasets on merge_on. Adds suffixes as _i for each i
-        in range(len(datasets))
-
-        Parameters
-        ----------
-        datasets : list(DataFrame)
-            A list of datasets to fill. Must be at least 2, and they must have the same column names
-        merge_on : String
-            A string to indicate the shared column to merge_on
-
-        Raises
-        ------
-        ValueError
-            datasets must contain at least two items.
-
-        Returns
-        -------
-        merged_df : DataFrame
-            The merged DataFrame.
-
-        """
-        # Check datasets length
-        if len(datasets) < 2:
-            raise ValueError("datasets must contain at least two DataFrames")
-
-        # Initialize the merged_df with the first dataframe
-        # Add a suffix to the merge_on column
-        merged_df = datasets[0].rename(columns={col: col+'_0' for col in datasets[0].columns})
-        
-        
-        for i in range(1, len(datasets)):
-            # Add suffix to column
-            datasets[i].rename(columns={col: col+f'_{i}' for col in datasets[i].columns}, inplace=True)
-          
-            left_on = [on + f'_{i-1}' for on in merge_on]
-            right_on = [on + f'_{i}' for on in merge_on]
-            
-            # Perform outer merges with remaining datasets continuing to add suffixes
-            merged_df = pd.merge(merged_df, datasets[i], 
-                                 left_on=left_on, right_on=right_on, how='outer')
-        
-        return merged_df
-        
-    
-    if type(merge_on) == 'string':
-        merge_on = [merge_on]
-    
-    # Merge datasets
-    merged_df = merge_datasets(datasets, merge_on)
-        
-    # bfill values
-    for i in range(len(datasets)-2, -1, -1):
-        fill_suffix = f'_{i}'
-        val_suffix = f'_{i+1}'
-        fill_in_direction(merged_df, merge_on, fill_suffix, val_suffix, columns)
-            
-    # ffill values
-    for i in range(0, len(datasets)-1):
-        fill_suffix = f'_{i+1}'
-        val_suffix = f'_{i}'
-        fill_in_direction(merged_df, merge_on, fill_suffix, val_suffix, columns)
-    
-    # return extracted datasets
-    return extract_datasets(merged_df, merged_on=merge_on,
-                            num_datasets = len(datasets), 
-                            all_columns = datasets[0].columns)
-
-
 
 def make_census(input_filepath, output_filepath, years=(2010, 2011, 2012), save_tall=True):
     """
@@ -478,18 +222,12 @@ def make_census(input_filepath, output_filepath, years=(2010, 2011, 2012), save_
     -------
     None.
     """
-    # make DataFrames from all saipe files
-    input_filenames = [append_path(input_filepath, f'saipe{time}.csv') for time in years]
-    # datasets = get_dataframes(input_filenames, 
-    #                           col_map=CENSUS_COL_MAP, 
-    #                           drop_cols=CENSUS_DROP_COLS, 
-    #                           index_col=0)
+    # Input and output locations
+    input_filenames = create_filenames(input_filepath, 'saipe{year}.csv')
+    output_filenames = create_filenames(output_filepath, 'saipe{year}.csv')
     
-    # save the DataFrames from all saipe files
-    output_filenames = [append_path(output_filepath, f'saipe{time}.csv') for time in years]
-    # save_dataframes(datasets, output_filenames)
-    
-    dataframes = DataFrameSet(input_filenames, output_filenames, CensusMaker)
+    # MakeDatasets
+    dataframes = DataFrameSet(input_filenames, output_filenames, makers.CensusMaker)
     dataframes.make_dataframes()
     
     # if save_tall:
@@ -517,21 +255,12 @@ def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012),
     None.
 
     """
-    # make DataFrames from all expenditures files
-    input_filenames = [append_path(input_filepath, f'expenditures{time}.csv') for time in years]            
-    # datasets = get_dataframes(input_filenames,
-    #                           col_map=EXP_COL_MAP,
-    #                           drop_rows=[0,1],
-    #                           drop_cols=EXP_DROP_COLS)
+    # Input and output locations    
+    input_filenames = create_filenames(input_filepath, 'expenditures{year}.csv')
+    output_filenames = create_filenames(output_filepath, 'expenditures{year}.csv')
     
-    # # Transform each dataset
-    # transformed_datasets = [transform_expenditure_df(df) for df in datasets]
-    
-    # Save all transformed datasets
-    output_filenames = [append_path(output_filepath, f'expenditures{time}.csv') for time in years]
-    # save_dataframes(transformed_datasets, output_filenames)
-    
-    datasets = DataFrameSet(input_filenames, output_filenames, ExpenditureMaker)
+    # Make datasets
+    datasets = DataFrameSet(input_filenames, output_filenames, makers.ExpenditureMaker)
     datasets.make_dataframes()
     
     # if save_tall:
@@ -558,39 +287,13 @@ def make_kaggle(input_filepath, output_filepath):
 
     """
     
-    make_1yr_3yr_change(input_filepath, output_filepath)
+    # make_1yr_3yr_change(input_filepath, output_filepath)
     # make_coact(input_filepath, output_filepath)
-    # make_enrl_working(input_filepath, output_filepath)
+    make_enrl_working(input_filepath, output_filepath)
     # make_final_grade(input_filepath, output_filepath)
     # make_k_12_frl(input_filepath, output_filepath)
     # make_remediation(input_filepath, output_filepath)
     # make_school_address(input_filepath, output_filepath)
-
-
-def remove_boces(data):
-    """
-    Removes any rows from a dataset where the district_name contains BOCES.
-
-    Parameters
-    ----------
-    data : DataFrame
-        The DataFrame to remove BOCES from
-
-    Raises
-    ------
-    ValueError
-        district_name must be a column that is present in the data.
-
-    Returns
-    -------
-    None.
-
-    """
-    if 'district_name' not in data.columns:
-        raise ValueError('The dataframe must contain district_name as one of its columns.')
-    
-    boces_loc = (data['district_name'].str.upper().str.contains('BOCES'))
-    data.drop(data[boces_loc].index, inplace=True)
     
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
@@ -610,156 +313,146 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
 
     """
     
-    years = 2010, 2011, 2012
-    # Load DataFrames
-    # The names of the raw files 
-    input_filenames = [append_path(input_filepath, f'{year}_1YR_3YR_change.csv') for year in years]
-    # Append standard col changes to specific ones
-    # CHANGE_COL_MAP.update(KAGGLE_COL_MAP)    
-    # datasets = get_dataframes(raw_filenames, 
-    #                           index_col=None, 
-    #                           col_map=CHANGE_COL_MAP)     
-
-    # # A map to apply to each column that makes more sense than 1,2,3
-    # trend_arrow_map = {1: -1,
-    #                    2: 0,
-    #                    3: 1}
-    # # The column to apply the map to
-    # direction_cols = ['achievement_dir','growth_dir','overall_dir']
+    input_filenames = create_filenames(input_filepath, '{year}_1YR_3YR_change.csv')
+    output_filenames = create_filenames(output_filepath, '1YR_3YR_change{year}.csv')
     
-    # for df in datasets:
-    #     for col in direction_cols:
-    #         df[col] = df[col].map(trend_arrow_map)
-    #     df.drop(['emh_combined'], axis=1, inplace=True)
-    #     remove_boces(df)
-    
-    # datasets = fill_back_forward(datasets, ['school_id', 'emh'], direction_cols)
-      
-    output_filenames = [append_path(output_filepath, f'1YR_3YR_change{year}.csv') for year in years]
-    # save_dataframes(datasets, output_filenames)
-    
-    datasets = DataFrameSet(input_filenames, output_filenames, ChangeMaker)
+    datasets = DataFrameSet(input_filenames, output_filenames, makers.ChangeMaker)
     datasets.make_dataframes()
+    
 
 def make_coact(input_filepath, output_filepath):
-    raw_filenames = create_filenames(input_filepath, '{year}_COACT.csv')
+    input_filenames = create_filenames(input_filepath, '{year}_COACT.csv')
     
-    datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP, drop_cols=COACT_COL_DROP)
+    # datasets = get_dataframes(input_filenames, col_map=KAGGLE_COL_MAP, drop_cols=COACT_COL_DROP)
     
-    # A map to apply to each column that makes more sense than 1,2
-    readiness_map = {1: 1,
-                     2: 0,
-                     0: 0}
-    # The column to apply the map to
-    direction_cols = ['eng_yn','math_yn','read_yn','sci_yn']
+    # # A map to apply to each column that makes more sense than 1,2
+    # readiness_map = {1: 1,
+    #                  2: 0,
+    #                  0: 0}
+    # # The column to apply the map to
+    # direction_cols = ['eng_yn','math_yn','read_yn','sci_yn']
     
             
     
-    datasets = fill_back_forward(datasets, ['school_id'], direction_cols)
+    # datasets = fill_back_forward(datasets, ['school_id'], direction_cols)
     
-    for df in datasets:
-        # Find entries with district results
-        dist_res = df['school']=='DISTRICT RESULTS'
-        # Find entries with state results
-        state_res = df['district_id'] == 0
-        # Remove them both
-        df.drop(df[dist_res | state_res].index, inplace=True)
+    # for df in datasets:
+    #     # Find entries with district results
+    #     dist_res = df['school']=='DISTRICT RESULTS'
+    #     # Find entries with state results
+    #     state_res = df['district_id'] == 0
+    #     # Remove them both
+    #     df.drop(df[dist_res | state_res].index, inplace=True)
         
-        # Apply the college readiness map
-        for col in direction_cols:
-            df[col] = df[col].map(readiness_map)
+    #     # Apply the college readiness map
+    #     for col in direction_cols:
+    #         df[col] = df[col].map(readiness_map)
     
     output_filenames = create_filenames(output_filepath, 'COACT{year}.csv')
     
-    save_dataframes(datasets, output_filenames)
+    datasets = DataFrameSet(input_filenames, output_filenames, makers.CoactMaker)
+    datasets.make_dataframes()
+    
+    # save_dataframes(datasets, output_filenames)
     
     
 def make_enrl_working(input_filepath, output_filepath):
-    raw_filenames = create_filenames(input_filepath, '{year}_enrl_working.csv')
+    input_filenames = create_filenames(input_filepath, '{year}_enrl_working.csv')
     
-    datasets = get_dataframes(raw_filenames, col_map=KAGGLE_COL_MAP, drop_cols=ENRL_COL_DROP)
+    # datasets = get_dataframes(input_filenames, col_map=KAGGLE_COL_MAP, drop_cols=ENRL_COL_DROP)
     
-    for df in datasets:
-        remove_boces(df)
+    # for df in datasets:
+    #     remove_boces(df)
     
     output_filenames = create_filenames(output_filepath, 'enrl_working{year}.csv')
     
-    save_dataframes(datasets, output_filenames)
-
+    # save_dataframes(datasets, output_filenames)
+    
+    datasets = DataFrameSet(input_filenames, output_filenames, makers.EnrollMaker)
+    datasets.make_dataframes()
+    
 
 def make_final_grade(input_filepath, output_filepath):
-    raw_filenames = create_filenames(input_filepath, '{year}_final_grade.csv')    # Append standard col changes to specific ones
-    FINAL_COL_MAP.update(KAGGLE_COL_MAP)    
-    datasets = get_dataframes(raw_filenames, 
-                              index_col=None, 
-                              col_map=FINAL_COL_MAP,
-                              drop_cols=FINAL_COL_DROP)     
+    input_filenames = create_filenames(input_filepath, '{year}_final_grade.csv')    # Append standard col changes to specific ones
+    # FINAL_COL_MAP.update(KAGGLE_COL_MAP)    
+    # datasets = get_dataframes(input_filenames, 
+    #                           index_col=None, 
+    #                           col_map=FINAL_COL_MAP,
+    #                           drop_cols=FINAL_COL_DROP)     
     
-    for df in datasets:
-        df.drop(['emh_combined'], axis=1, inplace=True)
-        remove_boces(df)
+    # for df in datasets:
+    #     df.drop(['emh_combined'], axis=1, inplace=True)
+    #     remove_boces(df)
         
     output_filenames = create_filenames(output_filepath, 'final_grade{year}.csv')    
-    save_dataframes(datasets, output_filenames)
-
+    # save_dataframes(datasets, output_filenames)
+    datasets = DataFrameSet(input_filenames, output_filenames, makers.FinalMaker)
+    datasets.make_dataframes()
 
 def make_k_12_frl(input_filepath, output_filepath):
-    raw_filenames = create_filenames(input_filepath, '{year}_k_12_FRL.csv')
+    input_filenames = create_filenames(input_filepath, '{year}_k_12_FRL.csv')
     
-    FRL_COL_MAP.update(KAGGLE_COL_MAP)
+    # FRL_COL_MAP.update(KAGGLE_COL_MAP)
     
-    datasets = get_dataframes(raw_filenames, 
-                              col_map=FRL_COL_MAP,
-                              drop_cols=FRL_COL_DROP)
+    # datasets = get_dataframes(input_filenames, 
+    #                           col_map=FRL_COL_MAP,
+    #                           drop_cols=FRL_COL_DROP)
     
-    for df in datasets:
-        df.drop([len(df)-2, len(df)-1], inplace=True)
-        df['pct_fr'] = df['pct_fr'].str.replace('%','').astype('float') / 100
+    # for df in datasets:
+    #     df.drop([len(df)-2, len(df)-1], inplace=True)
+    #     df['pct_fr'] = df['pct_fr'].str.replace('%','').astype('float') / 100
         
-        remove_boces(df)
+    #     remove_boces(df)
         
     output_filenames = create_filenames(output_filepath, 'FRL{year}.csv')
     
-    save_dataframes(datasets, output_filenames)
-
+    # save_dataframes(datasets, output_filenames)
+    
+    datasets = DataFrameSet(input_filenames, output_filenames, makers.FrlMaker)
+    datasets.make_dataframes()
 
 def make_remediation(input_filepath, output_filepath):
-    raw_filenames = create_filenames(input_filepath, '{year}_remediation_HS.csv')
+    input_filenames = create_filenames(input_filepath, '{year}_remediation_HS.csv')
     
-    REM_COL_MAP.update(KAGGLE_COL_MAP)
+    # REM_COL_MAP.update(KAGGLE_COL_MAP)
     
-    datasets = get_dataframes(raw_filenames, 
-                              col_map=REM_COL_MAP,
-                              drop_cols=REM_COL_DROP)
+    # datasets = get_dataframes(input_filenames, 
+    #                           col_map=REM_COL_MAP,
+    #                           drop_cols=REM_COL_DROP)
     
     
-    for df in datasets:
-        # Remove percentage signs only where applicable
-        try:
-            df['pct_remediation'] = df['pct_remediation'].str.replace('%', '').astype('float') / 100
-        except AttributeError:
-            pass
-        remove_boces(df)
+    # for df in datasets:
+    #     # Remove percentage signs only where applicable
+    #     try:
+    #         df['pct_remediation'] = df['pct_remediation'].str.replace('%', '').astype('float') / 100
+    #     except AttributeError:
+    #         pass
+    #     remove_boces(df)
         
     
     output_filenames = create_filenames(output_filepath, 'remediation{year}.csv')
     
-    save_dataframes(datasets, output_filenames)
+    # save_dataframes(datasets, output_filenames)
+    
+    datasets = DataFrameSet(input_filenames, output_filenames, makers.RemediationMaker)
+    datasets.make_dataframes()
 
 
 def make_school_address(input_filepath, output_filepath):
-    raw_filenames = create_filenames(input_filepath, '{year}_school_address.csv')
+    input_filenames = create_filenames(input_filepath, '{year}_school_address.csv')
     
-    ADDRESS_COL_MAP.update(KAGGLE_COL_MAP)
+    # ADDRESS_COL_MAP.update(KAGGLE_COL_MAP)
     
-    datasets = get_dataframes(raw_filenames, 
-                              col_map=ADDRESS_COL_MAP, 
-                              drop_cols=ADDRESS_COL_DROP)
+    # datasets = get_dataframes(input_filenames, 
+    #                           col_map=ADDRESS_COL_MAP, 
+    #                           drop_cols=ADDRESS_COL_DROP)
     
     output_filenames = create_filenames(output_filepath, 'address{year}.csv')
     
-    save_dataframes(datasets, output_filenames)
-
+    # save_dataframes(datasets, output_filenames)
+    
+    datasets = DataFrameSet(input_filenames, output_filenames, makers.AddressMaker)
+    datasets.make_dataframes()
     
     
     
@@ -777,10 +470,10 @@ def main(input_filepath, output_filepath):
     None.
 
     """
-    # make_census(append_path(input_filepath, 'census'), 
-    #                   append_path(output_filepath, 'census'))
-    # make_expenditures(append_path(input_filepath, 'expenditures'), 
-    #                         append_path(output_filepath, 'expenditures'))
+    make_census(append_path(input_filepath, 'census'), 
+                      append_path(output_filepath, 'census'))
+    make_expenditures(append_path(input_filepath, 'expenditures'), 
+                            append_path(output_filepath, 'expenditures'))
     make_kaggle(append_path(input_filepath,'kaggle'), 
                      append_path(output_filepath,'kaggle'))
 

@@ -40,8 +40,23 @@ class DataFrameSet:
         for i in range(len(self.output_filenames)):
             self.dataframes[i].to_csv(self.output_filenames[i], index=False)
     
-    def make_tall(self):
-        pass
+    def make_tall(self, id_col=(2010,2011,2012), id_name='year'):
+        
+        # The length of id_col must be equal to the number of datasets provided
+        if len(id_col) != len(self.dataframes):
+            raise ValueError(f'Length of id_col must be {len(self.dataframes)}')
+        # Their must be an id_name given when an id_col is specified
+        if id_name == None:
+            raise ValueError('id_name must not be None')
+        
+        tall_df = self.dataframes[0]
+        tall_df[id_name] = id_col[0]
+        
+        for i in range(1, len(self.dataframes)):
+            self.dataframes[i][id_name] = id_col[i]
+            tall_df = pd.concat((tall_df, self.dataframes[i]))
+            
+        return tall_df
 
 
 class Maker:
@@ -154,6 +169,7 @@ class ExpenditureMaker(Maker):
         
 
 class KaggleMaker(Maker):
+    
     col_map = {'emh-combined': 'emh_combined',
                'emh_combined': 'emh_combined',
                'spf_emh_code': 'emh',
@@ -182,11 +198,15 @@ class KaggleMaker(Maker):
                'school number': 'school_id',
                'school no': 'school_id',
                'spf_school_number': 'school_id'}
+  
     
     def transform(self):
         super().transform()
         self._remove_boces()
+        self._remove_district_results()
         self._remove_emh_combined()
+        self._remove_state_results()
+
 
     def _remove_boces(self):
         """
@@ -194,13 +214,37 @@ class KaggleMaker(Maker):
         """
         if 'district_name' in self.df.columns:        
             boces_loc = (self.df['district_name'].str.upper().str.contains('BOCES'))
-            self.df.drop(self.df[boces_loc].index, inplace=True)
-            
+            self.df = self.df.drop(self.df[boces_loc].index)
+       
+        
+    def _remove_district_results(self):
+        """ Removes any rows that contain information for the entire district. """
+        
+        # The locations of the district result rows
+        dist_loc = self.df['school'] == 'DISTRICT RESULTS'
+        
+        self.df = self.df.drop(self.df[dist_loc].index)
+    
     def _remove_emh_combined(self):
+        """ Removes the emh_combined column if it exists. """
+        
         if 'emh_combined' in self.df.columns:
             self.df = self.df.drop('emh_combined', axis=1)
+            
+    def _remove_state_results(self):
+        """ Removes any rows containing state results where the district_id is 0. """
         
-
+        # The location of state results rows
+        state_loc = self.df['district_id'] == 0
+        
+        self.df = self.df.drop(self.df[state_loc].index)
+        
+    def _clean_pct_signs(self, col):
+        try:
+            self.df[col] = self.df[col].str.replace('%','').astype('float') / 100
+        except AttributeError:
+            pass
+    
 class ChangeMaker(KaggleMaker):
     
     change_col_map = {'rate_at.5_chng_ach': 'achievement_dir',
@@ -212,16 +256,136 @@ class ChangeMaker(KaggleMaker):
     trend_arrow_map = {1: -1,
                        2: 0,
                        3: 1}
-    
-    
+       
     def __init__(self, dataframe):
         super().__init__(dataframe)
         self.col_map.update(self.change_col_map)
+    
     
     def transform(self):
         super().transform()
         self._map_directions()
         
+        
     def _map_directions(self):
+        """ Maps the trend direction columns. """
+        
         for col in ('achievement_dir','growth_dir','overall_dir'):
             self.df[col] = self.df[col].map(self.trend_arrow_map)
+
+
+class CoactMaker(KaggleMaker):
+    
+    col_drop = ['district_name']
+    
+    readiness_map = {1: 1,
+                      2: 0,
+                      0: 0}
+      
+    def transform(self):
+        super().transform()
+        self._map_readiness()
+        
+        
+    def _map_readiness(self):
+        """ Maps the readiness columns """
+        for col in ('eng_yn','math_yn','read_yn','sci_yn'):
+            self.df[col] = self.df[col].map(self.readiness_map)
+
+
+class EnrollMaker(KaggleMaker):
+    
+    drop_cols = ['unnamed: 12', 'unnamed: 13', 'unnamed: 14']
+    
+    
+    
+class FinalMaker(KaggleMaker):
+    
+    drop_cols = ['emh_2lvl', 
+                'LT100pnts', 
+                'aec10',
+                'alternative_school',
+                'charter',
+                'charteroronline',
+                'ell_growth_grade',
+                'emh_2lvl',
+                'final_plan',
+                'highestgrade',
+                'initial_plan',
+                'lowestgrade',
+                'lt100pnts',
+                'notes',
+                'online',
+                'overall_ach_grade',
+                'overall_achievement',
+                'record_no',
+                'spf_ps_ell_grad_rate']
+    
+    final_col_map = {'aec_10': 'alternative_school',
+                     'initial_plantype': 'initial_plan',
+                     'final_plantype': 'final_plan', 
+                     'rank_tot': 'rank',
+                     'overall_ach_grade': 'overall_achievement',
+                     'read_ach_grade': 'read_achievement',
+                     'read_ach_grade': 'read_achievement',
+                     'math_ach_grade': 'math_achievement',
+                     'write_ach_grade': 'write_achievement',
+                     'sci_ach_grade': 'science_achievment',
+                     'overall_weighted_growth_grade': 'overall_weighted_growth',
+                     'read_growth_grade': 'read_growth',
+                     'math_growth_grade': 'math_growth',
+                     'write_growth_grade': 'write_growth',
+                     'spf_ps_ind_grad_rate': 'graduation_rate'}
+    
+    def __init__(self, dataframe):
+        super().__init__(dataframe)
+        self.col_map.update(self.final_col_map)
+        
+
+class FrlMaker(KaggleMaker):
+    
+    drop_cols = ['unnamed: 5', 'unnamed: 6', 'unnamed: 7']
+    
+    frl_col_map = {'% free and reduced': 'pct_fr'}
+    
+    def __init__(self, dataframe):
+        super().__init__(dataframe)
+        self.col_map.update(self.frl_col_map)
+        
+    def transform(self):
+        super().transform()
+        self._drop_last_two_rows()
+        self._clean_pct_signs('pct_fr')
+    
+    def _drop_last_two_rows(self):
+        self.df = self.df.drop([len(self.df)-2, len(self.df)-1])
+        
+        
+        
+class RemediationMaker(KaggleMaker):
+    
+    drop_cols = ['unnamed: 5', 'this is 2011 data: created nov 7, 2012', 'public_private']
+    
+    rem_col_map = {'remediation_atleastone_pct2010': 'pct_remediation',
+                   'remediation_at_leastone_pct2010': 'pct_remediation'}
+    
+    def __init__(self, dataframe):
+        super().__init__(dataframe)
+        self.col_map.update(self.rem_col_map)
+        
+    def transform(self):
+        super().transform()
+        self._clean_pct_signs('pct_remediation')
+
+class AddressMaker(KaggleMaker):
+    
+    drop_cols = ['phone', 'physical address']
+    address_col_map = {'physical city': 'city',
+                      'physical state': 'state',
+                      'physical zipcode': 'zipcode'}
+    
+    def __init__(self, dataframe):
+        super().__init__(dataframe)
+        self.col_map.update(self.address_col_map)
+        
+    
