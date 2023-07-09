@@ -7,7 +7,7 @@ Created on Thu Feb 16 13:02:25 2023
 import numpy as np
 import pandas as pd
 from pathlib import Path
-from makers import DataFrameSet, CensusMaker
+from makers import DataFrameSet, CensusMaker, ExpenditureMaker
 
 #
 NO_FILL = ['school', 'school_id', 'district_name', 'district_id']
@@ -519,21 +519,24 @@ def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012),
     """
     # make DataFrames from all expenditures files
     input_filenames = [append_path(input_filepath, f'expenditures{time}.csv') for time in years]            
-    datasets = get_dataframes(input_filenames,
-                              col_map=EXP_COL_MAP,
-                              drop_rows=[0,1],
-                              drop_cols=EXP_DROP_COLS)
+    # datasets = get_dataframes(input_filenames,
+    #                           col_map=EXP_COL_MAP,
+    #                           drop_rows=[0,1],
+    #                           drop_cols=EXP_DROP_COLS)
     
-    # Transform each dataset
-    transformed_datasets = [transform_expenditure_df(df) for df in datasets]
+    # # Transform each dataset
+    # transformed_datasets = [transform_expenditure_df(df) for df in datasets]
     
     # Save all transformed datasets
     output_filenames = [append_path(output_filepath, f'expenditures{time}.csv') for time in years]
-    save_dataframes(transformed_datasets, output_filenames)
+    # save_dataframes(transformed_datasets, output_filenames)
     
-    if save_tall:
-        tall_df = make_tall(datasets, id_col=years, id_name='year')
-        tall_df.to_csv(append_path(output_filepath, 'expenditures_tall.csv'))
+    datasets = DataFrameSet(input_filenames, output_filenames, ExpenditureMaker)
+    datasets.make_dataframes()
+    
+    # if save_tall:
+    #     tall_df = make_tall(datasets, id_col=years, id_name='year')
+    #     tall_df.to_csv(append_path(output_filepath, 'expenditures_tall.csv'))
     
     
 def transform_expenditure_df(df):
@@ -829,10 +832,10 @@ def main(input_filepath, output_filepath):
     None.
 
     """
-    make_census(append_path(input_filepath, 'census'), 
-                      append_path(output_filepath, 'census'))
-    # make_expenditures(append_path(input_filepath, 'expenditures'), 
-    #                         append_path(output_filepath, 'expenditures'))
+    # make_census(append_path(input_filepath, 'census'), 
+    #                   append_path(output_filepath, 'census'))
+    make_expenditures(append_path(input_filepath, 'expenditures'), 
+                            append_path(output_filepath, 'expenditures'))
     # make_kaggle(append_path(input_filepath,'kaggle'), 
     #                  append_path(output_filepath,'kaggle'))
 

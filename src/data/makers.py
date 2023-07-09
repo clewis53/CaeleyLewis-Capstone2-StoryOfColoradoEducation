@@ -92,4 +92,63 @@ class CensusMaker(Maker):
     def transform(self):
         self.df = self.df.set_index(self.df.columns[0])
         super().transform()
+        
+        
+class ExpenditureMaker(Maker):
     
+    col_map = {'unnamed: 1': 'county',
+               'district/': 'district_name',
+               'unnamed: 3': 'instruction',
+               'total': 'support',
+               'unnamed: 5': 'community',
+               'unnamed: 6': 'other',
+               'unnamed: 7': 'sum'}
+    drop_cols = ['unnamed: 0']
+    
+    
+    def transform(self):
+        super().transform()
+        self._clean_numbers()
+        self._clean_district_name()
+        self._extract_data()
+        
+        
+    def _clean_numbers(self):
+        for col in self.df.columns:
+            if self.df[col].dtype == 'string':
+                self.df[col] = self.df[col].str.replace(',','', regex=True)
+                self.df[col] = self.df[col].str.replace('\(','', regex=True)
+                self.df[col] = self.df[col].str.replace('\)','', regex=True)
+    
+    def _clean_district_name(self):
+        # The district_name column has numbers that were relevant to the BOCES funding but not our project.
+        # We want to be able to identify each of those and remove them.
+        def remove_floats(entry):
+            try:
+                float(entry)
+                return np.nan
+            except:
+                return entry
+            
+        self.df['district_name'] = self.df['district_name'].apply(remove_floats)
+        
+        # Now that they are removed, lets forward fill the district_name,
+        # so that we can extract the total amount for each category
+        # and the per pupil amount for each category
+        self.df['district_name'] = self.df['district_name'].fillna(method='ffill').fillna(method='bfill')
+        
+        # Remove all BOCES funding entries because they are irrelevant
+        self.df = self.df[~(self.df['district_name'].str.lower().str.contains('boces'))]
+        
+    def _extract_data(self):
+        # Now we can extract the total amounts
+        totals = self.df[self.df['county'].str.lower() == 'amount'].drop('county', axis=1)
+        # the per pupil amounts 
+        per_pupils = self.df[self.df['county'].str.lower() == 'per pupil'].drop('county', axis=1)
+        # and the county names
+        counties = self.df.loc[~(self.df['county'].str.lower().isin(('amount', 'per pupil', 'all funds', 'county'))), ['district_name', 'county']].dropna()
+        
+        # Now we can merge them
+        merged_df = pd.merge(left=totals, right=per_pupils, on='district_name', suffixes=('_total', '_per_pupil'))
+        self.df = pd.merge(left=counties, right=merged_df, on='district_name')
+        
