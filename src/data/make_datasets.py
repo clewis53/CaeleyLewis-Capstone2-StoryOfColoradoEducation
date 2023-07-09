@@ -9,92 +9,6 @@ from pathlib import Path
 from makers import DataFrameSet
 import makers
 
-#
-NO_FILL = ['school', 'school_id', 'district_name', 'district_id']
-
-# Kaggle dataframes information
-# Standardized column names 
-KAGGLE_COL_MAP = {'emh-combined': 'emh_combined',
-                  'emh_combined': 'emh_combined',
-                  'spf_emh_code': 'emh',
-                  'spf_included_emh_for_a': 'emh_combined',
-                  'school_name': 'school',
-                  'schoolname': 'school',
-                  'school name': 'school',
-                  '2010 school name': 'school',
-                  'spf_school_name': 'school',
-                  'district code': 'district_id',
-                  'districtnumber': 'district_id',
-                  'district no': 'district_id',
-                  'district number': 'district_id',
-                  'districtnumber': 'district_id',
-                  'spf_dist_number': 'district_id',
-                  'org. code': 'district_id',
-                  'organization code': 'district_id',
-                  'districtname': 'district_name',
-                  'district name': 'district_name',
-                  'spf_district_name': 'district_name',
-                  'organization name': 'district_name',
-                  'school_district': 'district_name',
-                  'school_districte': 'district_name',
-                  'schoolnumber': 'school_id',
-                  'school code': 'school_id',
-                  'school number': 'school_id',
-                  'school no': 'school_id',
-                  'spf_school_number': 'school_id'}
-
-# COACT DataFrames
-COACT_COL_DROP = ['district_name']
-# Enrl_working DataFrames
-ENRL_COL_DROP = ['unnamed: 12', 'unnamed: 13',	'unnamed: 14']
-# Final_Grade Dataframes
-FINAL_COL_DROP = ['emh_2lvl', 
-                  'LT100pnts', 
-                  'aec10',
-                  'alternative_school',
-                  'charter',
-                  'charteroronline',
-                  'ell_growth_grade',
-                  'emh_2lvl',
-                  'final_plan',
-                  'highestgrade',
-                  'initial_plan',
-                  'lowestgrade',
-                  'lt100pnts',
-                  'notes',
-                  'online',
-                  'overall_ach_grade',
-                  'overall_achievement',
-                  'record_no',
-                  'spf_ps_ell_grad_rate']
-FINAL_COL_MAP = {'aec_10': 'alternative_school',
-                 'initial_plantype': 'initial_plan',
-                 'final_plantype': 'final_plan', 
-                 'rank_tot': 'rank',
-                 'overall_ach_grade': 'overall_achievement',
-                 'read_ach_grade': 'read_achievement',
-                 'read_ach_grade': 'read_achievement',
-                 'math_ach_grade': 'math_achievement',
-                 'write_ach_grade': 'write_achievement',
-                 'sci_ach_grade': 'science_achievment',
-                 'overall_weighted_growth_grade': 'overall_weighted_growth',
-                 'read_growth_grade': 'read_growth',
-                 'math_growth_grade': 'math_growth',
-                 'write_growth_grade': 'write_growth',
-                 'spf_ps_ind_grad_rate': 'graduation_rate'}
-# FRL Dataframes
-FRL_COL_DROP = ['unnamed: 5', 'unnamed: 6', 'unnamed: 7']
-FRL_COL_MAP = {'% free and reduced': 'pct_fr'}
-# Remediation DataFrames
-REM_COL_DROP = ['unnamed: 5', 'this is 2011 data: created nov 7, 2012', 'public_private']
-REM_COL_MAP = {'remediation_atleastone_pct2010': 'pct_remediation',
-               'remediation_at_leastone_pct2010': 'pct_remediation'}
-# Address DataFrames
-ADDRESS_COL_DROP = ['phone', 'physical address']
-ADDRESS_COL_MAP = {'physical city': 'city',
-                  'physical state': 'state',
-                  'physical zipcode': 'zipcode'}
-
 
 def append_path(path, addition):
     """
@@ -287,13 +201,13 @@ def make_kaggle(input_filepath, output_filepath):
 
     """
     
-    # make_1yr_3yr_change(input_filepath, output_filepath)
-    # make_coact(input_filepath, output_filepath)
-    # make_enrl_working(input_filepath, output_filepath)
-    # make_final_grade(input_filepath, output_filepath)
-    # make_k_12_frl(input_filepath, output_filepath)
+    make_1yr_3yr_change(input_filepath, output_filepath)
+    make_coact(input_filepath, output_filepath)
+    make_enrl_working(input_filepath, output_filepath)
+    make_final_grade(input_filepath, output_filepath)
+    make_k_12_frl(input_filepath, output_filepath)
     make_remediation(input_filepath, output_filepath)
-    # make_school_address(input_filepath, output_filepath)
+    make_school_address(input_filepath, output_filepath)
     
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
@@ -321,135 +235,49 @@ def make_1yr_3yr_change(input_filepath, output_filepath):
     
 
 def make_coact(input_filepath, output_filepath):
-    input_filenames = create_filenames(input_filepath, '{year}_COACT.csv')
-    
-    # datasets = get_dataframes(input_filenames, col_map=KAGGLE_COL_MAP, drop_cols=COACT_COL_DROP)
-    
-    # # A map to apply to each column that makes more sense than 1,2
-    # readiness_map = {1: 1,
-    #                  2: 0,
-    #                  0: 0}
-    # # The column to apply the map to
-    # direction_cols = ['eng_yn','math_yn','read_yn','sci_yn']
-    
-            
-    
-    # datasets = fill_back_forward(datasets, ['school_id'], direction_cols)
-    
-    # for df in datasets:
-    #     # Find entries with district results
-    #     dist_res = df['school']=='DISTRICT RESULTS'
-    #     # Find entries with state results
-    #     state_res = df['district_id'] == 0
-    #     # Remove them both
-    #     df.drop(df[dist_res | state_res].index, inplace=True)
-        
-    #     # Apply the college readiness map
-    #     for col in direction_cols:
-    #         df[col] = df[col].map(readiness_map)
-    
+    input_filenames = create_filenames(input_filepath, '{year}_COACT.csv')    
     output_filenames = create_filenames(output_filepath, 'COACT{year}.csv')
     
     datasets = DataFrameSet(input_filenames, output_filenames, makers.CoactMaker)
     datasets.make_dataframes()
     
-    # save_dataframes(datasets, output_filenames)
-    
     
 def make_enrl_working(input_filepath, output_filepath):
-    input_filenames = create_filenames(input_filepath, '{year}_enrl_working.csv')
-    
-    # datasets = get_dataframes(input_filenames, col_map=KAGGLE_COL_MAP, drop_cols=ENRL_COL_DROP)
-    
-    # for df in datasets:
-    #     remove_boces(df)
-    
+    input_filenames = create_filenames(input_filepath, '{year}_enrl_working.csv')    
     output_filenames = create_filenames(output_filepath, 'enrl_working{year}.csv')
-    
-    # save_dataframes(datasets, output_filenames)
     
     datasets = DataFrameSet(input_filenames, output_filenames, makers.EnrollMaker)
     datasets.make_dataframes()
     
 
 def make_final_grade(input_filepath, output_filepath):
-    input_filenames = create_filenames(input_filepath, '{year}_final_grade.csv')    # Append standard col changes to specific ones
-    # FINAL_COL_MAP.update(KAGGLE_COL_MAP)    
-    # datasets = get_dataframes(input_filenames, 
-    #                           index_col=None, 
-    #                           col_map=FINAL_COL_MAP,
-    #                           drop_cols=FINAL_COL_DROP)     
-    
-    # for df in datasets:
-    #     df.drop(['emh_combined'], axis=1, inplace=True)
-    #     remove_boces(df)
-        
+    input_filenames = create_filenames(input_filepath, '{year}_final_grade.csv')      
     output_filenames = create_filenames(output_filepath, 'final_grade{year}.csv')    
-    # save_dataframes(datasets, output_filenames)
+
     datasets = DataFrameSet(input_filenames, output_filenames, makers.FinalMaker)
     datasets.make_dataframes()
 
+
 def make_k_12_frl(input_filepath, output_filepath):
-    input_filenames = create_filenames(input_filepath, '{year}_k_12_FRL.csv')
-    
-    # FRL_COL_MAP.update(KAGGLE_COL_MAP)
-    
-    # datasets = get_dataframes(input_filenames, 
-    #                           col_map=FRL_COL_MAP,
-    #                           drop_cols=FRL_COL_DROP)
-    
-    # for df in datasets:
-    #     df.drop([len(df)-2, len(df)-1], inplace=True)
-    #     df['pct_fr'] = df['pct_fr'].str.replace('%','').astype('float') / 100
-        
-    #     remove_boces(df)
-        
+    input_filenames = create_filenames(input_filepath, '{year}_k_12_FRL.csv')        
     output_filenames = create_filenames(output_filepath, 'FRL{year}.csv')
-    
-    # save_dataframes(datasets, output_filenames)
     
     datasets = DataFrameSet(input_filenames, output_filenames, makers.FrlMaker)
     datasets.make_dataframes()
 
+
 def make_remediation(input_filepath, output_filepath):
-    input_filenames = create_filenames(input_filepath, '{year}_remediation_HS.csv')
     
-    # REM_COL_MAP.update(KAGGLE_COL_MAP)
-    
-    # datasets = get_dataframes(input_filenames, 
-    #                           col_map=REM_COL_MAP,
-    #                           drop_cols=REM_COL_DROP)
-    
-    
-    # for df in datasets:
-    #     # Remove percentage signs only where applicable
-    #     try:
-    #         df['pct_remediation'] = df['pct_remediation'].str.replace('%', '').astype('float') / 100
-    #     except AttributeError:
-    #         pass
-    #     remove_boces(df)
-        
-    
+    input_filenames = create_filenames(input_filepath, '{year}_remediation_HS.csv')      
     output_filenames = create_filenames(output_filepath, 'remediation{year}.csv')
-    
-    # save_dataframes(datasets, output_filenames)
-    
+        
     datasets = DataFrameSet(input_filenames, output_filenames, makers.RemediationMaker)
     datasets.make_dataframes()
 
 
 def make_school_address(input_filepath, output_filepath):
-    input_filenames = create_filenames(input_filepath, '{year}_school_address.csv')
-    
-    # ADDRESS_COL_MAP.update(KAGGLE_COL_MAP)
-    
-    # datasets = get_dataframes(input_filenames, 
-    #                           col_map=ADDRESS_COL_MAP, 
-    #                           drop_cols=ADDRESS_COL_DROP)
-    
+    input_filenames = create_filenames(input_filepath, '{year}_school_address.csv')    
     output_filenames = create_filenames(output_filepath, 'address{year}.csv')
-    
-    # save_dataframes(datasets, output_filenames)
     
     datasets = DataFrameSet(input_filenames, output_filenames, makers.AddressMaker)
     datasets.make_dataframes()
@@ -470,10 +298,10 @@ def main(input_filepath, output_filepath):
     None.
 
     """
-    # make_census(append_path(input_filepath, 'census'), 
-    #                   append_path(output_filepath, 'census'))
-    # make_expenditures(append_path(input_filepath, 'expenditures'), 
-    #                         append_path(output_filepath, 'expenditures'))
+    make_census(append_path(input_filepath, 'census'), 
+                      append_path(output_filepath, 'census'))
+    make_expenditures(append_path(input_filepath, 'expenditures'), 
+                            append_path(output_filepath, 'expenditures'))
     make_kaggle(append_path(input_filepath,'kaggle'), 
                      append_path(output_filepath,'kaggle'))
 

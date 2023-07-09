@@ -277,7 +277,7 @@ class ChangeMaker(KaggleMaker):
 
 class CoactMaker(KaggleMaker):
     
-    col_drop = ['district_name']
+    drop_cols = ['district_name']
     
     readiness_map = {1: 1,
                       2: 0,
@@ -359,8 +359,11 @@ class FrlMaker(KaggleMaker):
         self._clean_pct_signs('pct_fr')
     
     def _drop_last_two_rows(self):
-        self.df = self.df.drop([len(self.df)-2, len(self.df)-1])
-        
+        try:
+            self.df = self.df.reset_index(drop=True)
+            self.df = self.df.drop([len(self.df)-2, len(self.df)-1])
+        except:
+            pass
         
         
 class RemediationMaker(KaggleMaker):

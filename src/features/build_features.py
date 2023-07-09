@@ -1,3 +1,7 @@
+import pandas as pd
+
+NO_FILL = ['school', 'school_id', 'district_name', 'district_id']
+
 def fill_back_forward(datasets, merge_on, columns):
     """
     Fills na values in datasets by backfilling from the most recent observations
