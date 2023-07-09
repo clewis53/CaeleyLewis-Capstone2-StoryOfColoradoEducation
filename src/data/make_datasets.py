@@ -291,9 +291,9 @@ def make_kaggle(input_filepath, output_filepath):
     # make_coact(input_filepath, output_filepath)
     # make_enrl_working(input_filepath, output_filepath)
     # make_final_grade(input_filepath, output_filepath)
-    make_k_12_frl(input_filepath, output_filepath)
+    # make_k_12_frl(input_filepath, output_filepath)
     # make_remediation(input_filepath, output_filepath)
-    # make_school_address(input_filepath, output_filepath)
+    make_school_address(input_filepath, output_filepath)
     
 
 def make_1yr_3yr_change(input_filepath, output_filepath):
