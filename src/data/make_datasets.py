@@ -7,6 +7,7 @@ Created on Thu Feb 16 13:02:25 2023
 import numpy as np
 import pandas as pd
 from pathlib import Path
+from makers import DataFrameSet, CensusMaker
 
 #
 NO_FILL = ['school', 'school_id', 'district_name', 'district_id']
@@ -479,18 +480,21 @@ def make_census(input_filepath, output_filepath, years=(2010, 2011, 2012), save_
     """
     # make DataFrames from all saipe files
     input_filenames = [append_path(input_filepath, f'saipe{time}.csv') for time in years]
-    datasets = get_dataframes(input_filenames, 
-                              col_map=CENSUS_COL_MAP, 
-                              drop_cols=CENSUS_DROP_COLS, 
-                              index_col=0)
+    # datasets = get_dataframes(input_filenames, 
+    #                           col_map=CENSUS_COL_MAP, 
+    #                           drop_cols=CENSUS_DROP_COLS, 
+    #                           index_col=0)
     
     # save the DataFrames from all saipe files
     output_filenames = [append_path(output_filepath, f'saipe{time}.csv') for time in years]
-    save_dataframes(datasets, output_filenames)
+    # save_dataframes(datasets, output_filenames)
     
-    if save_tall:
-        tall_df = make_tall(datasets, id_col=years, id_name='year')
-        tall_df.to_csv(append_path(output_filepath, 'saipe_tall.csv'))
+    dataframes = DataFrameSet(input_filenames, output_filenames, CensusMaker)
+    dataframes.make_dataframes()
+    
+    # if save_tall:
+    #     tall_df = make_tall(datasets, id_col=years, id_name='year')
+    #     tall_df.to_csv(append_path(output_filepath, 'saipe_tall.csv'))
 
 
 
@@ -827,10 +831,10 @@ def main(input_filepath, output_filepath):
     """
     make_census(append_path(input_filepath, 'census'), 
                       append_path(output_filepath, 'census'))
-    make_expenditures(append_path(input_filepath, 'expenditures'), 
-                            append_path(output_filepath, 'expenditures'))
-    make_kaggle(append_path(input_filepath,'kaggle'), 
-                     append_path(output_filepath,'kaggle'))
+    # make_expenditures(append_path(input_filepath, 'expenditures'), 
+    #                         append_path(output_filepath, 'expenditures'))
+    # make_kaggle(append_path(input_filepath,'kaggle'), 
+    #                  append_path(output_filepath,'kaggle'))
 
 
 if __name__ == '__main__':
