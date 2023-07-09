@@ -234,10 +234,11 @@ class KaggleMaker(Maker):
     def _remove_state_results(self):
         """ Removes any rows containing state results where the district_id is 0. """
         
-        # The location of state results rows
-        state_loc = self.df['district_id'] == 0
-        
-        self.df = self.df.drop(self.df[state_loc].index)
+        if 'district_id' in self.df.columns:
+            # The location of state results rows
+            state_loc = self.df['district_id'] == 0
+            
+            self.df = self.df.drop(self.df[state_loc].index)
         
     def _clean_pct_signs(self, col):
         try:
