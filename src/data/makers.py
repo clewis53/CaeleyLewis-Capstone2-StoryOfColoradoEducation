@@ -12,33 +12,45 @@ class DataFrameSet:
     """ Class to get transform and save sets of dataframes """
     
     def __init__(self, input_filenames, output_filenames, maker):
-        assert len(input_filenames) == len(output_filenames)
-        
+        if len(input_filenames) != len(output_filenames):
+            raise ValueError(f'input_filenames {len(input_filenames)=}',
+                             f'is not the same {len(output_filenames)=}')
+        if Maker not in maker.mro():
+            raise TypeError('maker must be of type Maker')
+                 
         self.input_filenames = input_filenames
         self.output_filenames = output_filenames
         self.maker = maker
-        
+        # Initialize dataframes as an empty array of dataframes
         self.dataframes = [pd.DataFrame([])] * len(input_filenames)
+    
     
     def make_dataframes(self):
         self._get_dataframes()
         self._transform_dataframes()
         self._save_dataframes()
     
+    
     def _get_dataframes(self):
+        """ Reads in all dataframes from the input_filenames iterable"""
         for i in range(len(self.input_filenames)):
-            self.dataframes[i] = pd.read_csv(self.input_filenames[i])
+          self.dataframes[i] = pd.read_csv(self.input_filenames[i])
+    
     
     def _transform_dataframes(self):
+        """ Transforms all filenames according to the maker classification """
         for i in range(len(self.dataframes)):
             df_maker = self.maker(self.dataframes[i])
             df_maker.transform()
-            
+            # Reset the value to the transformed version
             self.dataframes[i] = df_maker.df
     
+    
     def _save_dataframes(self):
+        """ Saves all dataframes to the output location """
         for i in range(len(self.output_filenames)):
             self.dataframes[i].to_csv(self.output_filenames[i], index=False)
+            
     
     def make_tall(self, id_col=(2010,2011,2012), id_name='year'):
         
@@ -59,20 +71,29 @@ class DataFrameSet:
         return tall_df
 
 
+
 class Maker:
+    """ A class that transforms a dataframe into a readable format """
     
+    # Rows that should be dropped from the dataset
     drop_rows = []
+    # Columns that should be dropped
     drop_cols = []
+    # How to rename columns
     col_map = {}
         
     def __init__(self, dataframe):
         self.df = dataframe
     
+    
     def transform(self):
+        """ Main function that performs the transformation """
         self._transform_rows()
         self._transform_cols()
         
+        
     def _transform_rows(self):
+        """ Helper function to transform rows """
         # Rows
         # Drop specified rows
         self.df = self.df.drop(self.drop_rows)
@@ -81,7 +102,9 @@ class Maker:
         # Then reset the index
         self.df = self.df.reset_index(drop=True)
         
+        
     def _transform_cols(self):
+        """ Helper function to transform columns """
         # Columns
         # Lowercase column names
         self.df.columns = self.df.columns.str.lower()
@@ -102,11 +125,12 @@ class CensusMaker(Maker):
                'saepovall_pt': 'est_total_pop',
                'time': 'year'}
     drop_cols = ['state', 'school district (unified)']
-    
-    
+        
     def transform(self):
+        # One change is made to ensure that the index is set properly before transofmring
         self.df = self.df.set_index(self.df.columns[0])
         super().transform()
+       
         
         
 class ExpenditureMaker(Maker):
@@ -122,20 +146,29 @@ class ExpenditureMaker(Maker):
     
     
     def transform(self):
+        # Apply standard changes
         super().transform()
+        # Apply additional changes
         self._clean_numbers()
         self._clean_district_name()
         self._extract_data()
         
         
     def _clean_numbers(self):
+        """ Helper function that deals with all columns of type string. It
+            commas, and parantheses
+        """
+        
         for col in self.df.columns:
             if self.df[col].dtype == 'string':
                 self.df[col] = self.df[col].str.replace(',','', regex=True)
                 self.df[col] = self.df[col].str.replace('\(','', regex=True)
                 self.df[col] = self.df[col].str.replace('\)','', regex=True)
     
+    
     def _clean_district_name(self):
+        """ Helper function that removes any district names that were BOCES """
+        
         # The district_name column has numbers that were relevant to the BOCES funding but not our project.
         # We want to be able to identify each of those and remove them.
         def remove_floats(entry):
@@ -155,7 +188,11 @@ class ExpenditureMaker(Maker):
         # Remove all BOCES funding entries because they are irrelevant
         self.df = self.df[~(self.df['district_name'].str.lower().str.contains('boces'))]
         
+        
     def _extract_data(self):
+        """ Helper function that extracts the data from their respective rows and
+            organizes it in a column format """
+            
         # Now we can extract the total amounts
         totals = self.df[self.df['county'].str.lower() == 'amount'].drop('county', axis=1)
         # the per pupil amounts 
@@ -167,6 +204,7 @@ class ExpenditureMaker(Maker):
         merged_df = pd.merge(left=totals, right=per_pupils, on='district_name', suffixes=('_total', '_per_pupil'))
         self.df = pd.merge(left=counties, right=merged_df, on='district_name')
         
+
 
 class KaggleMaker(Maker):
     
@@ -201,11 +239,18 @@ class KaggleMaker(Maker):
   
     
     def transform(self):
+        # Perform standard changes
         super().transform()
+        
+        # Remove rows with unecessary information
         self._remove_boces()
-        self._remove_district_results()
-        self._remove_emh_combined()
         self._remove_state_results()
+        self._remove_district_results()
+        # Reset the index after changing rows
+        self.df = self.df.reset_index(drop=True)
+        
+        # Remove columns with unecessary information
+        self._remove_emh_combined()
 
 
     def _remove_boces(self):
@@ -225,11 +270,13 @@ class KaggleMaker(Maker):
         
         self.df = self.df.drop(self.df[dist_loc].index)
     
+    
     def _remove_emh_combined(self):
         """ Removes the emh_combined column if it exists. """
         
         if 'emh_combined' in self.df.columns:
             self.df = self.df.drop('emh_combined', axis=1)
+        
             
     def _remove_state_results(self):
         """ Removes any rows containing state results where the district_id is 0. """
@@ -240,11 +287,15 @@ class KaggleMaker(Maker):
             
             self.df = self.df.drop(self.df[state_loc].index)
         
+        
     def _clean_pct_signs(self, col):
+        """ Removes percent signs from the specified column and ignores errors """
         try:
             self.df[col] = self.df[col].str.replace('%','').astype('float') / 100
         except AttributeError:
             pass
+    
+    
     
 class ChangeMaker(KaggleMaker):
     
@@ -254,6 +305,7 @@ class ChangeMaker(KaggleMaker):
                       'pct_pts_chng_.5': 'overall_dir',
                       'pct_pts_chnge_.5': 'overall_dir'}
     
+    # The directions are in an odd format, we will change them
     trend_arrow_map = {1: -1,
                        2: 0,
                        3: 1}
@@ -275,10 +327,13 @@ class ChangeMaker(KaggleMaker):
             self.df[col] = self.df[col].map(self.trend_arrow_map)
 
 
+
 class CoactMaker(KaggleMaker):
     
+    # district_name is dropped because it is not present in all datasets
     drop_cols = ['district_name']
     
+    # The college readiness used two different standards for true/false
     readiness_map = {1: 1,
                       2: 0,
                       0: 0}
@@ -292,6 +347,7 @@ class CoactMaker(KaggleMaker):
         """ Maps the readiness columns """
         for col in ('eng_yn','math_yn','read_yn','sci_yn'):
             self.df[col] = self.df[col].map(self.readiness_map)
+
 
 
 class EnrollMaker(KaggleMaker):
@@ -343,6 +399,7 @@ class FinalMaker(KaggleMaker):
         self.col_map.update(self.final_col_map)
         
 
+
 class FrlMaker(KaggleMaker):
     
     drop_cols = ['unnamed: 5', 'unnamed: 6', 'unnamed: 7']
@@ -353,22 +410,28 @@ class FrlMaker(KaggleMaker):
         super().__init__(dataframe)
         self.col_map.update(self.frl_col_map)
         
+        
     def transform(self):
         super().transform()
         self._drop_last_two_rows()
+        # Clean the pct_fr column of any percentage signs
         self._clean_pct_signs('pct_fr')
     
+    
     def _drop_last_two_rows(self):
-        try:
-            self.df = self.df.reset_index(drop=True)
-            self.df = self.df.drop([len(self.df)-2, len(self.df)-1])
-        except:
-            pass
+        """ Removes the last two rows """
+
+        self.df = self.df.drop([len(self.df)-2, len(self.df)-1])
         
+     
         
 class RemediationMaker(KaggleMaker):
     
-    drop_cols = ['unnamed: 5', 'this is 2011 data: created nov 7, 2012', 'public_private']
+    # district_names are dropped because they are written poorly
+    drop_cols = ['unnamed: 5', 
+                 'this is 2011 data: created nov 7, 2012', 
+                 'public_private',
+                 'district_name']
     
     rem_col_map = {'remediation_atleastone_pct2010': 'pct_remediation',
                    'remediation_at_leastone_pct2010': 'pct_remediation'}
@@ -377,9 +440,13 @@ class RemediationMaker(KaggleMaker):
         super().__init__(dataframe)
         self.col_map.update(self.rem_col_map)
         
+        
     def transform(self):
         super().transform()
+        # Clean the pct_remediation column from any percentage signs
         self._clean_pct_signs('pct_remediation')
+
+
 
 class AddressMaker(KaggleMaker):
     
