@@ -39,8 +39,8 @@ class SchoolIDBuilder(IDDatasetBuilder):
     
 
 class DistrictIDBuilder(IDDatasetBuilder):
-    keep_cols = ['school_id', 'school', 'emh', 'district_id']
-    id_cols = ['school_id', 'emh']
+    keep_cols = ['district_id' 'district_name']
+    id_cols = ['district_id']
     
     changes = {'SCHOOL ': '',
                'DISTRICT ': '',

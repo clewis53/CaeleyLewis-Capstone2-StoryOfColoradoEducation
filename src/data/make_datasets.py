@@ -87,7 +87,7 @@ def make_datasets(input_filepath, output_filepath):
 
 
 
-def make_census(input_filepath, output_filepath, years=(2010, 2011, 2012), save_tall=True):
+def make_census(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     """
     Transforms raw census data into usable tall interim data.
     The input filepath must contain saipe datasets that
@@ -113,12 +113,13 @@ def make_census(input_filepath, output_filepath, years=(2010, 2011, 2012), save_
     dataframes = DataFrameSet(input_filenames, output_filenames, makers.CensusMaker)
     dataframes.make_dataframes()
     
-    return dataframes.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, 'tall_saipe.csv')
+    return dataframes.make_tall(id_col=years, filepath=tall_filepath)
     
 
 
 
-def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012), save_tall=True):
+def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     """
     Transforms all expenditures datasets that must be Comparison of All 
     Program Expenditures (All Funds) directly downloaded from
@@ -145,11 +146,9 @@ def make_expenditures(input_filepath, output_filepath, years=(2010, 2011, 2012),
     datasets = DataFrameSet(input_filenames, output_filenames, makers.ExpenditureMaker)
     datasets.make_dataframes()
     
-    return datasets.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, 'tall_expenditures.csv')
+    return datasets.make_tall(id_col=years, filepath=tall_filepath)
     
-    # if save_tall:
-    #     tall_df = make_tall(datasets, id_col=years, id_name='year')
-    #     tall_df.to_csv(append_path(output_filepath, 'expenditures_tall.csv'))
     
 
 
@@ -204,7 +203,8 @@ def make_1yr_3yr_change(input_filepath, output_filepath, years=(2010, 2011, 2012
     datasets = DataFrameSet(input_filenames, output_filenames, makers.ChangeMaker)
     datasets.make_dataframes()
     
-    return datasets.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, '1YR_3YR_change_tall.csv')
+    return datasets.make_tall(id_col=years, filepath=tall_filepath)
     
 
 def make_coact(input_filepath, output_filepath, years=(2010, 2011, 2012)):
@@ -214,7 +214,8 @@ def make_coact(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     datasets = DataFrameSet(input_filenames, output_filenames, makers.CoactMaker)
     datasets.make_dataframes()
     
-    return datasets.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, 'COACT_tall.csv')
+    return datasets.make_tall(id_col=years, filepath=tall_filepath)
     
 def make_enrl_working(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     input_filenames = create_filenames(input_filepath, '{year}_enrl_working.csv')    
@@ -223,7 +224,8 @@ def make_enrl_working(input_filepath, output_filepath, years=(2010, 2011, 2012))
     datasets = DataFrameSet(input_filenames, output_filenames, makers.EnrollMaker)
     datasets.make_dataframes()
     
-    return datasets.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, 'enrl_working_tall.csv')
+    return datasets.make_tall(id_col=years, filepath=tall_filepath)
     
 
 def make_final_grade(input_filepath, output_filepath, years=(2010, 2011, 2012)):
@@ -233,7 +235,8 @@ def make_final_grade(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     datasets = DataFrameSet(input_filenames, output_filenames, makers.FinalMaker)
     datasets.make_dataframes()
     
-    return datasets.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, 'final_grade_tall.csv')
+    return datasets.make_tall(id_col=years, filepath=tall_filepath)
 
 
 def make_k_12_frl(input_filepath, output_filepath, years=(2010, 2011, 2012)):
@@ -243,7 +246,8 @@ def make_k_12_frl(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     datasets = DataFrameSet(input_filenames, output_filenames, makers.FrlMaker)
     datasets.make_dataframes()
     
-    return datasets.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, 'FRL_tall.csv')
+    return datasets.make_tall(id_col=years, filepath=tall_filepath)
 
 
 def make_remediation(input_filepath, output_filepath, years=(2010, 2011, 2012)):
@@ -254,7 +258,8 @@ def make_remediation(input_filepath, output_filepath, years=(2010, 2011, 2012)):
     datasets = DataFrameSet(input_filenames, output_filenames, makers.RemediationMaker)
     datasets.make_dataframes()
     
-    return datasets.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, 'remediation_tall.csv')
+    return datasets.make_tall(id_col=years, filepath=tall_filepath)
 
 
 def make_school_address(input_filepath, output_filepath, years=(2010, 2011, 2012)):
@@ -264,7 +269,8 @@ def make_school_address(input_filepath, output_filepath, years=(2010, 2011, 2012
     datasets = DataFrameSet(input_filenames, output_filenames, makers.AddressMaker)
     datasets.make_dataframes()
     
-    return datasets.make_tall(id_col=years)
+    tall_filepath = append_path(output_filepath, 'address_tall.csv')
+    return datasets.make_tall(id_col=years, filepath=tall_filepath)
     
 
 

@@ -38,7 +38,7 @@ class DataFrameSet:
     
     
     def _transform_dataframes(self):
-        """ Transforms all filenames according to the maker classification """
+        """ Transforms all filenames according to the maker class """
         for i in range(len(self.dataframes)):
             df_maker = self.maker(self.dataframes[i])
             df_maker.transform()
@@ -52,7 +52,7 @@ class DataFrameSet:
             self.dataframes[i].to_csv(self.output_filenames[i], index=False)
             
     
-    def make_tall(self, id_col=(2010,2011,2012), id_name='year'):
+    def make_tall(self, id_col=(2010,2011,2012), id_name='year', filepath=None):
         
         # The length of id_col must be equal to the number of datasets provided
         if len(id_col) != len(self.dataframes):
@@ -61,12 +61,19 @@ class DataFrameSet:
         if id_name == None:
             raise ValueError('id_name must not be None')
         
+        # Initialzie the tall_dataframe as the first in the set
         tall_df = self.dataframes[0]
+        # Create the id_col to distinguish the dataframes when they are concatenated
         tall_df[id_name] = id_col[0]
         
+        # Concatenate the dataframes
         for i in range(1, len(self.dataframes)):
             self.dataframes[i][id_name] = id_col[i]
             tall_df = pd.concat((tall_df, self.dataframes[i]))
+            
+        # Save the dataframe when filepath is not None
+        if filepath is not None:
+            tall_df.to_csv(filepath, index=False)
             
         return tall_df
 
@@ -203,6 +210,7 @@ class ExpenditureMaker(Maker):
         # Now we can merge them
         merged_df = pd.merge(left=totals, right=per_pupils, on='district_name', suffixes=('_total', '_per_pupil'))
         self.df = pd.merge(left=counties, right=merged_df, on='district_name')
+        self.df = self.df.convert_dtypes()
         
 
 
