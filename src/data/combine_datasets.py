@@ -95,7 +95,7 @@ def create_high_school(input_filepath, output_filepath,
         .drop('emh_x', axis=1)\
         .drop_duplicates(subset=['school_id','year'])
     
-    high_school.to_csv(append_path(output_filepath, 'high_school.csv'))
+    high_school.to_csv(append_path(output_filepath, 'high_school.csv'), index=False)
     
     return high_school
     
