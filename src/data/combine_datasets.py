@@ -4,6 +4,7 @@ Created on Mon Jul 10 18:35:03 2023
 
 @author: caeley
 """
+from input_output_functions import append_path
 import pandas as pd
 from pathlib import Path
 import builders
@@ -19,16 +20,20 @@ def combine_datasets(input_filepath, output_filepath, census, exp, kaggle):
     school = create_school_dataset(input_filepath, output_filepath,
                                    change, final)
     
+    census, exp = find_district_id(district, census, exp)
+    
+    remove_bad_info_datasets = census, exp, change, coact, enroll, final, frl, remediation,
     # Update datasets by removing district and school information
-    updated_datasets = remove_district_and_school_info(census, 
-                                                       exp, 
-                                                       change, coact, enroll, final, frl, remediation,
-                                                       district, school)
+    updated_datasets = remove_district_and_school_info(remove_bad_info_datasets, district, school)
     # Extract updated datasets
     census, exp, change, coact, enroll, final, frl, remediation = updated_datasets
       
     # Build all data
-    all_data = create_all_data(input_filepath, output_filepath, census, exp, change, enroll, final, frl)
+    all_data = create_all_data(input_filepath, output_filepath,
+                               census, 
+                               exp, 
+                               change, enroll, final, frl,
+                               district, school)
     
     # Build high school data
     high_school = create_high_school(input_filepath, output_filepath, coact, remediation, all_data)
@@ -41,6 +46,7 @@ def create_district_dataset(input_filepath, output_filepath,
     
     district_builder = builders.DistrictIDBuilder((change, coact, enroll, final, frl))
     district_builder.build()
+    district_builder.save(append_path(output_filepath, 'districts.csv'))
     
     return district_builder.id_dataset
     
@@ -51,6 +57,8 @@ def create_school_dataset(input_filepath, output_filepath,
     
     school_builder = builders.SchoolIDBuilder(kaggle_datasets)
     school_builder.build()
+    school_builder.save(append_path(output_filepath, 'schools.csv'))
+
     
     return school_builder.id_dataset
 
@@ -58,22 +66,56 @@ def create_school_dataset(input_filepath, output_filepath,
 def create_all_data(input_filepath, output_filepath, 
                     census, 
                     exp, 
-                    change, enroll, final, frl):
-    census_exp_df = combine_census_exp(census, exp)
-    change_final_df = combine_change_final(change, final)
-     
+                    change, enroll, final, frl,
+                    district, school):
+    census_exp_df = pd.merge(census, exp, on=['district_id', 'year'], how='outer')
+    change_final_df = pd.merge(change, final, on=['school_id', 'district_id', 'emh', 'year'], how='outer')
+    
+    all_data = pd.merge(census_exp_df, change_final_df, on=['district_id', 'year'], how='outer')
+    all_data = pd.merge(all_data, enroll, on=['school_id', 'district_id','year'], how='outer')
+    all_data = pd.merge(all_data, frl, on=['school_id','district_id', 'year'], how='outer')
+    all_data = pd.merge(all_data, district, on='district_id')
+    all_data = pd.merge(all_data, school, on=['school_id', 'district_id'])
+    all_data = all_data.rename(columns={'district_id_x': 'district_id'})
+    
+    all_data.to_csv(append_path(output_filepath, 'all_data.csv'), index=False)
+    
+    return all_data
+    
     
 def create_high_school(input_filepath, output_filepath,
                        coact, remediation,
                        all_data):
-    coact_remediation = combine_coact_remediation(coact, remediation)
+    coact_remediation = pd.merge(coact, remediation, on=['school_id', 'year'])
+    all_data_high_schools = all_data[all_data['emh'] == 'H']
+    
+    
+    high_school = pd.merge(coact_remediation, all_data_high_schools, on=['school_id', 'district_id', 'year'])\
+        .rename(columns={'emh_y':'emh'})\
+        .drop('emh_x', axis=1)\
+        .drop_duplicates(subset=['school_id','year'])
+    
+    high_school.to_csv(append_path(output_filepath, 'high_school.csv'))
+    
+    return high_school
+    
+
+def find_district_id(district, census, exp):
+    def _find_district_id(df):
+        df['district_name'] = builders.transform_district_name(df['district_name'])
+        return pd.merge(district, df, on='district_name', how='right')
+        
+    census = _find_district_id(census)
+    exp = _find_district_id(exp)
+    return census, exp
 
 
-def remove_district_and_school_info(census, 
-                                    exp, 
-                                    change, coact, enroll, final, frl, remediation, 
-                                    district, school):
-    pass
+def remove_district_and_school_info(datasets, districts, schools):
+    remove_cols = ['district_name', 'school']
+    for i in range(len(datasets)):
+        datasets[i].drop(remove_cols, axis=1, errors='ignore', inplace=True)
+        
+    return datasets
 
 
 def add_district_id(dataset):
@@ -81,34 +123,30 @@ def add_district_id(dataset):
         raise ValueError('district_name must be a column in the dataset')
 
 
-def combine_census_exp(census, exp):
-    pass
-
-
-def combine_change_final(change, final):
-    pass
-
-
-def combine_coact_remediation(coact, remediation):
-    pass
-
-
 def main(input_filepath, output_filepath):
-    census = pd.read_csv('data\\interim\\census\\tall_saipe.csv')
-    exp = pd.read_csv('data\\interim\\expenditures\\tall_expenditures.csv')
-    change = pd.read_csv('data\\interim\\kaggle\\1YR_3YR_change_tall.csv')
-    coact = pd.read_csv('data\\interim\\kaggle\\1YR_3YR_change_tall.csv')
-    enroll = pd.read_csv('data\\interim\\kaggle\\enrl_working_tall.csv')
-    final = pd.read_csv('data\\interim\\kaggle\\final_grade_tall.csv')
-    frl = pd.read_csv('data\\interim\\kaggle\\FRL_tall.csv')
-    remediation = pd.read_csv('data\\interim\\kaggle\\remediation_tall.csv')
+    # census
+    census = pd.read_csv(append_path(input_filepath, 'census/tall_saipe.csv'))
+    # expenditures
+    exp = pd.read_csv(append_path(input_filepath, 'expenditures/tall_expenditures.csv'))
+    # kaggle
+    change = pd.read_csv(append_path(input_filepath, 'kaggle/1YR_3YR_change_tall.csv'))
+    coact = pd.read_csv(append_path(input_filepath, 'kaggle/1YR_3YR_change_tall.csv'))
+    enroll = pd.read_csv(append_path(input_filepath, 'kaggle/enrl_working_tall.csv'))
+    final = pd.read_csv(append_path(input_filepath, 'kaggle/final_grade_tall.csv'))
+    frl = pd.read_csv(append_path(input_filepath, 'kaggle/FRL_tall.csv'))
+    remediation = pd.read_csv(append_path(input_filepath, 'kaggle/remediation_tall.csv'))
     address = pd.DataFrame()
+    
+    kaggle = change, coact, enroll, final, frl, remediation, address
+
+    
+    combine_datasets(input_filepath, output_filepath, census, exp, kaggle)
 
 
 if __name__ == '__main__':
     # not used in this stub but often useful for finding various files
     project_dir = Path(__file__).resolve().parents[2]    
     input_filepath = project_dir.joinpath("data/interim")
-    output_filepath = project_dir.joinpath("data")
+    output_filepath = project_dir.joinpath("data/interim")
     
     main(input_filepath, output_filepath)

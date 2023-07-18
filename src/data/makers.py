@@ -266,7 +266,7 @@ class KaggleMaker(Maker):
         Removes any rows from a dataset where the district_name contains BOCES.
         """
         if 'district_name' in self.df.columns:        
-            boces_loc = (self.df['district_name'].str.upper().str.contains('BOCES'))
+            boces_loc = (self.df['district_name'].str.upper().str.contains('BOC'))
             self.df = self.df.drop(self.df[boces_loc].index)
        
         
