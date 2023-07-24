@@ -313,6 +313,8 @@ class ChangeMaker(KaggleMaker):
                       'pct_pts_chng_.5': 'overall_dir',
                       'pct_pts_chnge_.5': 'overall_dir'}
     
+    drop_cols = ['record_no']
+    
     # The directions are in an odd format, we will change them
     trend_arrow_map = {1: -1,
                        2: 0,

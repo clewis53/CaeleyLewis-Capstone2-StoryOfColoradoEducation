@@ -15,7 +15,7 @@ def combine_datasets(input_filepath, output_filepath, census, exp, kaggle):
     
     # Build district dataset
     district = create_district_dataset(input_filepath, output_filepath,
-                                       change, coact, enroll, final, frl)
+                                       change, enroll, final, frl)
     # Build school dataset
     school = create_school_dataset(input_filepath, output_filepath,
                                    change, final)
@@ -38,13 +38,15 @@ def combine_datasets(input_filepath, output_filepath, census, exp, kaggle):
     # Build high school data
     high_school = create_high_school(input_filepath, output_filepath, coact, remediation, all_data)
     
+    
+    
     return district, school, all_data, high_school
     
     
 def create_district_dataset(input_filepath, output_filepath, 
-                            change, coact, enroll, final, frl):
+                            change, enroll, final, frl):
     
-    district_builder = builders.DistrictIDBuilder((change, coact, enroll, final, frl))
+    district_builder = builders.DistrictIDBuilder((change, enroll, final, frl))
     district_builder.build()
     district_builder.save(append_path(output_filepath, 'districts.csv'))
     
@@ -72,42 +74,36 @@ def create_all_data(input_filepath, output_filepath,
     change_final_df = pd.merge(change, final, on=['school_id', 'district_id', 'emh', 'year'], how='outer')
     
     all_data = pd.merge(census_exp_df, change_final_df, on=['district_id', 'year'], how='outer')
-    all_data = pd.merge(all_data, enroll, on=['school_id', 'district_id','year'], how='outer')
-    all_data = pd.merge(all_data, frl, on=['school_id','district_id', 'year'], how='outer')
+    all_data = pd.merge(all_data, enroll.drop('district_id', axis=1), on=['school_id','year'], how='outer')
+    all_data = pd.merge(all_data, frl.drop('district_id', axis=1), on=['school_id', 'year'], how='outer')
     all_data = pd.merge(all_data, district, on='district_id')
     all_data = pd.merge(all_data, school, on=['school_id', 'district_id'])
-    all_data = all_data.rename(columns={'district_id_x': 'district_id'})
     
-    all_data.to_csv(append_path(output_filepath, 'all_data.csv'), index=False)
+    
+    all_data.drop('graduation_rate', axis=1).to_csv(append_path(output_filepath, 'all_data.csv'), index=False)
     
     return all_data
-    
     
 def create_high_school(input_filepath, output_filepath,
                        coact, remediation,
                        all_data):
     coact_remediation = pd.merge(coact, remediation, on=['school_id', 'year'])
-    all_data_high_schools = all_data[all_data['emh'] == 'H']
+    all_data_high_schools = all_data[all_data['emh'] == 'H'].drop('emh', axis=1)
     
     
-    high_school = pd.merge(coact_remediation, all_data_high_schools, on=['school_id', 'district_id', 'year'])\
-        .rename(columns={'emh_y':'emh'})\
-        .drop('emh_x', axis=1)\
-        .drop_duplicates(subset=['school_id','year'])
+    high_school = pd.merge(coact_remediation, all_data_high_schools, on=['school_id', 'district_id', 'year'])
     
     high_school.to_csv(append_path(output_filepath, 'high_school.csv'), index=False)
     
     return high_school
-    
+
 
 def find_district_id(district, census, exp):
     def _find_district_id(df):
         df['district_name'] = builders.transform_district_name(df['district_name'])
-        return pd.merge(district, df, on='district_name', how='right')
+        return pd.merge(district, df, on='district_name')
         
-    census = _find_district_id(census)
-    exp = _find_district_id(exp)
-    return census, exp
+    return _find_district_id(census), _find_district_id(exp)
 
 
 def remove_district_and_school_info(datasets, districts, schools):
@@ -130,7 +126,7 @@ def main(input_filepath, output_filepath):
     exp = pd.read_csv(append_path(input_filepath, 'expenditures/tall_expenditures.csv'))
     # kaggle
     change = pd.read_csv(append_path(input_filepath, 'kaggle/1YR_3YR_change_tall.csv'))
-    coact = pd.read_csv(append_path(input_filepath, 'kaggle/1YR_3YR_change_tall.csv'))
+    coact = pd.read_csv(append_path(input_filepath, 'kaggle/COACT_tall.csv'))
     enroll = pd.read_csv(append_path(input_filepath, 'kaggle/enrl_working_tall.csv'))
     final = pd.read_csv(append_path(input_filepath, 'kaggle/final_grade_tall.csv'))
     frl = pd.read_csv(append_path(input_filepath, 'kaggle/FRL_tall.csv'))

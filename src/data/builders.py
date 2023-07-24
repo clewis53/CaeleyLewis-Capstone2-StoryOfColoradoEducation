@@ -7,8 +7,10 @@ Created on Mon Jul 10 19:36:49 2023
 import pandas as pd
 
 # List of changes to make to district_name
-DISTRICT_NAME_CHANGES = {'SCHOOL ': '',
+DISTRICT_NAME_CHANGES = {' SCHOOLS': '',
+                         'SCHOOL ': '',
                          'DISTRICT ': '',
+                         'DISTRICT': '',
                          '-': ' ',
                          ':': ' ',
                          'S/D ': '',
@@ -19,7 +21,9 @@ DISTRICT_NAME_CHANGES = {'SCHOOL ': '',
                          '29J': '29 J',
                          '49JT':'49 JT',
                          'RE1J':'RE 1J',
+                         'C113': 'C 113',
                          'MILIKEN': 'MILLIKEN',
+                         'MC CLAVE': 'MCCLAVE',
                          'NO 1': '1',
                          'PARK ESTES PARK': 'PARK',
                          'PARK R 3': 'ESTES PARK R 3',
@@ -30,7 +34,11 @@ DISTRICT_NAME_CHANGES = {'SCHOOL ': '',
                          'MOFFAT CONSOLIDATED': 'MOFFAT COUNTY',
                          'Ñ': 'N',
                          'NORTHGLENN THORNTON 12': 'ADAMS 12 FIVE STAR',
-                         'CONSOLIDATED C 1': 'CUSTER COUNTY C 1'
+                         'NORTHGLENN-THORNTON 12': 'ADAMS 12 FIVE STAR',
+                         'CONSOLIDATED C 1': 'CUSTER COUNTY C 1',
+                         'CUSTER COUNTY DISTR': 'CUSTER COUNTY C 1',
+                         'CREEDE CONSOLIDATED 1': 'CREEDE',
+                         'FLORENCE': 'FREMONT'
                         }
 
 class IDDatasetBuilder:
@@ -113,6 +121,8 @@ def transform_district_name(col):
     
     # Apply all changes
     for original, replacement in DISTRICT_NAME_CHANGES.items():
-        col = col.str.replace(original, replacement, regex=True)    
+        col = col.str.replace(original, replacement, regex=True)
+    
+    col = col.str.strip()
         
     return col
