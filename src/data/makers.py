@@ -137,6 +137,11 @@ class CensusMaker(Maker):
         # One change is made to ensure that the index is set properly before transofmring
         self.df = self.df.set_index(self.df.columns[0])
         super().transform()
+        self._create_ratio_cols()
+        
+    def _create_ratio_cols(self):
+        self.df['child_pov_ratio'] = self.df['est_child_poverty'] / self.df['est_total_child']
+        self.df['child_adult_ratio'] = self.df['est_total_child'] / self.df['est_total_pop']
        
         
         
