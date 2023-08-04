@@ -1,4 +1,4 @@
-district_id,district_name,school_id,school,emh,school_grade,rank,read_achievement,math_achievement,write_achievement,science_achievment,overall_weighted_growth,read_growth,math_growth,write_growth,graduation_rate
+district_id,district_name,school_id,school,emh,school_grade,rank,read_achievement,math_achievement,write_achievement,science_achievement,overall_weighted_growth,read_growth,math_growth,write_growth,graduation_rate
 1040,ACADEMY 20,17,ACADEMY ENDEAVOUR ELEMENTARY SCHOOL,E,7,410,9,9,9,9,7,7,7,7,
 1040,ACADEMY 20,19,ACADEMY INTERNATIONAL ELEMENTARY SCHOOL,E,12,44,12,10,11,12,11,12,11,7,
 1040,ACADEMY 20,110,ACADEMY ONLINE HIGH SCHOOL,H,,,,,,,,,,,-

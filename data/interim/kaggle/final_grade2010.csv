@@ -1,4 +1,4 @@
-school,district_id,district_name,emh,school_id,school_grade,rank,read_achievement,math_achievement,write_achievement,science_achievment,overall_weighted_growth,read_growth,math_growth,write_growth,graduation_rate
+school,district_id,district_name,emh,school_id,school_grade,rank,read_achievement,math_achievement,write_achievement,science_achievement,overall_weighted_growth,read_growth,math_growth,write_growth,graduation_rate
 BEAR CREEK ELEMENTARY SCHOOL,480,BOULDER VALLEY RE 2,E,652,13,1,13,13,12,13,12,10,12,10,
 CHALLENGE SCHOOL,130,CHERRY CREEK 5,E,1510,13,1,13,13,13,13,10,9,9,10,
 CHERRY HILLS VILLAGE ELEMENTARY SCHOOL,130,CHERRY CREEK 5,E,1574,13,1,12,12,12,12,13,13,12,13,

@@ -32,11 +32,11 @@ def make_datasets(input_filepath, output_filepath):
     kaggle = make_kaggle(append_path(input_filepath,'kaggle'), 
                      append_path(output_filepath,'kaggle'))
     
-    # # Combine datasets
-    # change, coact, enroll, final, frl, remediation, address = kaggle    
-    # combined_datasets = combine_datasets(input_filepath, output_filepath, census, exp, kaggle)
+    # Combine datasets
+    change, coact, enroll, final, frl, remediation, address = kaggle    
+    combined_datasets = combine_datasets(input_filepath, output_filepath, census, exp, kaggle)
     
-    # return census, exp, kaggle, combined_datasets
+    return census, exp, kaggle, combined_datasets
     
     
     

@@ -402,7 +402,7 @@ class FinalMaker(KaggleMaker):
                      'read_ach_grade': 'read_achievement',
                      'math_ach_grade': 'math_achievement',
                      'write_ach_grade': 'write_achievement',
-                     'sci_ach_grade': 'science_achievment',
+                     'sci_ach_grade': 'science_achievement',
                      'overall_weighted_growth_grade': 'overall_weighted_growth',
                      'read_growth_grade': 'read_growth',
                      'math_growth_grade': 'math_growth',
