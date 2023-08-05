@@ -391,7 +391,8 @@ class FinalMaker(KaggleMaker):
                 'overall_ach_grade',
                 'overall_achievement',
                 'record_no',
-                'spf_ps_ell_grad_rate']
+                'spf_ps_ell_grad_rate',
+                'rank']
     
     final_col_map = {'aec_10': 'alternative_school',
                      'initial_plantype': 'initial_plan',
