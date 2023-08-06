@@ -263,8 +263,19 @@ class KaggleMaker(Maker):
         self.df = self.df.reset_index(drop=True)
         
         # Remove columns with unecessary information
-        self._remove_emh_combined()
+        # self._remove_emh_combined()
+        
+        # Refactor columns
+        self._refactor_emh_combined()
 
+    def _refactor_emh_combined(self):
+        """ 
+        Refactors the EMH Combined column to a true false indicator
+        of whether or not the school is an EMH combined school
+        """
+        if 'emh_combined' in self.df.columns:
+            self.df['emh_combined'] = self.df['emh_combined'].notna()
+            
 
     def _remove_boces(self):
         """
